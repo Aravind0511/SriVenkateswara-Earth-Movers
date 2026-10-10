@@ -80,10 +80,16 @@ export const EquipmentModal: React.FC<EquipmentModalProps> = ({
               <h2 className="svem-modal-title">{equipment.name}</h2>
               <p className="svem-modal-model">Model: {equipment.model}</p>
             </div>
-            <div className="svem-modal-price-badge">
-              <span className="svem-price-label">Starting Tariff</span>
-              <span className="svem-price-value">{equipment.rates.daily}</span>
-            </div>
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="svem-modal-contact-badge"
+              title="Chat with owner on WhatsApp for pricing"
+            >
+              <Phone size={14} className="text-amber-500" />
+              <span>Contact Owner for Pricing</span>
+            </a>
           </div>
 
           {/* Description */}
@@ -175,12 +181,12 @@ export const EquipmentModal: React.FC<EquipmentModalProps> = ({
               </div>
               <div className="svem-rate-card">
                 <span className="svem-rate-period">Project Based</span>
-                <span className="svem-rate-cost">On Site Quote</span>
+                <span className="svem-rate-cost">{equipment.rates.project}</span>
                 <span className="svem-rate-note">Custom earthwork contract</span>
               </div>
             </div>
             <p className="svem-disclaimer-note">
-              * Indicative tariffs. Final rental quotes vary based on site distance, diesel supply arrangement, and shift duration.
+              * Tariffs are customized based on site distance, earth conditions, diesel supply arrangement, and shift duration. Contact the owner for a tailored quote.
             </p>
           </div>
 

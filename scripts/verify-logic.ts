@@ -108,6 +108,32 @@ assert(BUSINESS_INFO.phone.length > 5, 'Business phone is configured');
 assert(getCallUrl().startsWith('tel:'), 'Call URL is formatted correctly');
 assert(getWhatsAppUrl().startsWith('https://wa.me/'), 'WhatsApp URL is formatted correctly');
 
+// 8. Verify No Monetary Amounts in Equipment Rates & Local Equipment Assets Exist
+const equipmentImages = [
+  'jcb-3dx.jpg',
+  'excavator.jpg',
+  'tractor.jpg',
+  'tipper.jpg',
+  'bulldozer.jpg',
+  'road-roller.jpg'
+];
+
+for (const eqImg of equipmentImages) {
+  const eqPath = path.resolve('public/equipment', eqImg);
+  const exists = fs.existsSync(eqPath);
+  assert(exists, `Local equipment image ${eqImg} exists in public/equipment`);
+  if (exists) {
+    const stat = fs.statSync(eqPath);
+    assert(stat.size > 5000, `Equipment image ${eqImg} is non-empty (${stat.size} bytes)`);
+  }
+}
+
+for (const item of EQUIPMENT_LIST) {
+  assert(!item.rates.daily.includes('₹'), `No monetary currency symbol in ${item.name} daily rate`);
+  assert(!item.rates.hourly.includes('₹'), `No monetary currency symbol in ${item.name} hourly rate`);
+  assert(!item.rates.weekly.includes('₹'), `No monetary currency symbol in ${item.name} weekly rate`);
+}
+
 if (failedTests > 0) {
   console.error(`\n❌ Total test failures: ${failedTests}`);
   process.exit(1);

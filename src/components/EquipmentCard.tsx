@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import type { EquipmentItem } from '../types';
+import { getEquipmentTariffWhatsAppUrl } from '../config/businessInfo';
 
 interface EquipmentCardProps {
   equipment: EquipmentItem;
@@ -37,7 +38,7 @@ export const EquipmentCard: React.FC<EquipmentCardProps> = ({
           <p className="svem-eq-type">{equipment.type}</p>
         </div>
 
-        {/* Availability Status Indicator (Green for Available, Red for Currently Rented) */}
+        {/* Availability Status Indicator & Contact Owner Action */}
         <div className="svem-eq-status-row">
           <span
             className={`svem-status-indicator ${
@@ -52,7 +53,18 @@ export const EquipmentCard: React.FC<EquipmentCardProps> = ({
             )}
           </span>
 
-          <span className="svem-eq-rate-tag">{equipment.rates.daily}</span>
+          {/* Contact to Owner Feature instead of amount */}
+          <a
+            href={getEquipmentTariffWhatsAppUrl(equipment.name)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="svem-eq-contact-tag"
+            title={`Contact owner for ${equipment.name} pricing and rental details`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Phone size={12} className="svem-eq-contact-icon shrink-0" />
+            <span>Contact Owner</span>
+          </a>
         </div>
 
         <p className="svem-eq-desc">{equipment.shortDesc}</p>

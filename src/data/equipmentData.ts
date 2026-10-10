@@ -11,7 +11,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'The JCB 3DX is the most trusted workhorse for Indian infrastructure, building foundations, and site development. Equipped with an EcoMAX fuel-efficient diesel engine, heavy-duty loader arm, and high-breakout-force backhoe bucket. Ideal for urban excavation, road berm trimming, pipeline trenching, and general site clearance.',
     status: 'available',
     statusText: 'Available',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80',
+    image: '/equipment/jcb-3dx.jpg',
     specs: {
       operatingWeight: '7,460 kg',
       enginePower: '76 HP @ 2200 rpm',
@@ -22,10 +22,10 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
       transmission: 'Synchromesh 4-speed'
     },
     rates: {
-      hourly: '₹1,200 / hr',
-      daily: '₹9,500 / day (8 hrs)',
-      weekly: '₹58,000 / week',
-      project: 'Custom contract rate on inspection'
+      hourly: 'Available on Call',
+      daily: 'Tariff on Request',
+      weekly: 'Custom Weekly Tariff',
+      project: 'Custom Contract Quote'
     },
     applications: [
       'Foundation Footing & Pits',
@@ -46,7 +46,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'High-production 20-ton tracked crawler excavator equipped with heavy rock bucket and optional rock-breaker attachment. High hydraulic power and continuous 360-degree slew capacity make this machine indispensable for large-scale earth cutting, quarry overburden clearing, pond digging, and massive basement excavation.',
     status: 'available',
     statusText: 'Available',
-    image: 'https://images.unsplash.com/photo-1580901368919-7738efb0f87e?auto=format&fit=crop&w=1000&q=80',
+    image: '/equipment/excavator.jpg',
     specs: {
       operatingWeight: '20,500 kg',
       enginePower: '140 HP Turbocharged',
@@ -57,10 +57,10 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
       transmission: 'Independent hydraulic hydrostatic track drive'
     },
     rates: {
-      hourly: '₹2,400 / hr',
-      daily: '₹18,000 / day (8 hrs)',
-      weekly: '₹1,15,000 / week',
-      project: 'Tailored cubical-meter basis or lump sum'
+      hourly: 'Available on Call',
+      daily: 'Tariff on Request',
+      weekly: 'Custom Weekly Tariff',
+      project: 'Volume / CBM Contract Basis'
     },
     applications: [
       'Deep Basement & Lake Excavation',
@@ -81,7 +81,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Robust 55 HP dual-clutch utility tractor paired with heavy-duty 3-ton hydraulic tipping trolley. Perfect for agricultural land development, farm leveling, manure / gravel transport, narrow street excavation debris shifting, and auxiliary support at roadworks where full-sized tippers cannot maneuver.',
     status: 'available',
     statusText: 'Available',
-    image: 'https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?auto=format&fit=crop&w=1000&q=80',
+    image: '/equipment/tractor.jpg',
     specs: {
       operatingWeight: '2,200 kg (Tractor alone)',
       enginePower: '55 HP @ 2100 rpm',
@@ -91,10 +91,10 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
       reach: 'Hydraulic high-angle tipping'
     },
     rates: {
-      hourly: '₹750 / hr',
-      daily: '₹5,500 / day (8 hrs)',
-      weekly: '₹34,000 / week',
-      project: 'Trip-basis or daily rate'
+      hourly: 'Available on Call',
+      daily: 'Tariff on Request',
+      weekly: 'Custom Weekly Tariff',
+      project: 'Trip / Day Contract Rate'
     },
     applications: [
       'Farmland Leveling & Clearing',
@@ -115,7 +115,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Commercial heavy-duty multi-axle tipper lorry designed for high-tonnage bulk hauling. Equipped with reinforced high-tensile steel tipping body, fast hydraulic hoist, and all-weather radial tires. Essential for moving hundreds of tons of excavated earth, filling material, blue metal aggregate, or river sand over long distances.',
     status: 'available',
     statusText: 'Available',
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1000&q=80',
+    image: '/equipment/tipper.jpg',
     specs: {
       operatingWeight: '28,000 kg GVW',
       enginePower: '230 HP Common Rail Diesel',
@@ -124,10 +124,10 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
       transmission: '9-speed synchromesh with crawler gear'
     },
     rates: {
-      hourly: '₹1,600 / hr',
-      daily: '₹12,500 / day + fuel or per trip',
-      weekly: '₹75,000 / week',
-      project: 'Per-trip / Per-CBM volume basis'
+      hourly: 'Available on Call',
+      daily: 'Tariff on Request',
+      weekly: 'Custom Weekly Tariff',
+      project: 'Per-Trip / Per-CBM Basis'
     },
     applications: [
       'Bulk Earth & Soil Haulage',
@@ -148,7 +148,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Engineered for prime earth pushing and rough grading in demanding terrains. Features a heavy-duty semi-U blade with hydraulic tilt, severe-duty undercarriage tracks, and a rear single-shank ripper for breaking compacted hardpan. Essential for large-scale township layouts, industrial plots, and highway subgrade profiling.',
     status: 'rented',
     statusText: 'Currently Rented',
-    image: 'https://images.unsplash.com/photo-1584467541268-b040f83be3fd?auto=format&fit=crop&w=1000&q=80',
+    image: '/equipment/bulldozer.jpg',
     specs: {
       operatingWeight: '18,500 kg',
       enginePower: '175 HP Heavy Duty Turbo Diesel',
@@ -158,10 +158,10 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
       transmission: 'Planetary powershift 3F/3R'
     },
     rates: {
-      hourly: '₹2,800 / hr',
-      daily: '₹22,000 / day (8 hrs)',
-      weekly: '₹1,35,000 / week',
-      project: 'Per-acre leveling contract'
+      hourly: 'Available on Call',
+      daily: 'Tariff on Request',
+      weekly: 'Custom Weekly Tariff',
+      project: 'Per-Acre Leveling Contract'
     },
     applications: [
       'Large Acreage Site Leveling',
@@ -182,7 +182,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Heavy-duty 11-ton vibratory soil compactor engineered to achieve required soil densities in minimal passes. Features dual-frequency hydraulic vibration, hydrostatic propulsion, high static linear load, and excellent gradeability. Crucial for tarmac roads, paver block base preparation, factory flooring, and canal bed compaction.',
     status: 'available',
     statusText: 'Available',
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1000&q=80',
+    image: '/equipment/road-roller.jpg',
     specs: {
       operatingWeight: '11,200 kg',
       enginePower: '105 HP Water Cooled Diesel',
@@ -192,10 +192,10 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
       transmission: 'Full hydrostatic drive system'
     },
     rates: {
-      hourly: '₹1,400 / hr',
-      daily: '₹11,000 / day (8 hrs)',
-      weekly: '₹68,000 / week',
-      project: 'Square-meter or project contract'
+      hourly: 'Available on Call',
+      daily: 'Tariff on Request',
+      weekly: 'Custom Weekly Tariff',
+      project: 'Square-Meter / Project Contract'
     },
     applications: [
       'Highway & Rural Road Compaction',

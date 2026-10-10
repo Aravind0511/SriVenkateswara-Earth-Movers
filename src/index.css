@@ -1028,6 +1028,39 @@ input, select, textarea, button {
   border-radius: var(--radius-sm);
 }
 
+.svem-eq-contact-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--svem-dark);
+  background: #ffffff;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.svem-eq-contact-tag:hover {
+  background: var(--svem-primary);
+  color: var(--svem-dark);
+  border-color: var(--svem-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
+}
+
+.svem-eq-contact-icon {
+  color: var(--svem-primary-hover);
+  transition: color 0.2s ease;
+}
+
+.svem-eq-contact-tag:hover .svem-eq-contact-icon {
+  color: var(--svem-dark);
+}
+
 .svem-eq-desc {
   font-size: 0.875rem;
   color: var(--svem-text-body);
@@ -2466,9 +2499,34 @@ input, select, textarea, button {
   text-align: right;
 }
 
+.svem-modal-contact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1.5px solid var(--svem-primary);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--svem-dark);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.15);
+}
+
+.svem-modal-contact-badge:hover {
+  background: var(--svem-primary);
+  color: var(--svem-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
 @media (max-width: 640px) {
-  .svem-modal-price-badge {
+  .svem-modal-price-badge,
+  .svem-modal-contact-badge {
     text-align: left;
+    margin-top: 0.5rem;
   }
 }
 

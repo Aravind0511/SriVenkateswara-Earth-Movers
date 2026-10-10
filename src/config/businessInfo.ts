@@ -91,3 +91,11 @@ export function getCallUrl(): string {
   const cleanPhone = BUSINESS_INFO.phone.replace(/[^0-9+]/g, '');
   return `tel:${cleanPhone}`;
 }
+
+/**
+ * Generate WhatsApp URL to directly inquire with the owner for equipment rates/tariff
+ */
+export function getEquipmentTariffWhatsAppUrl(equipmentName: string): string {
+  const message = `Hello Sri Venkateshwara Earth Movers, I want to inquire about the rental tariff and operator availability for the ${equipmentName}. Please share details.`;
+  return getWhatsAppUrl(message);
+}
