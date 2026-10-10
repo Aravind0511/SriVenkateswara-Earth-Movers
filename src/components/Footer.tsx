@@ -3,9 +3,13 @@ import { ArrowUp, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { Logo } from './Logo';
 import { BUSINESS_INFO, getCallUrl } from '../config/businessInfo';
 
+interface FooterProps {
+  onNavigate?: (page: 'home' | 'about', sectionId?: string) => void;
+}
+
 const CURRENT_YEAR = 2026;
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -16,7 +20,16 @@ export const Footer: React.FC = () => {
         <div className="svem-footer-main">
           {/* Col 1: Brand Info */}
           <div className="svem-footer-col svem-footer-col-brand">
-            <Logo variant="light" size="lg" />
+            <Logo
+              variant="light"
+              size="lg"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('home');
+                }
+              }}
+            />
             <p className="svem-footer-desc">
               Premier earth-moving equipment and heavy construction vehicle rentals in South India. Well-maintained fleet, seasoned operators, and dependable project execution.
             </p>
@@ -29,13 +42,97 @@ export const Footer: React.FC = () => {
           <div className="svem-footer-col">
             <h4 className="svem-footer-heading">Quick Navigation</h4>
             <ul className="svem-footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#why-choose-us">About Us</a></li>
-              <li><a href="#equipment">Our Equipment</a></li>
-              <li><a href="#booking">Book Equipment</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#gallery">Recent Work Gallery</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+              <li>
+                <a
+                  href="#/"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home');
+                    }
+                  }}
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/about"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('about');
+                    }
+                  }}
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home', 'equipment');
+                    }
+                  }}
+                >
+                  Our Equipment
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#booking"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home', 'booking');
+                    }
+                  }}
+                >
+                  Book Equipment
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home', 'services');
+                    }
+                  }}
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home', 'gallery');
+                    }
+                  }}
+                >
+                  Recent Work Gallery
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home', 'contact');
+                    }
+                  }}
+                >
+                  Contact Us
+                </a>
+              </li>
             </ul>
           </div>
 

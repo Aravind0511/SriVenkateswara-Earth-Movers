@@ -4,14 +4,21 @@ interface LogoProps {
   variant?: 'light' | 'dark';
   className?: string;
   size?: 'sm' | 'md' | 'lg';
+  onClick?: (e: React.MouseEvent) => void;
 }
 
-export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', size = 'md' }) => {
+export const Logo: React.FC<LogoProps> = ({
+  variant = 'dark',
+  className = '',
+  size = 'md',
+  onClick,
+}) => {
   const isLight = variant === 'light';
 
   return (
     <a
       href="#home"
+      onClick={onClick}
       className={`svem-logo svem-logo-${size} ${className}`}
       aria-label="Sri Venkateshwara Earth Movers Home"
     >
@@ -28,7 +35,7 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '', si
       {/* Brand Typography */}
       <div className="svem-logo-text-block">
         <span className={`svem-logo-title ${isLight ? 'text-white' : 'text-dark'}`}>
-          SRI VENKATESWARA
+          SRI VENKATESHWARA
         </span>
         <span className="svem-logo-subtitle">
           EARTH MOVERS

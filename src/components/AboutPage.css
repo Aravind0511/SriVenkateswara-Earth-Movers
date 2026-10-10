@@ -1,0 +1,906 @@
+/* ==========================================================================
+   ABOUT US PAGE STYLES
+   Sri Venkateshwara Earth Movers
+   Exact Reference Design Implementation
+   ========================================================================== */
+
+.about-page {
+  width: 100%;
+  background-color: #ffffff;
+  color: var(--svem-text-main);
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   1. Hero Section
+   -------------------------------------------------------------------------- */
+.about-hero {
+  position: relative;
+  background-color: #0b1120;
+  background-image: linear-gradient(
+      90deg,
+      rgba(11, 17, 32, 0.98) 0%,
+      rgba(11, 17, 32, 0.92) 35%,
+      rgba(11, 17, 32, 0.65) 60%,
+      rgba(11, 17, 32, 0.2) 100%
+    ),
+    url('/about/hero-bg-clean.jpg');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  padding: 4.5rem 0 5rem;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+/* Breadcrumbs */
+.about-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-bottom: 1.25rem;
+}
+
+.about-breadcrumb-link {
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.about-breadcrumb-link:hover {
+  color: var(--svem-primary);
+  text-decoration: underline;
+}
+
+.about-breadcrumb-sep {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.about-breadcrumb-current {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+/* Title & Subtitle */
+.about-hero-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+
+.about-hero-title-accent {
+  color: var(--svem-primary);
+  display: block;
+}
+
+.about-hero-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: #e2e8f0;
+  line-height: 1.55;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+/* Hero CTA Buttons */
+.about-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.about-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--svem-primary);
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  cursor: pointer;
+}
+
+.about-btn-primary:hover {
+  background-color: var(--svem-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+}
+
+.about-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(6px);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.about-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--svem-primary);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Common Section Headers (Yellow Vertical Bar)
+   -------------------------------------------------------------------------- */
+.about-eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
+}
+
+.about-accent-bar {
+  width: 4px;
+  height: 20px;
+  background-color: var(--svem-primary);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.about-eyebrow-text {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #d97706;
+}
+
+.about-section-heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.15rem);
+  font-weight: 800;
+  color: var(--svem-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.about-section-subheading {
+  font-size: 0.95rem;
+  color: var(--svem-text-muted);
+  margin-top: 0.35rem;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   2. WHO WE ARE Section
+   -------------------------------------------------------------------------- */
+.about-who-section {
+  padding: 5rem 0 3.5rem;
+}
+
+.about-who-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .about-who-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.about-who-image-wrap {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.12);
+  background: #f1f5f9;
+}
+
+.about-who-img {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.about-who-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-who-desc {
+  font-size: 0.95rem;
+  color: var(--svem-text-body);
+  line-height: 1.65;
+  margin-top: 1rem;
+}
+
+.about-who-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 1.75rem;
+}
+
+.about-who-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.about-feature-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: var(--svem-primary);
+  color: var(--svem-dark);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+}
+
+.about-feature-info {
+  flex: 1;
+}
+
+.about-feature-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--svem-dark);
+  line-height: 1.3;
+}
+
+.about-feature-desc {
+  font-size: 0.85rem;
+  color: var(--svem-text-muted);
+  margin-top: 0.2rem;
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   3. 4-Point Dark Badge Bar
+   -------------------------------------------------------------------------- */
+.about-dark-bar-wrap {
+  padding: 1rem 0 3.5rem;
+}
+
+.about-dark-bar {
+  background-color: #0f172a;
+  border-radius: 14px;
+  padding: 1.75rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+}
+
+@media (max-width: 991px) {
+  .about-dark-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .about-dark-bar {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+.about-dark-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .about-dark-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -0.75rem;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.about-dark-icon {
+  color: var(--svem-primary);
+  flex-shrink: 0;
+}
+
+.about-dark-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-dark-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.about-dark-sub {
+  font-size: 0.775rem;
+  color: #94a3b8;
+  margin-top: 0.2rem;
+  line-height: 1.35;
+}
+
+/* --------------------------------------------------------------------------
+   4. Highlight Cards (Our Mission & Our Approach)
+   -------------------------------------------------------------------------- */
+.about-highlights-wrap {
+  padding-bottom: 4.5rem;
+}
+
+.about-highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.about-highlight-card {
+  background: #ffffff;
+  border: 1px solid var(--svem-border);
+  border-radius: 16px;
+  padding: 2rem 2.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.about-highlight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08);
+  border-color: #cbd5e1;
+}
+
+.about-highlight-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background-color: var(--svem-primary);
+  color: var(--svem-dark);
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+}
+
+.about-highlight-content {
+  flex: 1;
+}
+
+.about-highlight-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--svem-dark);
+  margin-bottom: 0.5rem;
+}
+
+.about-highlight-text {
+  font-size: 0.925rem;
+  color: var(--svem-text-body);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   5. What We Support Section
+   -------------------------------------------------------------------------- */
+.about-services-section {
+  padding-bottom: 4.5rem;
+}
+
+.about-services-header {
+  margin-bottom: 2rem;
+}
+
+.about-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .about-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .about-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-service-card {
+  background: #ffffff;
+  border: 1px solid var(--svem-border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.about-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.1);
+  border-color: var(--svem-primary);
+}
+
+.about-service-img-wrap {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  background-color: #f1f5f9;
+}
+
+.about-service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.about-service-card:hover .about-service-img {
+  transform: scale(1.05);
+}
+
+.about-service-body {
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.about-service-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--svem-dark);
+  margin-bottom: 0.4rem;
+}
+
+.about-service-card-desc {
+  font-size: 0.85rem;
+  color: var(--svem-text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   6. Built Around Your Project Needs Section
+   -------------------------------------------------------------------------- */
+.about-needs-section {
+  padding-bottom: 4.5rem;
+}
+
+.about-needs-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .about-needs-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.about-needs-img-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.12);
+  background: #f1f5f9;
+}
+
+.about-needs-img {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.about-needs-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-needs-desc {
+  font-size: 0.95rem;
+  color: var(--svem-text-body);
+  line-height: 1.65;
+  margin-top: 1rem;
+}
+
+.about-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.about-checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--svem-dark);
+}
+
+.about-check-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #fef3c7;
+  color: #d97706;
+  flex-shrink: 0;
+}
+
+.about-needs-cta-wrap {
+  margin-top: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. A Simple Way to Get Started (4-Step Process)
+   -------------------------------------------------------------------------- */
+.about-process-section {
+  padding-bottom: 4.5rem;
+}
+
+.about-process-header {
+  margin-bottom: 2.25rem;
+}
+
+.about-process-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+@media (max-width: 991px) {
+  .about-process-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .about-process-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.about-step-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex: 1;
+}
+
+.about-step-circle-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #fffbeb;
+  border: 1.5px solid #fde68a;
+  color: var(--svem-dark);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+}
+
+.about-step-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-step-name {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--svem-dark);
+  line-height: 1.3;
+}
+
+.about-step-hint {
+  font-size: 0.775rem;
+  color: var(--svem-text-muted);
+  margin-top: 0.2rem;
+  line-height: 1.35;
+}
+
+.about-step-chevron {
+  color: #cbd5e1;
+  flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+  .about-step-chevron {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Dark CTA Banner
+   -------------------------------------------------------------------------- */
+.about-cta-banner-wrap {
+  padding-bottom: 3.5rem;
+}
+
+.about-cta-banner {
+  background-color: #0b1120;
+  background-image: linear-gradient(
+      90deg,
+      rgba(11, 17, 32, 0.96) 0%,
+      rgba(11, 17, 32, 0.88) 55%,
+      rgba(11, 17, 32, 0.7) 100%
+    ),
+    url('/about/cta-banner-bg.jpg');
+  background-size: cover;
+  background-position: center right;
+  border-radius: 14px;
+  padding: 1.85rem 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: 0 12px 28px -6px rgba(11, 17, 32, 0.25);
+}
+
+.about-cta-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.about-cta-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: var(--svem-primary);
+  color: var(--svem-dark);
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+.about-cta-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-cta-title {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.about-cta-desc {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+.about-cta-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.about-btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--svem-whatsapp);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.925rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  cursor: pointer;
+}
+
+.about-btn-wa:hover {
+  background-color: #20bd5a;
+  transform: translateY(-1px);
+}
+
+.about-btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--svem-primary);
+  color: var(--svem-dark);
+  font-weight: 700;
+  font-size: 0.925rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+  cursor: pointer;
+}
+
+.about-btn-call:hover {
+  background-color: var(--svem-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   9. Clean Template Footer
+   -------------------------------------------------------------------------- */
+.about-footer {
+  background-color: #ffffff;
+  border-top: 1px solid var(--svem-border);
+}
+
+.about-footer-top {
+  padding: 2.75rem 0 2.25rem;
+}
+
+.about-footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.3fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .about-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.about-footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.about-footer-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+}
+
+.about-footer-nav-link {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--svem-dark);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.about-footer-nav-link:hover {
+  color: var(--svem-primary-hover);
+}
+
+.about-footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.about-footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--svem-text-body);
+}
+
+.about-footer-contact-item a {
+  color: var(--svem-text-body);
+  transition: color 0.2s ease;
+}
+
+.about-footer-contact-item a:hover {
+  color: var(--svem-primary-hover);
+  text-decoration: underline;
+}
+
+.about-footer-contact-icon {
+  color: var(--svem-dark);
+  flex-shrink: 0;
+}
+
+.about-footer-bottom {
+  background-color: #080d1a;
+  color: #94a3b8;
+  padding: 1rem 0;
+  font-size: 0.825rem;
+}
+
+.about-footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.about-footer-copy {
+  color: #94a3b8;
+}
+
+.about-footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+}
+
+.about-footer-legal-links a {
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.about-footer-legal-links a:hover {
+  color: #ffffff;
+}

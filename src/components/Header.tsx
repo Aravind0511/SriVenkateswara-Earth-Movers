@@ -4,10 +4,16 @@ import { Logo } from './Logo';
 import { BUSINESS_INFO, getCallUrl } from '../config/businessInfo';
 
 interface HeaderProps {
+  currentPage?: 'home' | 'about';
+  onNavigate?: (page: 'home' | 'about', sectionId?: string) => void;
   onOpenBooking: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
+export const Header: React.FC<HeaderProps> = ({
+  currentPage = 'home',
+  onNavigate,
+  onOpenBooking,
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -20,50 +26,85 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#why-choose-us' },
-    { name: 'Equipment', href: '#equipment' },
-    { name: 'Services', href: '#services' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact Us', href: '#contact' },
+    { name: 'Home', href: '#/', page: 'home' as const, sectionId: '' },
+    { name: 'About Us', href: '#/about', page: 'about' as const, sectionId: '' },
+    { name: 'Equipment', href: '#equipment', page: 'home' as const, sectionId: 'equipment' },
+    { name: 'Services', href: '#services', page: 'home' as const, sectionId: 'services' },
+    { name: 'Gallery', href: '#gallery', page: 'home' as const, sectionId: 'gallery' },
+    { name: 'Contact Us', href: '#contact', page: 'home' as const, sectionId: 'contact' },
   ];
+
+  const handleNavClick = (
+    e: React.MouseEvent,
+    link: (typeof navLinks)[number]
+  ) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    if (!onNavigate) {
+      if (link.sectionId) {
+        const el = document.getElementById(link.sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+
+    if (link.page === 'about') {
+      onNavigate('about');
+    } else if (link.page === 'home') {
+      onNavigate('home', link.sectionId);
+    }
+  };
 
   return (
     <header className={`svem-header ${isScrolled ? 'svem-header-scrolled' : ''}`}>
       <div className="svem-header-container">
         {/* Left: Brand Logo & Name */}
-        <Logo size="md" />
+        <Logo
+          size="md"
+          onClick={(e) => {
+            e.preventDefault();
+            if (onNavigate) {
+              onNavigate('home');
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+        />
 
         {/* Center: Desktop Navigation Links */}
         <nav className="svem-nav-desktop" aria-label="Main Navigation">
           <ul className="svem-nav-list">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="svem-nav-link"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                (link.page === 'about' && currentPage === 'about') ||
+                (link.name === 'Home' && currentPage === 'home');
+
+              return (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className={`svem-nav-link ${isActive ? 'svem-nav-link-active' : ''}`}
+                    onClick={(e) => handleNavClick(e, link)}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
         {/* Right: Phone Action & Get a Quote / Book Now CTA */}
         <div className="svem-header-actions">
-          {/* Quick Call Button */}
+          {/* Yellow Phone Icon Button (Exact Template Design) */}
           <a
             href={getCallUrl()}
-            className="svem-btn-call"
+            className="svem-header-phone-btn"
             title={`Call Owner: ${BUSINESS_INFO.phone}`}
-            aria-label="Call Owner"
+            aria-label={`Call Owner at ${BUSINESS_INFO.phone}`}
           >
-            <span className="svem-btn-call-icon">
-              <Phone size={16} />
-            </span>
-            <span className="svem-btn-call-text">{BUSINESS_INFO.phone}</span>
+            <Phone size={18} />
           </a>
 
           {/* Primary CTA */}
@@ -95,16 +136,22 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
       >
         <div className="svem-mobile-drawer-inner">
           <div className="svem-mobile-nav-links">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="svem-mobile-nav-link"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                (link.page === 'about' && currentPage === 'about') ||
+                (link.name === 'Home' && currentPage === 'home');
+
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`svem-mobile-nav-link ${isActive ? 'svem-mobile-nav-link-active' : ''}`}
+                  onClick={(e) => handleNavClick(e, link)}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
           </div>
 
           <div className="svem-mobile-drawer-ctas">

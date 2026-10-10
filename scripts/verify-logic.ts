@@ -78,6 +78,35 @@ assert(formatDateISO(new Date(2026, 9, 14)) === '2026-10-14', 'formatDateISO con
 assert(formatDateDisplay('2026-10-14') === 'Oct 14, 2026', 'formatDateDisplay converts YYYY-MM-DD to Oct 14, 2026');
 assert(isDateBetween('2026-10-13', '2026-10-12', '2026-10-14') === true, 'isDateBetween checks inclusivity');
 
+// 7. Verify About Page Assets & Configuration Integrity
+import fs from 'node:fs';
+import path from 'node:path';
+import { BUSINESS_INFO, getCallUrl, getWhatsAppUrl } from '../src/config/businessInfo.ts';
+
+const aboutImages = [
+  'who-we-are.jpg',
+  'earth-excavation.jpg',
+  'earth-filling.jpg',
+  'road-work.jpg',
+  'land-development.jpg',
+  'project-needs.jpg',
+  'hero-bg-clean.jpg',
+];
+
+for (const imgName of aboutImages) {
+  const filePath = path.resolve('public/about', imgName);
+  const exists = fs.existsSync(filePath);
+  assert(exists, `About page asset ${imgName} exists in public/about`);
+  if (exists) {
+    const stat = fs.statSync(filePath);
+    assert(stat.size > 1024, `About page asset ${imgName} is non-empty (${stat.size} bytes)`);
+  }
+}
+
+assert(BUSINESS_INFO.phone.length > 5, 'Business phone is configured');
+assert(getCallUrl().startsWith('tel:'), 'Call URL is formatted correctly');
+assert(getWhatsAppUrl().startsWith('https://wa.me/'), 'WhatsApp URL is formatted correctly');
+
 if (failedTests > 0) {
   console.error(`\n❌ Total test failures: ${failedTests}`);
   process.exit(1);

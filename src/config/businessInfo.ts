@@ -1,4 +1,4 @@
-import { formatDateDisplay } from '../utils/dateUtils';
+import { formatDateDisplay } from '../utils/dateUtils.ts';
 
 /**
  * SRI VENKATESHWARA EARTH MOVERS
