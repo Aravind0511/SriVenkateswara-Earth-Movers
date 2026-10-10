@@ -485,6 +485,42 @@
   background: #f59e0b;
 }
 
+.svem-carousel-empty-box {
+  width: 100%;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.svem-carousel-empty-msg {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.svem-carousel-reset-btn {
+  padding: 0.5rem 1rem;
+  background: #f59e0b;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.svem-carousel-reset-btn:hover {
+  background: #d97706;
+}
+
 /* --------------------------------------------------------------------------
    SECTION 2: SELECT RENTAL DATE & DURATION (CRITICAL ADJUSTMENT)
    Single calendar on Left, Duration cards on Right

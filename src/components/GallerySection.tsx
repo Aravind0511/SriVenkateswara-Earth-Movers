@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Maximize2 } from 'lucide-react';
+import { Maximize2, ArrowRight } from 'lucide-react';
 import { GALLERY_ITEMS } from '../data/galleryData';
 import { GalleryLightbox } from './GalleryLightbox';
 
@@ -29,9 +29,15 @@ export const GallerySection: React.FC = () => {
   return (
     <div id="gallery" className="svem-gallery-block">
       {/* Block Header */}
-      <div className="svem-title-with-pill svem-mb-4">
-        <span className="svem-accent-pill" />
-        <h3 className="svem-subheading">Recent Work Gallery</h3>
+      <div className="svem-section-header-row svem-mb-3 flex items-center justify-between">
+        <div className="svem-title-with-pill">
+          <span className="svem-accent-pill" />
+          <h3 className="svem-subheading">Recent Work Gallery</h3>
+        </div>
+        <a href="#/gallery" className="svem-link-btn" title="View all project photos">
+          <span>View All</span>
+          <ArrowRight size={14} />
+        </a>
       </div>
 
       {/* 5 Thumbnails Grid matching reference image */}

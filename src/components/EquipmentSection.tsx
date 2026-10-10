@@ -7,12 +7,14 @@ interface EquipmentSectionProps {
   equipmentList: EquipmentItem[];
   onViewDetails: (item: EquipmentItem) => void;
   onBookNow: (item: EquipmentItem) => void;
+  onViewAll?: () => void;
 }
 
 export const EquipmentSection: React.FC<EquipmentSectionProps> = ({
   equipmentList,
   onViewDetails,
-  onBookNow
+  onBookNow,
+  onViewAll,
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
 
@@ -50,7 +52,13 @@ export const EquipmentSection: React.FC<EquipmentSectionProps> = ({
             <button
               type="button"
               className="svem-link-btn"
-              onClick={() => setSelectedFilter('all')}
+              onClick={() => {
+                if (onViewAll) {
+                  onViewAll();
+                } else {
+                  setSelectedFilter('all');
+                }
+              }}
             >
               <span>View All Equipment</span>
               <ArrowRight size={16} />

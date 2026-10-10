@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import {
   Calendar,
   CheckCircle2,
@@ -60,11 +60,10 @@ export const BookingPage: React.FC<BookingPageProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedAvailability, setSelectedAvailability] = useState('all');
-  const [carouselIndex, setCarouselIndex] = useState(0);
 
-  // Form state - Defaulting to matching reference template UI dates: Oct 12, 2026 to Oct 16, 2026!
+  // Form state - Defaulting to Oct 12, 2026 to Oct 13, 2026 (active & available across all machinery)
   const [startDate, setStartDate] = useState('2026-10-12');
-  const [endDate, setEndDate] = useState('2026-10-16');
+  const [endDate, setEndDate] = useState('2026-10-13');
   const [rentalDurationType, setRentalDurationType] = useState<RentalType>('Daily');
 
   // Section 3: Project & Location Details
@@ -181,17 +180,27 @@ export const BookingPage: React.FC<BookingPageProps> = ({
     setFormError(null);
   };
 
+  // Synchronize carousel position when active equipment changes
+  useEffect(() => {
+    const idx = filteredEquipment.findIndex((eq) => eq.id === selectedEquipmentId);
+    if (idx !== -1 && carouselTrackRef.current) {
+      carouselTrackRef.current.scrollTo({
+        left: idx * 240,
+        behavior: 'smooth',
+      });
+    }
+  }, [selectedEquipmentId, filteredEquipment]);
+
+  const activeCarouselIndex = useMemo(() => {
+    const idx = filteredEquipment.findIndex((eq) => eq.id === activeEquipment.id);
+    return idx !== -1 ? idx : 0;
+  }, [filteredEquipment, activeEquipment.id]);
+
   const scrollCarousel = (direction: 'prev' | 'next') => {
     if (!carouselTrackRef.current) return;
     const cardWidth = 240;
     const scrollAmount = direction === 'next' ? cardWidth : -cardWidth;
     carouselTrackRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-
-    if (direction === 'next') {
-      setCarouselIndex((prev) => Math.min(prev + 1, filteredEquipment.length - 1));
-    } else {
-      setCarouselIndex((prev) => Math.max(prev - 1, 0));
-    }
   };
 
   const currentWhatsAppUrl = getEquipmentBookingWhatsAppUrl(
@@ -462,71 +471,88 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                   </button>
 
                   <div className="svem-equipment-carousel-track" ref={carouselTrackRef}>
-                    {filteredEquipment.map((item) => {
-                      const isSelected = item.id === activeEquipment.id;
-
-                      return (
-                        <div
-                          key={item.id}
-                          className={`svem-carousel-card ${
-                            isSelected ? 'svem-carousel-card-selected' : ''
-                          }`}
-                          onClick={() => handleEquipmentChange(item.id)}
-                          role="button"
-                          tabIndex={0}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ')
-                              handleEquipmentChange(item.id);
+                    {filteredEquipment.length === 0 ? (
+                      <div className="svem-carousel-empty-box">
+                        <p className="svem-carousel-empty-msg">No equipment found matching your criteria.</p>
+                        <button
+                          type="button"
+                          className="svem-carousel-reset-btn"
+                          onClick={() => {
+                            setSearchQuery('');
+                            setSelectedCategory('all');
+                            setSelectedAvailability('all');
                           }}
                         >
-                          {isSelected && (
-                            <div className="svem-card-check-badge" title="Selected Equipment">
-                              <Check size={14} />
-                            </div>
-                          )}
+                          Reset Filters
+                        </button>
+                      </div>
+                    ) : (
+                      filteredEquipment.map((item) => {
+                        const isSelected = item.id === activeEquipment.id;
 
-                          <div className="svem-carousel-card-img-wrap">
-                            <img
-                              src={item.image}
-                              alt={item.name}
-                              className="svem-carousel-card-img"
-                              loading="lazy"
-                            />
-                          </div>
-
-                          <div className="svem-carousel-card-info">
-                            <h3 className="svem-carousel-card-name">{item.name}</h3>
-                            <p className="svem-carousel-card-type">{item.type}</p>
-
-                            <div className="svem-carousel-card-status">
-                              <span
-                                className={`svem-status-dot ${
-                                  item.status === 'available'
-                                    ? 'svem-status-dot-green'
-                                    : 'svem-status-dot-amber'
-                                }`}
-                              />
-                              <span className="svem-status-text">
-                                {item.status === 'available' ? 'Available' : 'Currently Rented'}
-                              </span>
-                            </div>
-
-                            <button
-                              type="button"
-                              className={`svem-card-select-btn ${
-                                isSelected ? 'svem-card-select-btn-active' : ''
-                              }`}
-                              onClick={(e) => {
-                                e.stopPropagation();
+                        return (
+                          <div
+                            key={item.id}
+                            className={`svem-carousel-card ${
+                              isSelected ? 'svem-carousel-card-selected' : ''
+                            }`}
+                            onClick={() => handleEquipmentChange(item.id)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ')
                                 handleEquipmentChange(item.id);
-                              }}
-                            >
-                              {isSelected ? 'Selected' : 'Select'}
-                            </button>
+                            }}
+                          >
+                            {isSelected && (
+                              <div className="svem-card-check-badge" title="Selected Equipment">
+                                <Check size={14} />
+                              </div>
+                            )}
+
+                            <div className="svem-carousel-card-img-wrap">
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="svem-carousel-card-img"
+                                loading="lazy"
+                              />
+                            </div>
+
+                            <div className="svem-carousel-card-info">
+                              <h3 className="svem-carousel-card-name">{item.name}</h3>
+                              <p className="svem-carousel-card-type">{item.type}</p>
+
+                              <div className="svem-carousel-card-status">
+                                <span
+                                  className={`svem-status-dot ${
+                                    item.status === 'available'
+                                      ? 'svem-status-dot-green'
+                                      : 'svem-status-dot-amber'
+                                  }`}
+                                />
+                                <span className="svem-status-text">
+                                  {item.status === 'available' ? 'Available' : 'Currently Rented'}
+                                </span>
+                              </div>
+
+                              <button
+                                type="button"
+                                className={`svem-card-select-btn ${
+                                  isSelected ? 'svem-card-select-btn-active' : ''
+                                }`}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleEquipmentChange(item.id);
+                                }}
+                              >
+                                {isSelected ? 'Selected' : 'Select'}
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })
+                    )}
                   </div>
 
                   <button
@@ -545,16 +571,14 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                     <span
                       key={eq.id}
                       className={`svem-carousel-dot ${
-                        i === carouselIndex ? 'svem-carousel-dot-active' : ''
+                        i === activeCarouselIndex ? 'svem-carousel-dot-active' : ''
                       }`}
-                      onClick={() => {
-                        setCarouselIndex(i);
-                        if (carouselTrackRef.current) {
-                          carouselTrackRef.current.scrollTo({
-                            left: i * 240,
-                            behavior: 'smooth',
-                          });
-                        }
+                      onClick={() => handleEquipmentChange(eq.id)}
+                      title={`Select ${eq.name}`}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') handleEquipmentChange(eq.id);
                       }}
                     />
                   ))}

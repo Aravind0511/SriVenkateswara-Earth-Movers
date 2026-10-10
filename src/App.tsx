@@ -32,7 +32,16 @@ export function App() {
 
   const [equipmentList] = useState<EquipmentItem[]>(EQUIPMENT_LIST);
   const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);
-  const [selectedEquipmentId, setSelectedEquipmentId] = useState<string>('jcb-3dx');
+  const [selectedEquipmentId, setSelectedEquipmentId] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const match = window.location.hash.match(/[?&](?:equipment|eq)=([^&]+)/);
+      if (match) {
+        const found = EQUIPMENT_LIST.find((e) => e.id === match[1]);
+        if (found) return found.id;
+      }
+    }
+    return 'jcb-3dx';
+  });
 
   // Modal States
   const [activeEquipmentModal, setActiveEquipmentModal] = useState<EquipmentItem | null>(null);
@@ -42,6 +51,13 @@ export function App() {
     const handleHashChange = () => {
       const page = parseRoute(window.location.hash);
       setCurrentPage(page);
+
+      const match = window.location.hash.match(/[?&](?:equipment|eq)=([^&]+)/);
+      if (match) {
+        const found = EQUIPMENT_LIST.find((e) => e.id === match[1]);
+        if (found) setSelectedEquipmentId(found.id);
+      }
+
       window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
@@ -176,6 +192,7 @@ export function App() {
               equipmentList={equipmentList}
               onViewDetails={(item) => setActiveEquipmentModal(item)}
               onBookNow={handleBookNow}
+              onViewAll={() => navigateTo('equipment')}
             />
 
             {/* Core Booking Section with Interactive Availability Calendar & Why Choose Us */}

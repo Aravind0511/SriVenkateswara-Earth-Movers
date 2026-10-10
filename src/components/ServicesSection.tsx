@@ -41,7 +41,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
           </div>
 
           <div className="svem-section-header-action">
-            <a href="#contact" className="svem-link-btn">
+            <a
+              href="#/services"
+              className="svem-link-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                onSelectService(SERVICES_LIST[0]);
+              }}
+            >
               <span>View All Services</span>
               <ArrowRight size={16} />
             </a>

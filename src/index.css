@@ -1355,12 +1355,17 @@ input, select, textarea, button {
   cursor: not-allowed;
 }
 
-/* Booked Date: Red highlight & indicator */
+/* Booked Date: Red highlight & indicator (takes precedence over selection) */
 .svem-cal-day-booked {
-  background-color: #fee2e2;
-  color: #991b1b;
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
   font-weight: 700;
   cursor: pointer;
+  border: 1px solid #f87171 !important;
+}
+
+.svem-cal-day-booked:hover {
+  background-color: #fecaca !important;
 }
 
 .svem-cal-dot-booked {

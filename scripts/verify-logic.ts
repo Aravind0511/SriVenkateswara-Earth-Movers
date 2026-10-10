@@ -183,6 +183,19 @@ assert(demoServ && demoServ.suitableEquipment.length > 0, 'Demolition work has a
 const landServ = SERVICES_LIST.find(s => s.id === 'land-development');
 assert(landServ && landServ.suitableEquipment.length > 0, 'Land development has assigned machinery');
 
+// 10. Verify Default Booking Range Availability & Query Parameter Parsing
+const defaultConflict = findConflictingBooking('jcb-3dx', '2026-10-12', '2026-10-13', INITIAL_BOOKINGS);
+assert(defaultConflict === null, 'Default booking range 2026-10-12 to 2026-10-13 has zero conflicts for JCB 3DX');
+
+const queryHash1 = '#/booking?equipment=excavator-20t';
+assert(parseRoute(queryHash1) === 'booking', 'parseRoute handles hash with equipment query param');
+
+const queryHash2 = '#/equipment?search=jcb';
+assert(parseRoute(queryHash2) === 'equipment', 'parseRoute handles hash with search query param');
+
+const queryMatch = queryHash1.match(/[?&](?:equipment|eq)=([^&]+)/);
+assert(queryMatch !== null && queryMatch[1] === 'excavator-20t', 'Query param extraction correctly extracts excavator-20t');
+
 if (failedTests > 0) {
   console.error(`\n❌ Total test failures: ${failedTests}`);
   process.exit(1);
