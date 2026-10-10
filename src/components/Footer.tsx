@@ -2,9 +2,10 @@ import React from 'react';
 import { ArrowUp, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { Logo } from './Logo';
 import { BUSINESS_INFO, getCallUrl } from '../config/businessInfo';
+import type { AppPage } from '../types';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about', sectionId?: string) => void;
+  onNavigate?: (page: AppPage, sectionId?: string) => void;
 }
 
 const CURRENT_YEAR = 2026;
@@ -70,11 +71,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="#equipment"
+                  href="#/equipment"
                   onClick={(e) => {
                     if (onNavigate) {
                       e.preventDefault();
-                      onNavigate('home', 'equipment');
+                      onNavigate('equipment');
                     }
                   }}
                 >
@@ -83,11 +84,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="#booking"
+                  href="#/booking"
                   onClick={(e) => {
                     if (onNavigate) {
                       e.preventDefault();
-                      onNavigate('home', 'booking');
+                      onNavigate('booking');
                     }
                   }}
                 >
@@ -96,11 +97,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="#/services"
                   onClick={(e) => {
                     if (onNavigate) {
                       e.preventDefault();
-                      onNavigate('home', 'services');
+                      onNavigate('services');
                     }
                   }}
                 >
@@ -109,11 +110,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="#gallery"
+                  href="#/gallery"
                   onClick={(e) => {
                     if (onNavigate) {
                       e.preventDefault();
-                      onNavigate('home', 'gallery');
+                      onNavigate('gallery');
                     }
                   }}
                 >
@@ -122,11 +123,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="#/contact"
                   onClick={(e) => {
                     if (onNavigate) {
                       e.preventDefault();
-                      onNavigate('home', 'contact');
+                      onNavigate('contact');
                     }
                   }}
                 >
@@ -140,12 +141,84 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="svem-footer-col">
             <h4 className="svem-footer-heading">Fleet Machinery</h4>
             <ul className="svem-footer-links">
-              <li><a href="#equipment">JCB 3DX Backhoe</a></li>
-              <li><a href="#equipment">20T Crawler Excavator</a></li>
-              <li><a href="#equipment">16 CBM Heavy Tipper Lorry</a></li>
-              <li><a href="#equipment">11-Ton Soil Compactor Roller</a></li>
-              <li><a href="#equipment">Heavy Tracked Bulldozer</a></li>
-              <li><a href="#equipment">55 HP Utility Tractor Tipper</a></li>
+              <li>
+                <a
+                  href="#/equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  JCB 3DX Backhoe
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  20T Crawler Excavator
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  16 CBM Heavy Tipper Lorry
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  11-Ton Soil Compactor Roller
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  Heavy Tracked Bulldozer
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  55 HP Utility Tractor Tipper
+                </a>
+              </li>
             </ul>
           </div>
 

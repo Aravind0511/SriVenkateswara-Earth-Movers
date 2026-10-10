@@ -19,10 +19,11 @@ import {
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { BUSINESS_INFO, getCallUrl, getWhatsAppUrl } from '../config/businessInfo';
+import type { AppPage } from '../types';
 import './AboutPage.css';
 
 interface AboutPageProps {
-  onNavigate: (page: 'home' | 'about', sectionId?: string) => void;
+  onNavigate: (page: AppPage, sectionId?: string) => void;
   onOpenBooking: () => void;
 }
 
@@ -91,7 +92,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
               <button
                 type="button"
                 className="about-btn-primary"
-                onClick={() => onNavigate('home', 'equipment')}
+                onClick={() => onNavigate('equipment')}
               >
                 <span>Explore Our Equipment</span>
                 <ArrowRight size={18} />
@@ -100,7 +101,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
               <button
                 type="button"
                 className="about-btn-secondary"
-                onClick={() => onNavigate('home', 'contact')}
+                onClick={() => onNavigate('contact')}
               >
                 <Calendar size={18} />
                 <span>Contact Us</span>
@@ -644,10 +645,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
                       role="link"
                       tabIndex={0}
                       className="about-footer-nav-link"
-                      onClick={() => onNavigate('home', 'equipment')}
+                      onClick={() => onNavigate('equipment')}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ')
-                          onNavigate('home', 'equipment');
+                          onNavigate('equipment');
                       }}
                     >
                       Equipment
@@ -658,10 +659,24 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
                       role="link"
                       tabIndex={0}
                       className="about-footer-nav-link"
-                      onClick={() => onNavigate('home', 'services')}
+                      onClick={() => onNavigate('booking')}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ')
-                          onNavigate('home', 'services');
+                          onNavigate('booking');
+                      }}
+                    >
+                      Book Equipment
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      role="link"
+                      tabIndex={0}
+                      className="about-footer-nav-link"
+                      onClick={() => onNavigate('services')}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ')
+                          onNavigate('services');
                       }}
                     >
                       Services
@@ -672,10 +687,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
                       role="link"
                       tabIndex={0}
                       className="about-footer-nav-link"
-                      onClick={() => onNavigate('home', 'gallery')}
+                      onClick={() => onNavigate('gallery')}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ')
-                          onNavigate('home', 'gallery');
+                          onNavigate('gallery');
                       }}
                     >
                       Gallery
@@ -686,10 +701,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
                       role="link"
                       tabIndex={0}
                       className="about-footer-nav-link"
-                      onClick={() => onNavigate('home', 'contact')}
+                      onClick={() => onNavigate('contact')}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ')
-                          onNavigate('home', 'contact');
+                          onNavigate('contact');
                       }}
                     >
                       Contact Us

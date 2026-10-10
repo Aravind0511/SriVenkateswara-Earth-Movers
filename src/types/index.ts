@@ -1,3 +1,5 @@
+export type AppPage = 'home' | 'about' | 'equipment' | 'services' | 'gallery' | 'booking' | 'contact';
+
 export type AvailabilityStatus = 'available' | 'rented';
 
 export interface EquipmentSpecs {

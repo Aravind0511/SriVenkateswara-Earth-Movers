@@ -132,7 +132,56 @@ for (const item of EQUIPMENT_LIST) {
   assert(!item.rates.daily.includes('₹'), `No monetary currency symbol in ${item.name} daily rate`);
   assert(!item.rates.hourly.includes('₹'), `No monetary currency symbol in ${item.name} hourly rate`);
   assert(!item.rates.weekly.includes('₹'), `No monetary currency symbol in ${item.name} weekly rate`);
+  assert(!item.rates.project.includes('₹'), `No monetary currency symbol in ${item.name} project rate`);
+  assert(!item.rates.daily.includes('Rs'), `No Rs in ${item.name} daily rate`);
+  assert(!item.rates.daily.includes('INR'), `No INR in ${item.name} daily rate`);
 }
+
+// 9. Verify All 7 Dedicated Routes & Route Parsing
+import { parseRoute, getRouteHash, VALID_ROUTES } from '../src/utils/routeUtils.ts';
+import { SERVICES_LIST } from '../src/data/servicesData.ts';
+
+assert(VALID_ROUTES.length === 7, 'Exactly 7 dedicated routes configured');
+assert(VALID_ROUTES.includes('home'), 'Route home exists');
+assert(VALID_ROUTES.includes('about'), 'Route about exists');
+assert(VALID_ROUTES.includes('equipment'), 'Route equipment exists');
+assert(VALID_ROUTES.includes('services'), 'Route services exists');
+assert(VALID_ROUTES.includes('gallery'), 'Route gallery exists');
+assert(VALID_ROUTES.includes('booking'), 'Route booking exists');
+assert(VALID_ROUTES.includes('contact'), 'Route contact exists');
+
+// Route parsing assertions
+assert(parseRoute('#/') === 'home', 'Parse #/ maps to home');
+assert(parseRoute('') === 'home', 'Parse empty hash maps to home');
+assert(parseRoute('#home') === 'home', 'Parse #home maps to home');
+assert(parseRoute('#/about') === 'about', 'Parse #/about maps to about');
+assert(parseRoute('#/equipment') === 'equipment', 'Parse #/equipment maps to equipment');
+assert(parseRoute('#/services') === 'services', 'Parse #/services maps to services');
+assert(parseRoute('#/gallery') === 'gallery', 'Parse #/gallery maps to gallery');
+assert(parseRoute('#/booking') === 'booking', 'Parse #/booking maps to booking');
+assert(parseRoute('#/contact') === 'contact', 'Parse #/contact maps to contact');
+
+// Route hash generator assertions
+assert(getRouteHash('home') === '#/', 'getRouteHash for home returns #/');
+assert(getRouteHash('about') === '#/about', 'getRouteHash for about returns #/about');
+assert(getRouteHash('equipment') === '#/equipment', 'getRouteHash for equipment returns #/equipment');
+assert(getRouteHash('services') === '#/services', 'getRouteHash for services returns #/services');
+assert(getRouteHash('gallery') === '#/gallery', 'getRouteHash for gallery returns #/gallery');
+assert(getRouteHash('booking') === '#/booking', 'getRouteHash for booking returns #/booking');
+assert(getRouteHash('contact') === '#/contact', 'getRouteHash for contact returns #/contact');
+
+// Verify 5 Services in SERVICES_LIST
+assert(SERVICES_LIST.length === 5, 'Services list contains 5 core earthwork services');
+const excavationServ = SERVICES_LIST.find(s => s.id === 'earth-excavation');
+assert(excavationServ && excavationServ.suitableEquipment.length > 0, 'Earth excavation has assigned machinery');
+const fillingServ = SERVICES_LIST.find(s => s.id === 'earth-filling');
+assert(fillingServ && fillingServ.suitableEquipment.length > 0, 'Earth filling has assigned machinery');
+const roadServ = SERVICES_LIST.find(s => s.id === 'road-work');
+assert(roadServ && roadServ.suitableEquipment.length > 0, 'Road work has assigned machinery');
+const demoServ = SERVICES_LIST.find(s => s.id === 'demolition-work');
+assert(demoServ && demoServ.suitableEquipment.length > 0, 'Demolition work has assigned machinery');
+const landServ = SERVICES_LIST.find(s => s.id === 'land-development');
+assert(landServ && landServ.suitableEquipment.length > 0, 'Land development has assigned machinery');
 
 if (failedTests > 0) {
   console.error(`\n❌ Total test failures: ${failedTests}`);

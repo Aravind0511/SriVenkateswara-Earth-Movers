@@ -1,0 +1,255 @@
+/* ==========================================================================
+   SRI VENKATESHWARA EARTH MOVERS - GALLERY PAGE STYLES
+   ========================================================================== */
+
+.svem-gallery-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 3.5rem;
+  color: #1e293b;
+}
+
+/* Hero */
+.svem-galpage-hero {
+  background-color: #0f172a;
+  background-image: linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.94) 0%,
+      rgba(15, 23, 42, 0.82) 60%,
+      rgba(15, 23, 42, 0.5) 100%
+    ),
+    url('/about/hero-bg-clean.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 3.5rem 1rem 3.5rem;
+  color: #ffffff;
+}
+
+.svem-galpage-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  margin-bottom: 1.25rem;
+}
+
+.svem-galpage-hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.svem-galpage-hero-subtitle {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  max-width: 650px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.svem-galpage-hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+/* Filter Bar */
+.svem-galpage-filter-section {
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.svem-galpage-filter-bar {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.svem-galpage-filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #334155;
+  flex-shrink: 0;
+}
+
+.svem-galpage-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.svem-galpage-chip {
+  padding: 0.45rem 0.95rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.svem-galpage-chip:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.svem-galpage-chip-active {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+  border-color: #f59e0b !important;
+}
+
+/* Grid */
+.svem-galpage-grid-section {
+  margin-bottom: 3.5rem;
+}
+
+.svem-galpage-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 960px) {
+  .svem-galpage-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .svem-galpage-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.svem-galpage-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.svem-galpage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+}
+
+.svem-galpage-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.svem-galpage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.svem-galpage-card:hover .svem-galpage-img {
+  transform: scale(1.06);
+}
+
+.svem-galpage-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.svem-galpage-card:hover .svem-galpage-hover-overlay {
+  opacity: 1;
+}
+
+.svem-galpage-zoom-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.svem-galpage-hover-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.svem-galpage-cat-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #ffffff;
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.svem-galpage-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.svem-galpage-location-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.775rem;
+  color: #64748b;
+  margin-bottom: 0.4rem;
+}
+
+.svem-galpage-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+  line-height: 1.35;
+}
+
+.svem-galpage-card-desc {
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}

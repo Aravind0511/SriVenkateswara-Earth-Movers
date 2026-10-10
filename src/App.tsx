@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { EQUIPMENT_LIST } from './data/equipmentData';
 import { INITIAL_BOOKINGS } from './data/initialBookings';
-import type { EquipmentItem, Booking, ServiceItem } from './types';
+import type { EquipmentItem, Booking, ServiceItem, AppPage } from './types';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { EquipmentSection } from './components/EquipmentSection';
@@ -15,14 +15,17 @@ import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { BookingConfirmationModal } from './components/BookingConfirmationModal';
 import { AboutPage } from './components/AboutPage';
+import { EquipmentPage } from './components/EquipmentPage';
+import { ServicesPage } from './components/ServicesPage';
+import { GalleryPage } from './components/GalleryPage';
+import { BookingPage } from './components/BookingPage';
+import { ContactPage } from './components/ContactPage';
+import { parseRoute } from './utils/routeUtils';
 
 export function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about'>(() => {
+  const [currentPage, setCurrentPage] = useState<AppPage>(() => {
     if (typeof window !== 'undefined') {
-      const hash = window.location.hash.toLowerCase();
-      if (hash === '#/about' || hash === '#about') {
-        return 'about';
-      }
+      return parseRoute(window.location.hash);
     }
     return 'home';
   });
@@ -37,25 +40,18 @@ export function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.toLowerCase();
-      if (hash === '#/about' || hash === '#about') {
-        setCurrentPage('about');
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      } else {
-        setCurrentPage('home');
-      }
+      const page = parseRoute(window.location.hash);
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'about', sectionId?: string) => {
+  const navigateTo = (page: AppPage, sectionId?: string) => {
     setCurrentPage(page);
-    if (page === 'about') {
-      window.location.hash = '#/about';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
+    if (page === 'home') {
       if (sectionId) {
         window.location.hash = `#${sectionId}`;
         const scrollTarget = (attempts = 0) => {
@@ -71,30 +67,16 @@ export function App() {
         window.location.hash = '#/';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-    }
-  };
-
-  const scrollToBooking = () => {
-    const el = document.getElementById('booking');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToEquipment = () => {
-    const el = document.getElementById('equipment');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.hash = `#/${page}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handleBookNow = (item: EquipmentItem) => {
     setSelectedEquipmentId(item.id);
-    if (currentPage === 'about') {
-      navigateTo('home', 'booking');
-    } else {
-      scrollToBooking();
-    }
+    setActiveEquipmentModal(null);
+    navigateTo('booking');
   };
 
   const handleAddBooking = (newBooking: Booking) => {
@@ -105,48 +87,88 @@ export function App() {
     setActiveBookingConfirmation(booking);
   };
 
-  const handleSelectService = (service: ServiceItem) => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-      // Pre-select service in form
-      const selectElem = document.getElementById('enquiryService') as HTMLSelectElement;
-      if (selectElem) {
-        selectElem.value = service.title;
-      }
-    }
+  const handleSelectService = (_service: ServiceItem) => {
+    navigateTo('services');
   };
 
   return (
     <div className="svem-app">
-      {/* Sticky Header with Navigation and Active State */}
+      {/* Sticky Header with Navigation and Active State across all 7 routes */}
       <Header
         currentPage={currentPage}
         onNavigate={navigateTo}
-        onOpenBooking={() => {
-          if (currentPage === 'about') {
-            navigateTo('home', 'booking');
-          } else {
-            scrollToBooking();
-          }
-        }}
+        onOpenBooking={() => navigateTo('booking')}
       />
 
       {/* Main Content Router */}
-      {currentPage === 'about' ? (
-        <main>
+      <main>
+        {currentPage === 'about' && (
           <AboutPage
             onNavigate={navigateTo}
-            onOpenBooking={() => navigateTo('home', 'booking')}
+            onOpenBooking={() => navigateTo('booking')}
           />
-        </main>
-      ) : (
-        <>
-          <main>
+        )}
+
+        {currentPage === 'equipment' && (
+          <>
+            <EquipmentPage
+              equipmentList={equipmentList}
+              onBookNow={handleBookNow}
+              onViewDetails={(item) => setActiveEquipmentModal(item)}
+              onNavigate={navigateTo}
+            />
+            <Footer onNavigate={navigateTo} />
+          </>
+        )}
+
+        {currentPage === 'services' && (
+          <>
+            <ServicesPage
+              onNavigate={navigateTo}
+              onSelectEquipmentToBook={(eqId) => {
+                setSelectedEquipmentId(eqId);
+              }}
+            />
+            <Footer onNavigate={navigateTo} />
+          </>
+        )}
+
+        {currentPage === 'gallery' && (
+          <>
+            <GalleryPage onNavigate={navigateTo} />
+            <Footer onNavigate={navigateTo} />
+          </>
+        )}
+
+        {currentPage === 'booking' && (
+          <>
+            <BookingPage
+              equipmentList={equipmentList}
+              selectedEquipmentId={selectedEquipmentId}
+              onSelectEquipmentId={setSelectedEquipmentId}
+              bookings={bookings}
+              onAddBooking={handleAddBooking}
+              onBookingSuccess={handleBookingSuccess}
+              onViewEquipmentDetails={(item) => setActiveEquipmentModal(item)}
+              onNavigate={navigateTo}
+            />
+            <Footer onNavigate={navigateTo} />
+          </>
+        )}
+
+        {currentPage === 'contact' && (
+          <>
+            <ContactPage onNavigate={navigateTo} />
+            <Footer onNavigate={navigateTo} />
+          </>
+        )}
+
+        {currentPage === 'home' && (
+          <>
             {/* Full-width Hero Section */}
             <Hero
-              onViewEquipment={scrollToEquipment}
-              onBookNow={scrollToBooking}
+              onViewEquipment={() => navigateTo('equipment')}
+              onBookNow={() => navigateTo('booking')}
             />
 
             {/* Equipment Catalogue Section */}
@@ -176,13 +198,13 @@ export function App() {
             <ContactSection />
 
             {/* Dark Footer Action Bar */}
-            <FooterCTA onOpenBooking={scrollToBooking} />
-          </main>
+            <FooterCTA onOpenBooking={() => navigateTo('booking')} />
 
-          {/* Complete Home Footer */}
-          <Footer onNavigate={navigateTo} />
-        </>
-      )}
+            {/* Complete Home Footer */}
+            <Footer onNavigate={navigateTo} />
+          </>
+        )}
+      </main>
 
       {/* Floating Bottom-Right WhatsApp CTA */}
       <FloatingWhatsApp />

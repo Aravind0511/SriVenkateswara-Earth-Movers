@@ -1,0 +1,277 @@
+/* ==========================================================================
+   SRI VENKATESHWARA EARTH MOVERS - CONTACT PAGE STYLES
+   ========================================================================== */
+
+.svem-contact-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 3.5rem;
+  color: #1e293b;
+}
+
+/* Hero */
+.svem-contactpage-hero {
+  background-color: #0f172a;
+  background-image: linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.94) 0%,
+      rgba(15, 23, 42, 0.82) 60%,
+      rgba(15, 23, 42, 0.5) 100%
+    ),
+    url('/about/hero-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 3.5rem 1rem 3.5rem;
+  color: #ffffff;
+}
+
+.svem-contactpage-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  margin-bottom: 1.25rem;
+}
+
+.svem-contactpage-hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.svem-contactpage-hero-subtitle {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  max-width: 650px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.svem-contactpage-hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Grid Layout */
+.svem-contactpage-main-container {
+  margin-top: 2.5rem;
+}
+
+.svem-contactpage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 900px) {
+  .svem-contactpage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.svem-contactpage-info-card,
+.svem-contactpage-form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.svem-contact-items-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.svem-contact-detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.svem-detail-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #fffbeb;
+  color: #d97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.svem-icon-emerald {
+  background: #ecfdf5 !important;
+  color: #059669 !important;
+}
+
+.svem-detail-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.svem-detail-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.2rem;
+}
+
+.svem-detail-val {
+  font-size: 0.95rem;
+  color: #0f172a;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.svem-detail-link {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.svem-detail-link:hover {
+  color: #f59e0b;
+}
+
+.svem-detail-sub {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+.svem-coverage-badge {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: #b45309;
+  background: #fef3c7;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.svem-emergency-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.svem-contactpage-map-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.svem-form-subtext {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+.svem-contactpage-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.svem-contactpage-success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.svem-success-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+}
+
+.svem-success-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+  max-width: 440px;
+}
+
+.svem-success-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* FAQ */
+.svem-contactpage-faq-section {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.svem-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .svem-faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.svem-faq-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.svem-faq-q-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.svem-faq-question {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.svem-faq-answer {
+  font-size: 0.875rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 2rem;
+}

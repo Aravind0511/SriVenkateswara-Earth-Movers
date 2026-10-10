@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Phone, Menu, X, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
 import { BUSINESS_INFO, getCallUrl } from '../config/businessInfo';
+import type { AppPage } from '../types';
 
 interface HeaderProps {
-  currentPage?: 'home' | 'about';
-  onNavigate?: (page: 'home' | 'about', sectionId?: string) => void;
+  currentPage?: AppPage;
+  onNavigate?: (page: AppPage, sectionId?: string) => void;
   onOpenBooking: () => void;
 }
 
@@ -25,34 +26,25 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#/', page: 'home' as const, sectionId: '' },
-    { name: 'About Us', href: '#/about', page: 'about' as const, sectionId: '' },
-    { name: 'Equipment', href: '#equipment', page: 'home' as const, sectionId: 'equipment' },
-    { name: 'Services', href: '#services', page: 'home' as const, sectionId: 'services' },
-    { name: 'Gallery', href: '#gallery', page: 'home' as const, sectionId: 'gallery' },
-    { name: 'Contact Us', href: '#contact', page: 'home' as const, sectionId: 'contact' },
+  const navLinks: { name: string; href: string; page: AppPage; sectionId?: string }[] = [
+    { name: 'Home', href: '#/', page: 'home' },
+    { name: 'About Us', href: '#/about', page: 'about' },
+    { name: 'Equipment', href: '#/equipment', page: 'equipment' },
+    { name: 'Services', href: '#/services', page: 'services' },
+    { name: 'Gallery', href: '#/gallery', page: 'gallery' },
+    { name: 'Booking', href: '#/booking', page: 'booking' },
+    { name: 'Contact Us', href: '#/contact', page: 'contact' },
   ];
 
   const handleNavClick = (
     e: React.MouseEvent,
     link: (typeof navLinks)[number]
   ) => {
-    e.preventDefault();
     setMobileMenuOpen(false);
 
-    if (!onNavigate) {
-      if (link.sectionId) {
-        const el = document.getElementById(link.sectionId);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
-      return;
-    }
-
-    if (link.page === 'about') {
-      onNavigate('about');
-    } else if (link.page === 'home') {
-      onNavigate('home', link.sectionId);
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(link.page, link.sectionId);
     }
   };
 
@@ -63,11 +55,9 @@ export const Header: React.FC<HeaderProps> = ({
         <Logo
           size="md"
           onClick={(e) => {
-            e.preventDefault();
             if (onNavigate) {
+              e.preventDefault();
               onNavigate('home');
-            } else {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
             }
           }}
         />
@@ -76,9 +66,7 @@ export const Header: React.FC<HeaderProps> = ({
         <nav className="svem-nav-desktop" aria-label="Main Navigation">
           <ul className="svem-nav-list">
             {navLinks.map((link) => {
-              const isActive =
-                (link.page === 'about' && currentPage === 'about') ||
-                (link.name === 'Home' && currentPage === 'home');
+              const isActive = currentPage === link.page;
 
               return (
                 <li key={link.name}>
@@ -137,9 +125,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="svem-mobile-drawer-inner">
           <div className="svem-mobile-nav-links">
             {navLinks.map((link) => {
-              const isActive =
-                (link.page === 'about' && currentPage === 'about') ||
-                (link.name === 'Home' && currentPage === 'home');
+              const isActive = currentPage === link.page;
 
               return (
                 <a

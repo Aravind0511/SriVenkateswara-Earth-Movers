@@ -1,0 +1,638 @@
+/* ==========================================================================
+   SRI VENKATESHWARA EARTH MOVERS - EQUIPMENT PAGE STYLES
+   ========================================================================== */
+
+.svem-equipment-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 3.5rem;
+  color: #1e293b;
+}
+
+/* Hero */
+.svem-eqpage-hero {
+  background-color: #0f172a;
+  background-image: linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.95) 0%,
+      rgba(15, 23, 42, 0.85) 60%,
+      rgba(15, 23, 42, 0.5) 100%
+    ),
+    url('/about/hero-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 3.5rem 1rem 3.5rem;
+  color: #ffffff;
+}
+
+.svem-eqpage-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  margin-bottom: 1.25rem;
+}
+
+.svem-eqpage-hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.svem-eqpage-hero-subtitle {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  max-width: 650px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.svem-eqpage-hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.svem-stat-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.svem-stat-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f59e0b;
+}
+
+.svem-stat-lbl {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Filter Card */
+.svem-eqpage-filter-section {
+  margin-top: -1.75rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.svem-eqpage-filter-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.svem-eqpage-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.svem-eqpage-search-icon {
+  position: absolute;
+  left: 1rem;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.svem-eqpage-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  background: #f8fafc;
+  transition: all 0.15s ease;
+}
+
+.svem-eqpage-search-input:focus {
+  background: #ffffff;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.svem-eqpage-clear-search {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.svem-eqpage-clear-search:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.svem-eqpage-chips-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.svem-eqpage-chips-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.svem-eqpage-chips-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.svem-eqpage-chip {
+  padding: 0.45rem 0.875rem;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.svem-eqpage-chip:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.svem-eqpage-chip-active {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+  border-color: #f59e0b !important;
+}
+
+.svem-eqpage-status-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+}
+
+.svem-status-btn-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.svem-status-tab-btn {
+  padding: 0.35rem 0.75rem;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+}
+
+.svem-status-tab-btn:hover {
+  background: #f8fafc;
+}
+
+.svem-status-tab-active {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+}
+
+/* Results Count */
+.svem-eqpage-results-meta {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Equipment Grid */
+.svem-eqpage-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 1024px) {
+  .svem-eqpage-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .svem-eqpage-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.svem-eqpage-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.svem-eqpage-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.svem-eqpage-card-media {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: #f1f5f9;
+}
+
+.svem-eqpage-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.svem-eqpage-status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.3rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.svem-badge-available {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.svem-badge-rented {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.svem-badge-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.svem-eqpage-category-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.svem-eqpage-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.svem-eqpage-card-header {
+  margin-bottom: 0.6rem;
+}
+
+.svem-eqpage-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.svem-eqpage-model {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.svem-eqpage-desc {
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.svem-eqpage-specs-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  background: #f8fafc;
+  padding: 0.875rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.svem-eqpage-spec-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.svem-spec-cell-label {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.svem-spec-cell-val {
+  font-size: 0.825rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.svem-eqpage-applications-wrap {
+  margin-bottom: 1.25rem;
+}
+
+.svem-apps-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #334155;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.svem-apps-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.svem-app-tag {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.725rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.svem-eqpage-rate-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 1.25rem;
+}
+
+.svem-rate-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.svem-rate-title {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.svem-rate-tariff-label {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.svem-operator-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #065f46;
+  background: #ecfdf5;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+}
+
+.svem-eqpage-actions-grid {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.svem-btn-eq-book {
+  flex: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.svem-btn-eq-specs {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+}
+
+.svem-btn-wa-icon {
+  width: 38px;
+  height: 38px;
+  background: #25d366;
+  color: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.svem-btn-wa-icon:hover {
+  background: #1eb956;
+}
+
+/* Comparison Table */
+.svem-eqpage-comparison-section {
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 3.5rem 0;
+  margin-bottom: 3.5rem;
+}
+
+.svem-comparison-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+.svem-comparison-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+}
+
+.svem-comparison-desc {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.svem-comparison-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.svem-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.svem-comparison-table th {
+  background: #f8fafc;
+  padding: 1rem;
+  font-weight: 700;
+  color: #334155;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.svem-comparison-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+}
+
+.svem-comparison-table tr:hover td {
+  background: #fafaf9;
+}
+
+.svem-table-status-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.svem-pill-green {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.svem-pill-amber {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.svem-table-book-link {
+  background: none;
+  border: none;
+  color: #f59e0b;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.svem-table-book-link:hover {
+  color: #d97706;
+  text-decoration: underline;
+}
+
+/* Trust Section */
+.svem-eqpage-trust-section {
+  margin-bottom: 3.5rem;
+}
+
+.svem-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .svem-trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.svem-trust-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.svem-trust-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background: #fffbeb;
+  color: #d97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.svem-trust-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+}
+
+.svem-trust-card-desc {
+  font-size: 0.875rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
