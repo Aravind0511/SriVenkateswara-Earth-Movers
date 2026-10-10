@@ -58,12 +58,15 @@ export function App() {
     } else {
       if (sectionId) {
         window.location.hash = `#${sectionId}`;
-        setTimeout(() => {
+        const scrollTarget = (attempts = 0) => {
           const el = document.getElementById(sectionId);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
+          } else if (attempts < 6) {
+            setTimeout(() => scrollTarget(attempts + 1), 60);
           }
-        }, 80);
+        };
+        requestAnimationFrame(() => scrollTarget());
       } else {
         window.location.hash = '#/';
         window.scrollTo({ top: 0, behavior: 'smooth' });

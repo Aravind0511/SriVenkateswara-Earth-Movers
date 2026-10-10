@@ -5,6 +5,7 @@ interface LogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg';
   onClick?: (e: React.MouseEvent) => void;
+  iconSrc?: string;
 }
 
 export const Logo: React.FC<LogoProps> = ({
@@ -12,6 +13,7 @@ export const Logo: React.FC<LogoProps> = ({
   className = '',
   size = 'md',
   onClick,
+  iconSrc = '/about/logo-mark.png',
 }) => {
   const isLight = variant === 'light';
 
@@ -25,7 +27,7 @@ export const Logo: React.FC<LogoProps> = ({
       {/* Official Business Logo Badge */}
       <div className="svem-logo-icon-wrapper">
         <img
-          src="/logo.jpg"
+          src={iconSrc}
           alt="Sri Venkateshwara Earth Movers"
           className="svem-logo-img"
           loading="eager"

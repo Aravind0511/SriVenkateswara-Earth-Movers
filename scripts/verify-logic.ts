@@ -91,6 +91,7 @@ const aboutImages = [
   'land-development.jpg',
   'project-needs.jpg',
   'hero-bg-clean.jpg',
+  'logo-mark.png',
 ];
 
 for (const imgName of aboutImages) {

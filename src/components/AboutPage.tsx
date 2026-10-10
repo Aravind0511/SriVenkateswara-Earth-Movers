@@ -11,11 +11,9 @@ import {
   Target,
   Check,
   Search,
-  CheckCircle2,
   Truck,
   ChevronRight,
   Phone,
-  MessageSquare,
   Mail,
   MapPin,
 } from 'lucide-react';
@@ -29,6 +27,24 @@ interface AboutPageProps {
 }
 
 const CURRENT_YEAR = 2026;
+
+// Authentic WhatsApp SVG Icon matching template branding
+const WhatsAppIcon: React.FC<{ size?: number; className?: string; color?: string }> = ({
+  size = 18,
+  className = '',
+  color = 'currentColor',
+}) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill={color}
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.1-.476-.15-.676.15-.2.301-.776.978-.952 1.179-.175.2-.35.226-.651.075-.301-.15-1.272-.469-2.423-1.496-.895-.799-1.5-1.786-1.675-2.087-.175-.301-.019-.464.132-.614.136-.135.301-.35.451-.526.15-.175.2-.301.301-.501.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-.926-2.232-.244-.587-.492-.507-.676-.516l-.576-.01c-.2 0-.526.075-.802.376-.276.301-1.052 1.028-1.052 2.508 0 1.48 1.077 2.909 1.228 3.109.15.2 2.118 3.235 5.132 4.536.717.31 1.277.495 1.713.633.72.229 1.375.197 1.893.12.578-.086 1.78-.727 2.03-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.577-.35zM12.04 2C6.51 2 2.02 6.49 2.02 12.02c0 1.83.49 3.62 1.43 5.21L2 22l4.9-1.41c1.54.89 3.29 1.37 5.14 1.37 5.53 0 10.02-4.49 10.02-10.02C22.06 6.49 17.57 2 12.04 2zm0 18.23c-1.61 0-3.18-.43-4.56-1.25l-.33-.2-3.39.98.99-3.31-.22-.35c-.9-1.43-1.38-3.09-1.38-4.8 0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.24 3.7 8.24 8.24 0 4.53-3.7 8.22-8.24 8.22z" />
+  </svg>
+);
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking }) => {
 
@@ -505,7 +521,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             {/* Step 3 */}
             <div className="about-step-card">
               <div className="about-step-circle-badge" aria-hidden="true">
-                <CheckCircle2 size={22} />
+                <div className="about-step-check-dot">
+                  <Check size={13} color="#ffffff" strokeWidth={3.5} />
+                </div>
               </div>
               <div className="about-step-info">
                 <span className="about-step-name">3. Confirm Availability</span>
@@ -538,7 +556,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             {/* Left side: Icon + Text */}
             <div className="about-cta-left">
               <div className="about-cta-icon-box" aria-hidden="true">
-                <Phone size={24} />
+                <Phone size={24} color="#ffffff" />
               </div>
               <div className="about-cta-text-block">
                 <h3 className="about-cta-title">Have a Project Coming Up?</h3>
@@ -558,7 +576,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
                 rel="noopener noreferrer"
                 className="about-btn-wa"
               >
-                <MessageSquare size={18} />
+                <WhatsAppIcon size={20} color="#ffffff" />
                 <span>WhatsApp Us</span>
               </a>
 
@@ -577,7 +595,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
       <footer className="about-footer">
         <div className="svem-container">
           <div className="about-footer-top">
-            <div className="about-footer-grid">
+            <div className="about-footer-bar">
               {/* Left Column: Brand Logo */}
               <div className="about-footer-brand">
                 <Logo
@@ -589,8 +607,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
                 />
               </div>
 
-              {/* Center Column: Quick Navigation Links */}
-              <div className="about-footer-nav">
+              {/* Center Column: Quick Navigation Links in Single Horizontal Row */}
+              <nav className="about-footer-nav" aria-label="Footer Quick Navigation">
                 <ul className="about-footer-nav-list">
                   <li>
                     <span
@@ -609,8 +627,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
                     <span
                       role="link"
                       tabIndex={0}
-                      className="about-footer-nav-link"
-                      style={{ color: 'var(--svem-primary-hover)', fontWeight: 700 }}
+                      className="about-footer-nav-link about-footer-nav-link-active"
                       onClick={() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
@@ -679,37 +696,41 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
                     </span>
                   </li>
                 </ul>
-              </div>
+              </nav>
 
-              {/* Right Column: Contact Details with Icons */}
-              <div className="about-footer-contact-list">
-                <div className="about-footer-contact-item">
-                  <Phone size={15} className="about-footer-contact-icon" />
-                  <a href={getCallUrl()}>{BUSINESS_INFO.phone}</a>
+              {/* Right Column: Contact Details with 2 sub-columns matching template */}
+              <div className="about-footer-contact-group">
+                <div className="about-footer-contact-col">
+                  <div className="about-footer-contact-item">
+                    <Phone size={14} className="about-footer-contact-icon" />
+                    <a href={getCallUrl()}>{BUSINESS_INFO.phone}</a>
+                  </div>
+
+                  <div className="about-footer-contact-item">
+                    <WhatsAppIcon size={14} className="about-footer-contact-icon" color="var(--svem-dark)" />
+                    <a
+                      href={getWhatsAppUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {BUSINESS_INFO.whatsapp}
+                    </a>
+                  </div>
+
+                  <div className="about-footer-contact-item">
+                    <Mail size={14} className="about-footer-contact-icon" />
+                    <a href={`mailto:${BUSINESS_INFO.email}`}>{BUSINESS_INFO.email}</a>
+                  </div>
                 </div>
 
-                <div className="about-footer-contact-item">
-                  <MessageSquare size={15} className="about-footer-contact-icon" />
-                  <a
-                    href={getWhatsAppUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {BUSINESS_INFO.whatsapp}
-                  </a>
-                </div>
+                <div className="about-footer-contact-divider" aria-hidden="true" />
 
-                <div className="about-footer-contact-item">
-                  <Mail size={15} className="about-footer-contact-icon" />
-                  <a href={`mailto:${BUSINESS_INFO.email}`}>{BUSINESS_INFO.email}</a>
-                </div>
-
-                <div className="about-footer-contact-item">
-                  <MapPin size={15} className="about-footer-contact-icon" />
-                  <span>
-                    {BUSINESS_INFO.address.split(',')[0]}, {BUSINESS_INFO.city},{' '}
-                    {BUSINESS_INFO.state}
-                  </span>
+                <div className="about-footer-address-col">
+                  <MapPin size={16} className="about-footer-contact-icon about-footer-pin-icon" />
+                  <div className="about-footer-address-text">
+                    <span className="about-footer-address-line">{BUSINESS_INFO.address.split(',')[0]}</span>
+                    <span className="about-footer-address-city">{BUSINESS_INFO.city}, {BUSINESS_INFO.state}</span>
+                  </div>
                 </div>
               </div>
             </div>

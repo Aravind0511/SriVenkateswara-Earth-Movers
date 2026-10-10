@@ -378,24 +378,20 @@ input, select, textarea, button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  border-radius: var(--radius-md);
-  padding: 2px 4px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--svem-border);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: transparent;
+  padding: 0;
+  border: none;
+  transition: transform 0.2s ease;
   flex-shrink: 0;
-  overflow: hidden;
 }
 
 .svem-logo:hover .svem-logo-icon-wrapper {
-  transform: scale(1.04);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+  transform: scale(1.05);
 }
 
-.svem-logo-sm .svem-logo-icon-wrapper { height: 38px; width: auto; }
-.svem-logo-md .svem-logo-icon-wrapper { height: 48px; width: auto; }
-.svem-logo-lg .svem-logo-icon-wrapper { height: 64px; width: auto; }
+.svem-logo-sm .svem-logo-icon-wrapper { height: 32px; width: auto; }
+.svem-logo-md .svem-logo-icon-wrapper { height: 42px; width: auto; }
+.svem-logo-lg .svem-logo-icon-wrapper { height: 52px; width: auto; }
 
 .svem-logo-img {
   height: 100%;
@@ -403,7 +399,6 @@ input, select, textarea, button {
   max-width: 100%;
   object-fit: contain;
   display: block;
-  border-radius: 4px;
 }
 
 .svem-logo-text-block {
