@@ -8,7 +8,7 @@ export default defineConfig(({ command }) => {
       const repo = process.env.GITHUB_REPOSITORY.split('/')[1]
       base = `/${repo}/`
     } else {
-      base = '/Sri-Venkateshwara-Earth-Movers-/'
+      base = '/SriVenkateswara-Earth-Movers/'
     }
   }
 
