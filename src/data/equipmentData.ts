@@ -1,4 +1,5 @@
 import type { EquipmentItem } from '../types';
+import { getAssetUrl } from '../utils/assets.ts';
 
 export const EQUIPMENT_LIST: EquipmentItem[] = [
   {
@@ -11,7 +12,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'The JCB 3DX is the most trusted workhorse for Indian infrastructure, building foundations, and site development. Equipped with an EcoMAX fuel-efficient diesel engine, heavy-duty loader arm, and high-breakout-force backhoe bucket. Ideal for urban excavation, road berm trimming, pipeline trenching, and general site clearance.',
     status: 'available',
     statusText: 'Available',
-    image: '/equipment/jcb-3dx.jpg',
+    image: getAssetUrl('/equipment/jcb-3dx.jpg'),
     specs: {
       operatingWeight: '7,460 kg',
       enginePower: '76 HP @ 2200 rpm',
@@ -46,7 +47,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'High-production 20-ton tracked crawler excavator equipped with heavy rock bucket and optional rock-breaker attachment. High hydraulic power and continuous 360-degree slew capacity make this machine indispensable for large-scale earth cutting, quarry overburden clearing, pond digging, and massive basement excavation.',
     status: 'available',
     statusText: 'Available',
-    image: '/equipment/excavator.jpg',
+    image: getAssetUrl('/equipment/excavator.jpg'),
     specs: {
       operatingWeight: '20,500 kg',
       enginePower: '140 HP Turbocharged',
@@ -81,7 +82,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Robust 55 HP dual-clutch utility tractor paired with heavy-duty 3-ton hydraulic tipping trolley. Perfect for agricultural land development, farm leveling, manure / gravel transport, narrow street excavation debris shifting, and auxiliary support at roadworks where full-sized tippers cannot maneuver.',
     status: 'available',
     statusText: 'Available',
-    image: '/equipment/tractor.jpg',
+    image: getAssetUrl('/equipment/tractor.jpg'),
     specs: {
       operatingWeight: '2,200 kg (Tractor alone)',
       enginePower: '55 HP @ 2100 rpm',
@@ -115,7 +116,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Commercial heavy-duty multi-axle tipper lorry designed for high-tonnage bulk hauling. Equipped with reinforced high-tensile steel tipping body, fast hydraulic hoist, and all-weather radial tires. Essential for moving hundreds of tons of excavated earth, filling material, blue metal aggregate, or river sand over long distances.',
     status: 'available',
     statusText: 'Available',
-    image: '/equipment/tipper.jpg',
+    image: getAssetUrl('/equipment/tipper.jpg'),
     specs: {
       operatingWeight: '28,000 kg GVW',
       enginePower: '230 HP Common Rail Diesel',
@@ -148,7 +149,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Engineered for prime earth pushing and rough grading in demanding terrains. Features a heavy-duty semi-U blade with hydraulic tilt, severe-duty undercarriage tracks, and a rear single-shank ripper for breaking compacted hardpan. Essential for large-scale township layouts, industrial plots, and highway subgrade profiling.',
     status: 'rented',
     statusText: 'Currently Rented',
-    image: '/equipment/bulldozer.jpg',
+    image: getAssetUrl('/equipment/bulldozer.jpg'),
     specs: {
       operatingWeight: '18,500 kg',
       enginePower: '175 HP Heavy Duty Turbo Diesel',
@@ -182,7 +183,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Heavy-duty 11-ton vibratory soil compactor engineered to achieve required soil densities in minimal passes. Features dual-frequency hydraulic vibration, hydrostatic propulsion, high static linear load, and excellent gradeability. Crucial for tarmac roads, paver block base preparation, factory flooring, and canal bed compaction.',
     status: 'available',
     statusText: 'Available',
-    image: '/equipment/road-roller.jpg',
+    image: getAssetUrl('/equipment/road-roller.jpg'),
     specs: {
       operatingWeight: '11,200 kg',
       enginePower: '105 HP Water Cooled Diesel',

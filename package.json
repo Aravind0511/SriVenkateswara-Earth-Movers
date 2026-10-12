@@ -6,7 +6,7 @@
   "description": "A professional website for showcasing and renting earth-moving vehicles and construction equipment.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/post-build.js",
     "lint": "oxlint",
     "test": "node --experimental-strip-types scripts/verify-logic.ts",
     "preview": "vite preview"

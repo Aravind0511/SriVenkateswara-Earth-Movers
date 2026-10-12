@@ -32,6 +32,7 @@ import {
   getWhatsAppUrl,
   getEquipmentBookingWhatsAppUrl,
 } from '../config/businessInfo';
+import { getAssetUrl } from '../utils/assets';
 import './BookingPage.css';
 
 interface BookingPageProps {
@@ -98,7 +99,7 @@ export const BookingPage: React.FC<BookingPageProps> = ({
         fullDesc: 'The JCB 3DX is the most trusted workhorse for Indian infrastructure.',
         status: 'available' as const,
         statusText: 'Available',
-        image: '/equipment/jcb-3dx.jpg',
+        image: getAssetUrl('/equipment/jcb-3dx.jpg'),
         specs: {
           fuelCapacity: '128 Litres',
           operatingWeight: '7,460 kg',

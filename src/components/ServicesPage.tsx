@@ -18,6 +18,7 @@ import {
   getCallUrl,
   getWhatsAppUrl,
 } from '../config/businessInfo';
+import { getAssetUrl } from '../utils/assets';
 import './ServicesPage.css';
 
 interface ServicesPageProps {
@@ -49,17 +50,17 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
   const getServiceImage = (id: string) => {
     switch (id) {
       case 'earth-excavation':
-        return '/about/earth-excavation.jpg';
+        return getAssetUrl('/about/earth-excavation.jpg');
       case 'earth-filling':
-        return '/about/earth-filling.jpg';
+        return getAssetUrl('/about/earth-filling.jpg');
       case 'road-work':
-        return '/about/road-work.jpg';
+        return getAssetUrl('/about/road-work.jpg');
       case 'demolition-work':
-        return '/about/who-we-are.jpg';
+        return getAssetUrl('/about/who-we-are.jpg');
       case 'land-development':
-        return '/about/land-development.jpg';
+        return getAssetUrl('/about/land-development.jpg');
       default:
-        return '/about/project-needs.jpg';
+        return getAssetUrl('/about/project-needs.jpg');
     }
   };
 

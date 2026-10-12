@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetUrl } from '../utils/assets';
 
 interface LogoProps {
   variant?: 'light' | 'dark';
@@ -13,7 +14,7 @@ export const Logo: React.FC<LogoProps> = ({
   className = '',
   size = 'md',
   onClick,
-  iconSrc = '/about/logo-mark.png',
+  iconSrc = getAssetUrl('/about/logo-mark.png'),
 }) => {
   const isLight = variant === 'light';
 

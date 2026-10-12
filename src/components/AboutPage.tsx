@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { BUSINESS_INFO, getCallUrl, getWhatsAppUrl } from '../config/businessInfo';
+import { getAssetUrl } from '../utils/assets';
 import type { AppPage } from '../types';
 import './AboutPage.css';
 
@@ -120,7 +121,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             {/* Left Column: Excavator Digging Photo */}
             <div className="about-who-image-wrap">
               <img
-                src="/about/who-we-are.jpg"
+                src={getAssetUrl('/about/who-we-are.jpg')}
                 alt="Sri Venkateshwara Heavy Excavator on Construction Site"
                 className="about-who-img"
                 loading="eager"
@@ -309,7 +310,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             >
               <div className="about-service-img-wrap">
                 <img
-                  src="/about/earth-excavation.jpg"
+                  src={getAssetUrl('/about/earth-excavation.jpg')}
                   alt="Earth Excavation Work"
                   className="about-service-img"
                   loading="lazy"
@@ -335,7 +336,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             >
               <div className="about-service-img-wrap">
                 <img
-                  src="/about/earth-filling.jpg"
+                  src={getAssetUrl('/about/earth-filling.jpg')}
                   alt="Earth Filling Work"
                   className="about-service-img"
                   loading="lazy"
@@ -361,7 +362,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             >
               <div className="about-service-img-wrap">
                 <img
-                  src="/about/road-work.jpg"
+                  src={getAssetUrl('/about/road-work.jpg')}
                   alt="Road Construction Work"
                   className="about-service-img"
                   loading="lazy"
@@ -387,7 +388,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             >
               <div className="about-service-img-wrap">
                 <img
-                  src="/about/land-development.jpg"
+                  src={getAssetUrl('/about/land-development.jpg')}
                   alt="Land Development Work"
                   className="about-service-img"
                   loading="lazy"
@@ -413,7 +414,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             {/* Left Column: Mountain Excavator Panoramic Banner */}
             <div className="about-needs-img-wrap">
               <img
-                src="/about/project-needs.jpg"
+                src={getAssetUrl('/about/project-needs.jpg')}
                 alt="Excavator at project landscape"
                 className="about-needs-img"
                 loading="lazy"
