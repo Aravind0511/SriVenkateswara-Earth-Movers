@@ -151,7 +151,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }
                   }}
                 >
-                  JCB 3DX Backhoe
+                  Hitachi 140 Excavator
                 </a>
               </li>
               <li>
@@ -164,7 +164,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }
                   }}
                 >
-                  20T Crawler Excavator
+                  Hyundai Robex 215L
                 </a>
               </li>
               <li>
@@ -177,7 +177,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }
                   }}
                 >
-                  16 CBM Heavy Tipper Lorry
+                  Hitachi ZAXIS 220LC Quarry
                 </a>
               </li>
               <li>
@@ -190,7 +190,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }
                   }}
                 >
-                  11-Ton Soil Compactor Roller
+                  50 Feet Long Reach Hitachi
                 </a>
               </li>
               <li>
@@ -203,7 +203,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }
                   }}
                 >
-                  Heavy Tracked Bulldozer
+                  Excavator with Rock Breaker
                 </a>
               </li>
               <li>
@@ -216,7 +216,33 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }
                   }}
                 >
-                  55 HP Utility Tractor Tipper
+                  BharatBenz Heavy Tipper
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  Compressor & Blasting Unit
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/equipment"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  JCB 3DX Backhoe Loader
                 </a>
               </li>
             </ul>

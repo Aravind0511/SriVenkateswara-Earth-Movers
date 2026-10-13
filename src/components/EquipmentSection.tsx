@@ -20,12 +20,12 @@ export const EquipmentSection: React.FC<EquipmentSectionProps> = ({
 
   const categories = [
     { key: 'all', label: 'All Equipment' },
+    { key: 'Excavator', label: 'Hitachi Excavators' },
+    { key: 'Long Reach Excavator', label: '50ft Long Reach' },
+    { key: 'Rock Breaker', label: 'Rock Breakers' },
+    { key: 'Tipper', label: 'Tipper Lorries' },
+    { key: 'Compressor & Blasting', label: 'Compressor & Blasting' },
     { key: 'Backhoe', label: 'Backhoe (JCB)' },
-    { key: 'Excavator', label: 'Excavator' },
-    { key: 'Tractor', label: 'Tractor' },
-    { key: 'Tipper', label: 'Tipper Lorry' },
-    { key: 'Bulldozer', label: 'Bulldozer' },
-    { key: 'Road Roller', label: 'Road Roller' }
   ];
 
   const filteredEquipment =

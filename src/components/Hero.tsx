@@ -17,13 +17,13 @@ export const Hero: React.FC<HeroProps> = ({ onViewEquipment, onBookNow }) => {
         <div className="svem-hero-text-block">
           {/* Eyebrow tag */}
           <div className="svem-hero-tag">
-            <span>RENT</span>
+            <span>EXCAVATOR</span>
             <span className="svem-hero-tag-sep">|</span>
-            <span>BUILD</span>
+            <span>BREAKER</span>
             <span className="svem-hero-tag-sep">|</span>
-            <span>MOVE</span>
+            <span>TIPPER</span>
             <span className="svem-hero-tag-sep">|</span>
-            <span>DEVELOP</span>
+            <span>BLASTING</span>
           </div>
 
           {/* Headline */}
@@ -34,7 +34,7 @@ export const Hero: React.FC<HeroProps> = ({ onViewEquipment, onBookNow }) => {
 
           {/* Subtitle */}
           <p className="svem-hero-description">
-            Quality machinery. On-time service. Ready when you need it. Heavy excavators, JCBs, tippers, and road rollers available with skilled operators for seamless site execution.
+            Quality machinery. Practical solutions. Support for every project. Hitachi excavators (140, 215, 220), 50-foot long reach, hydraulic rock breaker, BharatBenz tipper trucks, and compressor blasting with experienced operators.
           </p>
 
           {/* Action Buttons */}

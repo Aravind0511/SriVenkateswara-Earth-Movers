@@ -437,12 +437,12 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                       aria-label="Filter by Category"
                     >
                       <option value="all">All Categories</option>
+                      <option value="Excavator">Hitachi Excavators</option>
+                      <option value="Long Reach Excavator">50ft Long Reach</option>
+                      <option value="Rock Breaker">Rock Breakers</option>
+                      <option value="Tipper">Tipper Lorries</option>
+                      <option value="Compressor & Blasting">Compressor & Blasting</option>
                       <option value="Backhoe">Backhoe (JCB)</option>
-                      <option value="Excavator">Excavator</option>
-                      <option value="Tractor">Tractor</option>
-                      <option value="Tipper">Tipper Lorry</option>
-                      <option value="Bulldozer">Bulldozer</option>
-                      <option value="Road Roller">Road Roller</option>
                     </select>
                   </div>
 

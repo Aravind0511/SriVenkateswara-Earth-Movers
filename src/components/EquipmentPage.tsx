@@ -38,13 +38,13 @@ export const EquipmentPage: React.FC<EquipmentPageProps> = ({
   const [selectedStatus, setSelectedStatus] = useState('all');
 
   const categories = [
-    { key: 'all', label: 'All Fleet (6)' },
+    { key: 'all', label: `All Fleet (${equipmentList.length})` },
+    { key: 'Excavator', label: 'Hitachi Excavators' },
+    { key: 'Long Reach Excavator', label: '50ft Long Reach' },
+    { key: 'Rock Breaker', label: 'Rock Breakers' },
+    { key: 'Tipper', label: 'Tipper Lorries' },
+    { key: 'Compressor & Blasting', label: 'Compressor & Blasting' },
     { key: 'Backhoe', label: 'Backhoe (JCB)' },
-    { key: 'Excavator', label: 'Crawler Excavator' },
-    { key: 'Tractor', label: 'Utility Tractor' },
-    { key: 'Tipper', label: 'Tipper Lorry' },
-    { key: 'Bulldozer', label: 'Crawler Bulldozer' },
-    { key: 'Road Roller', label: 'Soil Compactor Roller' },
   ];
 
   const filteredItems = useMemo(() => {

@@ -5,7 +5,7 @@ export const INITIAL_BOOKINGS: Booking[] = [
   {
     id: 'BK-1001',
     equipmentId: 'jcb-3dx',
-    equipmentName: 'JCB 3DX',
+    equipmentName: 'JCB 3DX Backhoe Loader',
     customerName: 'K. Periasamy',
     phoneNumber: '+91 98421 11223',
     rentalType: 'Daily',
@@ -18,7 +18,7 @@ export const INITIAL_BOOKINGS: Booking[] = [
   {
     id: 'BK-1002',
     equipmentId: 'jcb-3dx',
-    equipmentName: 'JCB 3DX',
+    equipmentName: 'JCB 3DX Backhoe Loader',
     customerName: 'Anand Builders',
     phoneNumber: '+91 97890 44556',
     rentalType: 'Daily',
@@ -31,7 +31,7 @@ export const INITIAL_BOOKINGS: Booking[] = [
   {
     id: 'BK-1003',
     equipmentId: 'jcb-3dx',
-    equipmentName: 'JCB 3DX',
+    equipmentName: 'JCB 3DX Backhoe Loader',
     customerName: 'R. Soundararajan',
     phoneNumber: '+91 99445 77889',
     rentalType: 'Weekly',
@@ -42,103 +42,107 @@ export const INITIAL_BOOKINGS: Booking[] = [
     createdAt: '2026-10-03T14:15:00Z'
   },
 
-  // Excavator bookings
+  // Hitachi 140 Excavator
   {
     id: 'BK-1004',
-    equipmentId: 'excavator-20t',
-    equipmentName: 'Excavator (20-Ton)',
-    customerName: 'Kavitha Infra Projects',
-    phoneNumber: '+91 94432 99881',
-    rentalType: 'Project Based',
-    projectLocation: 'Sankari Quarry Division',
-    startDate: '2026-10-09',
-    endDate: '2026-10-11',
-    status: 'Confirmed',
-    createdAt: '2026-10-02T10:00:00Z'
-  },
-  {
-    id: 'BK-1005',
-    equipmentId: 'excavator-20t',
-    equipmentName: 'Excavator (20-Ton)',
+    equipmentId: 'hitachi-140',
+    equipmentName: 'Hitachi 140 Excavator',
     customerName: 'Thirumalai Foundations',
     phoneNumber: '+91 98940 33221',
     rentalType: 'Daily',
-    projectLocation: 'Omalur Highway Bridge Work',
+    projectLocation: 'Omalur Highway Pipeline Project',
     startDate: '2026-10-17',
     endDate: '2026-10-20',
     status: 'Confirmed',
     createdAt: '2026-10-04T16:20:00Z'
   },
 
-  // Bulldozer bookings (Currently Rented across month)
+  // Hyundai Robex 215L
+  {
+    id: 'BK-1005',
+    equipmentId: 'hitachi-215',
+    equipmentName: 'Hyundai Robex 215L Excavator',
+    customerName: 'Kavitha Infra Projects',
+    phoneNumber: '+91 94432 99881',
+    rentalType: 'Project Based',
+    projectLocation: 'Sankari Heavy Excavation Site',
+    startDate: '2026-10-09',
+    endDate: '2026-10-11',
+    status: 'Confirmed',
+    createdAt: '2026-10-02T10:00:00Z'
+  },
+
+  // Hitachi 220 Quarry Excavator
   {
     id: 'BK-1006',
-    equipmentId: 'bulldozer',
-    equipmentName: 'Bulldozer',
-    customerName: 'SIPCOT Industrial Park Developers',
-    phoneNumber: '+91 94421 88776',
+    equipmentId: 'hitachi-220',
+    equipmentName: 'Hitachi ZAXIS 220LC Quarry Excavator',
+    customerName: 'Sri Balaji Blue Metals',
+    phoneNumber: '+91 94435 66778',
     rentalType: 'Project Based',
-    projectLocation: 'Perundurai Mega Industrial Complex',
-    startDate: '2026-10-01',
-    endDate: '2026-10-31',
+    projectLocation: 'Namakkal Quarry Division',
+    startDate: '2026-10-15',
+    endDate: '2026-10-28',
     status: 'Confirmed',
     createdAt: '2026-09-28T08:00:00Z'
   },
 
-  // Road Roller bookings
+  // 50 Feet Long Reach Excavator
   {
     id: 'BK-1007',
-    equipmentId: 'road-roller',
-    equipmentName: 'Road Roller',
-    customerName: 'State Highway Subcontractor',
+    equipmentId: 'hitachi-long-reach-50ft',
+    equipmentName: '50 Feet Long Reach Hitachi Excavator',
+    customerName: 'Cauvery River Desilting Project',
     phoneNumber: '+91 97500 12345',
-    rentalType: 'Daily',
-    projectLocation: 'Tiruchengode Outer Ring Road',
-    startDate: '2026-10-15',
-    endDate: '2026-10-16',
+    rentalType: 'Weekly',
+    projectLocation: 'Paramathi Velur Canal Basin',
+    startDate: '2026-10-12',
+    endDate: '2026-10-18',
     status: 'Confirmed',
     createdAt: '2026-10-03T12:00:00Z'
   },
+
+  // Excavator with Rock Breaker
   {
     id: 'BK-1008',
-    equipmentId: 'road-roller',
-    equipmentName: 'Road Roller',
-    customerName: 'Evergreen Layout Promoters',
+    equipmentId: 'rock-breaker',
+    equipmentName: 'Excavator with Heavy Rock Breaker',
+    customerName: 'K. R. Construction & Demolition',
     phoneNumber: '+91 96290 67890',
     rentalType: 'Daily',
-    projectLocation: 'Mettur Dam View Layout',
-    startDate: '2026-10-28',
-    endDate: '2026-10-30',
+    projectLocation: 'Salem Junction Commercial Demolition',
+    startDate: '2026-10-10',
+    endDate: '2026-10-12',
     status: 'Confirmed',
     createdAt: '2026-10-05T15:40:00Z'
   },
 
-  // Tractor Tipper bookings
+  // BharatBenz Tipper Lorry
   {
     id: 'BK-1009',
-    equipmentId: 'tractor-tipper',
-    equipmentName: 'Tractor with Tipper',
-    customerName: 'V. Palanisamy Farm',
+    equipmentId: 'tipper-lorry',
+    equipmentName: 'BharatBenz Heavy Tipper Lorry (10-Wheeler)',
+    customerName: 'Tamil Nadu Highway Subcontractor',
     phoneNumber: '+91 98430 55443',
     rentalType: 'Daily',
-    projectLocation: 'Paramathi Velur Banana Plantation',
-    startDate: '2026-10-10',
-    endDate: '2026-10-11',
+    projectLocation: 'NH-44 Four-Lane Expansion',
+    startDate: '2026-10-16',
+    endDate: '2026-10-19',
     status: 'Confirmed',
     createdAt: '2026-10-02T14:00:00Z'
   },
 
-  // Tipper Lorry bookings
+  // Tractor Compressor & Blasting Unit
   {
     id: 'BK-1010',
-    equipmentId: 'tipper-lorry',
-    equipmentName: 'Tipper Lorry',
-    customerName: 'Sri Balaji Blue Metals',
-    phoneNumber: '+91 94435 66778',
-    rentalType: 'Weekly',
-    projectLocation: 'Kandhampatti Flyover Site',
-    startDate: '2026-10-16',
-    endDate: '2026-10-18',
+    equipmentId: 'compressor-blasting',
+    equipmentName: 'Tractor Compressor & Controlled Blasting Unit',
+    customerName: 'V. Palanisamy Well Digging',
+    phoneNumber: '+91 94421 88776',
+    rentalType: 'Project Based',
+    projectLocation: 'Tiruchengode Hard Rock Agricultural Well',
+    startDate: '2026-10-20',
+    endDate: '2026-10-22',
     status: 'Confirmed',
     createdAt: '2026-10-04T10:00:00Z'
   }

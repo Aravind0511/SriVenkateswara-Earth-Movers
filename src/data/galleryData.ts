@@ -1,44 +1,85 @@
 import type { GalleryItem } from '../types';
+import { getAssetUrl } from '../utils/assets.ts';
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'gal-1',
-    title: 'Deep Trench Excavation for Water Pipeline',
-    category: 'Excavation',
-    location: 'Namakkal Bypass Highway',
-    image: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80',
-    description: 'Crawler Excavator executing 4.5m deep trenching alongside NH-44 for public utility water supply pipelines.'
+    title: 'Heavy Rock Breaking with Hydraulic Hammer',
+    category: 'Rock Breaking',
+    location: 'Granite Quarry Worksite',
+    image: getAssetUrl('/gallery/rock-breaker-action.jpg'),
+    description: 'Hyundai Robex 215L excavator equipped with hydraulic rock breaker actively chiseling massive granite boulders into transportable aggregates.'
   },
   {
     id: 'gal-2',
-    title: 'Bulk Aggregate Hauling & Dumping',
-    category: 'Hauling',
-    location: 'Sankari Industrial Estate',
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80',
-    description: '16 CBM multi-axle tippers discharging blue metal aggregates for factory floor bed preparation.'
+    title: 'Tata Hitachi ZAXIS 220LC Quarry Operations',
+    category: 'Excavation',
+    location: 'Quarry Extraction Division',
+    image: getAssetUrl('/gallery/hitachi-220-quarry.jpg'),
+    description: '22-Ton severe-duty Tata Hitachi quarry crawler excavator clearing hard rock strata and mass overburden with reinforced rock bucket.'
   },
   {
     id: 'gal-3',
-    title: 'Commercial Basement Soil Clearing',
-    category: 'Backhoe Operations',
-    location: 'Salem Outer Ring Road',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-    description: 'JCB 3DX backhoe loader leveling soil and loading excavated debris into waiting dumpers.'
+    title: 'Hitachi 140 High-Elevation Hilltop Earthwork',
+    category: 'Earthmoving',
+    location: 'Hilltop Infrastructure Project',
+    image: getAssetUrl('/gallery/hitachi-140-hilltop.jpg'),
+    description: 'Agile 14-ton hydraulic excavator executing foundation leveling and drainage trenches on elevated rocky terrain.'
   },
   {
     id: 'gal-4',
-    title: 'Heavy Sub-base Soil Compaction',
-    category: 'Road Work',
-    location: 'Tiruchengode Rural Road Project',
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1200&q=80',
-    description: '11-ton vibratory soil roller operating continuous vibration cycles for maximum proctor density.'
+    title: 'BharatBenz 10-Wheeler Tipper Fleet on Site',
+    category: 'Haulage',
+    location: 'Commercial Infrastructure Site',
+    image: getAssetUrl('/gallery/tipper-fleet-site.jpg'),
+    description: 'Dual BharatBenz 16 CBM multi-axle heavy dump trucks lined up for high-tonnage earth and blue metal material haulage.'
   },
   {
     id: 'gal-5',
-    title: 'Mega Industrial Layout Land Leveling',
-    category: 'Land Development',
-    location: 'Perundurai SIPCOT Phase II',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1200&q=80',
-    description: 'Joint fleet operation featuring crawler bulldozers and excavators leveling a 15-acre commercial warehouse plot.'
+    title: 'Kobelco SK220XD Heavy Excavator & Tipper Team',
+    category: 'Excavation',
+    location: 'Industrial Layout Development',
+    image: getAssetUrl('/gallery/kobelco-220-field.jpg'),
+    description: 'Heavy 22-ton crawler excavator working in tandem with BharatBenz tipper dumpers for rapid site clearing and bulk loading.'
+  },
+  {
+    id: 'gal-6',
+    title: 'Hyundai Robex 215L Smart Earthmoving Operations',
+    category: 'Excavation',
+    location: 'Basement Excavation Project',
+    image: getAssetUrl('/gallery/robex-215-earthwork.jpg'),
+    description: 'Heavy-duty 21.5-ton crawler excavator carrying out mass earth cutting and foundation pit preparation.'
+  },
+  {
+    id: 'gal-7',
+    title: 'Precision Hydraulic Rock Chiseling in Hard Strata',
+    category: 'Rock Breaking',
+    location: 'Rock Trenching Site',
+    image: getAssetUrl('/gallery/sany-breaker-quarry.jpg'),
+    description: 'Heavy hydraulic breaker chisel penetrating solid bedrock for deep foundation footings and utility trenches.'
+  },
+  {
+    id: 'gal-8',
+    title: 'Mobile Tractor Compressor Rock Drilling Rig',
+    category: 'Drilling & Blasting',
+    location: 'Controlled Rock Blasting Work',
+    image: getAssetUrl('/gallery/compressor-tractor.jpg'),
+    description: 'Farmtrac 60 utility tractor operating high-pressure air compressor and pneumatic jackhammers for controlled rock cracking.'
+  },
+  {
+    id: 'gal-9',
+    title: 'BharatBenz 16 CBM Bulk Material Dump Truck',
+    category: 'Haulage',
+    location: 'Aggregate Transit Hub',
+    image: getAssetUrl('/gallery/bharatbenz-tipper-front.jpg'),
+    description: 'Commercial 10-wheeler tipper lorry (TN.34.MD.2615) ready for bulk sand, gravel, and blue metal aggregate dispatch.'
+  },
+  {
+    id: 'gal-10',
+    title: 'Kobelco SK220XD LC Heavy Duty Crawler Excavator',
+    category: 'Excavation',
+    location: 'Infrastructure Corridor',
+    image: getAssetUrl('/gallery/kobelco-220-closeup.jpg'),
+    description: 'Close-up perspective of 22-ton heavy crawler excavator showcasing reinforced boom and heavy-duty bucket.'
   }
 ];

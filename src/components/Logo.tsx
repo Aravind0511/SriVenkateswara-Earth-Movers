@@ -14,13 +14,13 @@ export const Logo: React.FC<LogoProps> = ({
   className = '',
   size = 'md',
   onClick,
-  iconSrc = getAssetUrl('/about/logo-mark.png'),
+  iconSrc = getAssetUrl('/logo.jpg'),
 }) => {
   const isLight = variant === 'light';
 
   return (
     <a
-      href="#home"
+      href="#/"
       onClick={onClick}
       className={`svem-logo svem-logo-${size} ${className}`}
       aria-label="Sri Venkateshwara Earth Movers Home"

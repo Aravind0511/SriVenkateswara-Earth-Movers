@@ -34,13 +34,19 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
     switch (iconName) {
       case 'excavation':
         return <Shovel size={28} />;
-      case 'filling':
-        return <Truck size={28} />;
-      case 'road':
+      case 'breaker':
+        return <Hammer size={28} />;
+      case 'reach':
         return <Construction size={28} />;
       case 'demolition':
         return <Hammer size={28} />;
+      case 'filling':
+      case 'haulage':
+        return <Truck size={28} />;
+      case 'road':
+        return <Construction size={28} />;
       case 'development':
+      case 'blasting':
         return <Mountain size={28} />;
       default:
         return <Construction size={28} />;
@@ -50,15 +56,17 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
   const getServiceImage = (id: string) => {
     switch (id) {
       case 'earth-excavation':
-        return getAssetUrl('/about/earth-excavation.jpg');
+        return getAssetUrl('/equipment/hitachi-140.jpg');
+      case 'rock-breaking-blasting':
+        return getAssetUrl('/equipment/rock-breaker.jpg');
+      case 'long-reach-excavation':
+        return getAssetUrl('/equipment/hitachi-long-reach-50ft.jpg');
+      case 'building-demolition':
+        return getAssetUrl('/gallery/rock-breaker-action.jpg');
       case 'earth-filling':
         return getAssetUrl('/about/earth-filling.jpg');
-      case 'road-work':
-        return getAssetUrl('/about/road-work.jpg');
-      case 'demolition-work':
-        return getAssetUrl('/about/who-we-are.jpg');
-      case 'land-development':
-        return getAssetUrl('/about/land-development.jpg');
+      case 'bulk-haulage':
+        return getAssetUrl('/gallery/tipper-fleet-site.jpg');
       default:
         return getAssetUrl('/about/project-needs.jpg');
     }
@@ -66,13 +74,15 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
   const mapMachineryToId = (machineryName: string): string => {
     const lower = machineryName.toLowerCase();
-    if (lower.includes('jcb')) return 'jcb-3dx';
-    if (lower.includes('excavator')) return 'excavator-20t';
-    if (lower.includes('tractor')) return 'tractor-tipper';
+    if (lower.includes('long reach') || lower.includes('50')) return 'hitachi-long-reach-50ft';
+    if (lower.includes('breaker')) return 'rock-breaker';
+    if (lower.includes('compressor') || lower.includes('blasting')) return 'compressor-blasting';
+    if (lower.includes('140')) return 'hitachi-140';
+    if (lower.includes('215')) return 'hitachi-215';
+    if (lower.includes('220')) return 'hitachi-220';
     if (lower.includes('tipper')) return 'tipper-lorry';
-    if (lower.includes('bulldozer') || lower.includes('dozer')) return 'bulldozer';
-    if (lower.includes('roller')) return 'road-roller';
-    return 'jcb-3dx';
+    if (lower.includes('jcb')) return 'jcb-3dx';
+    return 'hitachi-215';
   };
 
   const handleBookServiceMachine = (machineryName: string) => {

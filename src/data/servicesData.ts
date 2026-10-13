@@ -3,47 +3,56 @@ import type { ServiceItem } from '../types';
 export const SERVICES_LIST: ServiceItem[] = [
   {
     id: 'earth-excavation',
-    title: 'Earth Excavation',
-    shortDesc: 'Pipeline, footing, pits and all types of soil work.',
-    fullDesc: 'Comprehensive excavation services for residential foundations, commercial basements, drainage canals, pipeline trenches, and underground tank pits with laser-guided depth precision.',
+    title: 'Earth Excavation & Trenching',
+    shortDesc: 'Foundation pits, utility pipelines, drainage trenches, and mass earth cutting.',
+    fullDesc: 'Comprehensive excavation services with precision depth control. Equipped with our Hitachi 140, 215, 220, and JCB fleet for residential foundations, commercial basements, agricultural canals, and underground pipelines.',
     iconName: 'excavation',
-    suitableEquipment: ['JCB 3DX', 'Crawler Excavator (20T)'],
-    features: ['Foundation footing pits', 'Pipeline & culvert trenches', 'Lake deepening & desilting', 'Hard rock chiseling']
+    suitableEquipment: ['Hitachi 140 Excavator', 'Hyundai Robex 215L', 'Hitachi ZAXIS 220LC', 'JCB 3DX'],
+    features: ['Foundation footings & column pits', 'Water & utility pipeline trenches', 'Mass basement & lake excavation', 'Canal desilting & berm dressing']
+  },
+  {
+    id: 'rock-breaking-blasting',
+    title: 'Rock Breaking & Controlled Blasting',
+    shortDesc: 'Hydraulic breaker chiseling, boulder splitting, and certified rock blasting.',
+    fullDesc: 'Specialized hard rock solutions combining high-impact hydraulic rock breakers with high-CFM tractor air compressors and certified controlled rock blasting for deep wells, foundation rock strata, and quarrying.',
+    iconName: 'breaker',
+    suitableEquipment: ['Excavator with Heavy Rock Breaker', 'Tractor Compressor & Blasting Unit'],
+    features: ['Hard granite boulder splitting', 'Bedrock foundation chiseling', 'Certified controlled rock blasting', 'High-pressure pneumatic jackhammer drilling']
+  },
+  {
+    id: 'long-reach-excavation',
+    title: '50 Feet Long Reach Excavation',
+    shortDesc: 'Deep well sinking, wide canal desilting, and high-reach embankment works.',
+    fullDesc: 'Specialized 50-foot extended reach boom excavator designed for jobs where machines cannot get close to edges. Ideal for deep agricultural open wells, canal and river desilting from bank tops, and high-reach demolition.',
+    iconName: 'reach',
+    suitableEquipment: ['50 Feet Long Reach Hitachi Excavator'],
+    features: ['50-foot deep well digging & desilting', 'Canal & river cleaning from top bank', 'Steep slope profiling & highway dressing', 'High-reach structural access']
+  },
+  {
+    id: 'building-demolition',
+    title: 'Building Demolition',
+    shortDesc: 'Controlled demolition of RCC structures, old houses, and industrial sheds.',
+    fullDesc: 'Safe, controlled demolition of residential houses, commercial buildings, RCC slabs, concrete pavements, and industrial sheds, paired with heavy rock breakers and tipper trucks for rapid debris clearance.',
+    iconName: 'demolition',
+    suitableEquipment: ['Excavator with Heavy Rock Breaker', '50 Feet Long Reach Hitachi', 'BharatBenz Heavy Tipper Lorry'],
+    features: ['RCC structure knocking & beam cutting', 'Old building & masonry razing', 'Immediate on-site debris loading & haulage', 'Safe controlled perimeter dismantling']
   },
   {
     id: 'earth-filling',
-    title: 'Earth Filling',
-    shortDesc: 'Mass earth filling and site development.',
-    fullDesc: 'End-to-end bulk soil, gravel, red earth, and quarry dust filling with layer-by-layer roller compaction for low-lying residential plots, industrial yards, and factory floors.',
+    title: 'Earth Filling & Land Leveling',
+    shortDesc: 'Bulk soil filling, plot elevation, and site preparation.',
+    fullDesc: 'End-to-end bulk red earth, gravel, and quarry dust filling with site leveling for low-lying residential plots, industrial yards, commercial layouts, and building plinths.',
     iconName: 'filling',
-    suitableEquipment: ['Tipper Lorry (16 CBM)', 'Tractor Tipper', 'Road Roller'],
-    features: ['Red soil & gravel supply', 'Layer-by-layer compaction', 'Basement backfilling', 'Industrial yard elevation']
+    suitableEquipment: ['BharatBenz Heavy Tipper Lorry', 'Hyundai Robex 215L', 'JCB 3DX'],
+    features: ['Bulk red soil & gravel delivery', 'Layer-by-layer plot elevation', 'Basement backfilling & dressing', 'Industrial plot leveling']
   },
   {
-    id: 'road-work',
-    title: 'Road Work',
-    shortDesc: 'All types of road construction.',
-    fullDesc: 'Complete road-bed preparation, subgrade cutting, gravel spreading, wet mix macadam grading, and vibratory compaction for highway bypasses, layout roads, and rural connectivity.',
-    iconName: 'road',
-    suitableEquipment: ['Road Roller', 'Bulldozer', 'Tipper Lorry'],
-    features: ['Sub-base grading', 'Vibratory compaction', 'Bituminous base prep', 'Shoulder cutting & drainage']
-  },
-  {
-    id: 'demolition-work',
-    title: 'Demolition Work',
-    shortDesc: 'Building demolition and site clearing.',
-    fullDesc: 'Controlled demolition of RCC structures, industrial sheds, old masonry houses, and concrete pavements equipped with hydraulic rock breakers and high-reach shears.',
-    iconName: 'demolition',
-    suitableEquipment: ['Excavator with Breaker', 'JCB 3DX', 'Tipper Lorry'],
-    features: ['RCC structure knocking', 'Hydraulic breaker chiseling', 'Instant debris haulage', 'Safe perimeter containment']
-  },
-  {
-    id: 'land-development',
-    title: 'Land Development',
-    shortDesc: 'Site leveling and land preparation.',
-    fullDesc: 'Turn undeveloped acreage and agricultural fields into approved real estate layouts, agricultural farms, or factory foundations with heavy dozers and graders.',
-    iconName: 'development',
-    suitableEquipment: ['Bulldozer', 'JCB 3DX', 'Tractor Utility'],
-    features: ['Heavy vegetation uprooting', 'Topsoil stripping & grading', 'Plot boundary demarcation', 'Natural drainage contours']
+    id: 'bulk-haulage',
+    title: 'Bulk Haulage & Tipper Transport',
+    shortDesc: '16 CBM BharatBenz 10-wheeler tipper fleet for aggregate and muck shifting.',
+    fullDesc: 'High-capacity commercial tipper lorry fleet for transporting blue metal aggregates, M-sand, gravel, excavated earth, and demolition debris across Salem, Namakkal, and surrounding districts.',
+    iconName: 'haulage',
+    suitableEquipment: ['BharatBenz Heavy Tipper Lorry (10-Wheeler)'],
+    features: ['16 CBM heavy-tonnage capacity', 'Quarry blue metal & gravel delivery', 'Excavation muck & debris haulage', 'Prompt multi-vehicle fleet deployment']
   }
 ];

@@ -12,13 +12,19 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
     switch (iconName) {
       case 'excavation':
         return <Shovel size={28} />;
-      case 'filling':
-        return <Truck size={28} />;
-      case 'road':
+      case 'breaker':
+        return <Hammer size={28} />;
+      case 'reach':
         return <Construction size={28} />;
       case 'demolition':
         return <Hammer size={28} />;
+      case 'filling':
+      case 'haulage':
+        return <Truck size={28} />;
+      case 'road':
+        return <Construction size={28} />;
       case 'development':
+      case 'blasting':
         return <Mountain size={28} />;
       default:
         return <Construction size={28} />;

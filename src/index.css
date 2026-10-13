@@ -389,9 +389,9 @@ input, select, textarea, button {
   transform: scale(1.05);
 }
 
-.svem-logo-sm .svem-logo-icon-wrapper { height: 32px; width: auto; }
-.svem-logo-md .svem-logo-icon-wrapper { height: 42px; width: auto; }
-.svem-logo-lg .svem-logo-icon-wrapper { height: 52px; width: auto; }
+.svem-logo-sm .svem-logo-icon-wrapper { height: 36px; width: auto; border-radius: 6px; overflow: hidden; }
+.svem-logo-md .svem-logo-icon-wrapper { height: 46px; width: auto; border-radius: 8px; overflow: hidden; }
+.svem-logo-lg .svem-logo-icon-wrapper { height: 58px; width: auto; border-radius: 8px; overflow: hidden; }
 
 .svem-logo-img {
   height: 100%;

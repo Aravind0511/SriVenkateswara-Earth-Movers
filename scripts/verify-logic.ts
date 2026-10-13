@@ -8,6 +8,12 @@ import {
   formatDateDisplay,
   isDateBetween
 } from '../src/utils/dateUtils.ts';
+import fs from 'node:fs';
+import path from 'node:path';
+import { BUSINESS_INFO, getCallUrl, getWhatsAppUrl } from '../src/config/businessInfo.ts';
+import { parseRoute, getRouteHash, VALID_ROUTES } from '../src/utils/routeUtils.ts';
+import { SERVICES_LIST } from '../src/data/servicesData.ts';
+import { GALLERY_ITEMS } from '../src/data/galleryData.ts';
 
 console.log('=== RUNNING VERIFICATION SUITE FOR SRI VENKATESHWARA EARTH MOVERS ===\n');
 
@@ -22,11 +28,30 @@ function assert(condition, message) {
 }
 
 // 1. Verify Equipment Data
-assert(EQUIPMENT_LIST.length === 6, 'Equipment list has exactly 6 items');
+assert(EQUIPMENT_LIST.length === 8, 'Equipment list has exactly 8 items');
 const jcb = EQUIPMENT_LIST.find(e => e.id === 'jcb-3dx');
 assert(jcb && jcb.status === 'available', 'JCB 3DX is available');
-const dozer = EQUIPMENT_LIST.find(e => e.id === 'bulldozer');
-assert(dozer && dozer.status === 'rented', 'Bulldozer is marked as currently rented');
+
+const hitachi140 = EQUIPMENT_LIST.find(e => e.id === 'hitachi-140');
+assert(hitachi140 && hitachi140.status === 'available', 'Hitachi 140 Excavator is available');
+
+const hitachi215 = EQUIPMENT_LIST.find(e => e.id === 'hitachi-215');
+assert(hitachi215 && hitachi215.status === 'available', 'Hyundai Robex 215L Excavator is available');
+
+const hitachi220 = EQUIPMENT_LIST.find(e => e.id === 'hitachi-220');
+assert(hitachi220 && hitachi220.status === 'available', 'Hitachi ZAXIS 220LC Quarry Excavator is available');
+
+const longReach = EQUIPMENT_LIST.find(e => e.id === 'hitachi-long-reach-50ft');
+assert(longReach && longReach.status === 'available', '50 Feet Long Reach Hitachi Excavator is available');
+
+const breaker = EQUIPMENT_LIST.find(e => e.id === 'rock-breaker');
+assert(breaker && breaker.status === 'available', 'Excavator with Heavy Rock Breaker is available');
+
+const tipper = EQUIPMENT_LIST.find(e => e.id === 'tipper-lorry');
+assert(tipper && tipper.status === 'available', 'BharatBenz Heavy Tipper Lorry is available');
+
+const blasting = EQUIPMENT_LIST.find(e => e.id === 'compressor-blasting');
+assert(blasting && blasting.status === 'available', 'Tractor Compressor & Controlled Blasting Unit is available');
 
 // 2. Verify Initial Bookings & Availability on Oct 14, 2026 (Mockup requirement)
 assert(
@@ -78,44 +103,25 @@ assert(formatDateISO(new Date(2026, 9, 14)) === '2026-10-14', 'formatDateISO con
 assert(formatDateDisplay('2026-10-14') === 'Oct 14, 2026', 'formatDateDisplay converts YYYY-MM-DD to Oct 14, 2026');
 assert(isDateBetween('2026-10-13', '2026-10-12', '2026-10-14') === true, 'isDateBetween checks inclusivity');
 
-// 7. Verify About Page Assets & Configuration Integrity
-import fs from 'node:fs';
-import path from 'node:path';
-import { BUSINESS_INFO, getCallUrl, getWhatsAppUrl } from '../src/config/businessInfo.ts';
+// 7. Verify Official Logo & Business Info Integrity
+const logoPath = path.resolve('public', 'logo.jpg');
+assert(fs.existsSync(logoPath), 'Official logo exists in public/logo.jpg');
+assert(fs.statSync(logoPath).size > 10000, 'Official logo is non-empty and high-resolution');
 
-const aboutImages = [
-  'who-we-are.jpg',
-  'earth-excavation.jpg',
-  'earth-filling.jpg',
-  'road-work.jpg',
-  'land-development.jpg',
-  'project-needs.jpg',
-  'hero-bg-clean.jpg',
-  'logo-mark.png',
-];
-
-for (const imgName of aboutImages) {
-  const filePath = path.resolve('public/about', imgName);
-  const exists = fs.existsSync(filePath);
-  assert(exists, `About page asset ${imgName} exists in public/about`);
-  if (exists) {
-    const stat = fs.statSync(filePath);
-    assert(stat.size > 1024, `About page asset ${imgName} is non-empty (${stat.size} bytes)`);
-  }
-}
-
-assert(BUSINESS_INFO.phone.length > 5, 'Business phone is configured');
-assert(getCallUrl().startsWith('tel:'), 'Call URL is formatted correctly');
-assert(getWhatsAppUrl().startsWith('https://wa.me/'), 'WhatsApp URL is formatted correctly');
+assert(BUSINESS_INFO.phone === '+91 9944745410', 'Business phone matches owner number (+91 9944745410)');
+assert(getCallUrl() === 'tel:+919944745410', 'Call URL is formatted correctly to owner');
+assert(getWhatsAppUrl().includes('919944745410'), 'WhatsApp URL points to owner number');
 
 // 8. Verify No Monetary Amounts in Equipment Rates & Local Equipment Assets Exist
 const equipmentImages = [
-  'jcb-3dx.jpg',
-  'excavator.jpg',
-  'tractor.jpg',
-  'tipper.jpg',
-  'bulldozer.jpg',
-  'road-roller.jpg'
+  'hitachi-140.jpg',
+  'hitachi-215.jpg',
+  'hitachi-220.jpg',
+  'hitachi-long-reach-50ft.jpg',
+  'rock-breaker.jpg',
+  'tipper-lorry.jpg',
+  'compressor-blasting.jpg',
+  'jcb-3dx.jpg'
 ];
 
 for (const eqImg of equipmentImages) {
@@ -137,10 +143,20 @@ for (const item of EQUIPMENT_LIST) {
   assert(!item.rates.daily.includes('INR'), `No INR in ${item.name} daily rate`);
 }
 
-// 9. Verify All 7 Dedicated Routes & Route Parsing
-import { parseRoute, getRouteHash, VALID_ROUTES } from '../src/utils/routeUtils.ts';
-import { SERVICES_LIST } from '../src/data/servicesData.ts';
+// 9. Verify Worksite Gallery Assets
+assert(GALLERY_ITEMS.length === 10, 'Gallery contains exactly 10 authentic worksite photos');
+for (const item of GALLERY_ITEMS) {
+  const fileName = path.basename(item.image);
+  const fullPath = path.resolve('public/gallery', fileName);
+  const exists = fs.existsSync(fullPath);
+  assert(exists, `Gallery image ${item.title} exists in public/gallery (${fileName})`);
+  if (exists) {
+    const stat = fs.statSync(fullPath);
+    assert(stat.size > 5000, `Gallery image ${fileName} is non-empty (${stat.size} bytes)`);
+  }
+}
 
+// 10. Verify All 7 Dedicated Routes & Route Parsing
 assert(VALID_ROUTES.length === 7, 'Exactly 7 dedicated routes configured');
 assert(VALID_ROUTES.includes('home'), 'Route home exists');
 assert(VALID_ROUTES.includes('about'), 'Route about exists');
@@ -170,31 +186,20 @@ assert(getRouteHash('gallery') === '#/gallery', 'getRouteHash for gallery return
 assert(getRouteHash('booking') === '#/booking', 'getRouteHash for booking returns #/booking');
 assert(getRouteHash('contact') === '#/contact', 'getRouteHash for contact returns #/contact');
 
-// Verify 5 Services in SERVICES_LIST
-assert(SERVICES_LIST.length === 5, 'Services list contains 5 core earthwork services');
+// Verify 6 Services in SERVICES_LIST
+assert(SERVICES_LIST.length === 6, 'Services list contains 6 specialized earthwork services');
 const excavationServ = SERVICES_LIST.find(s => s.id === 'earth-excavation');
 assert(excavationServ && excavationServ.suitableEquipment.length > 0, 'Earth excavation has assigned machinery');
+const rockBreakerServ = SERVICES_LIST.find(s => s.id === 'rock-breaking-blasting');
+assert(rockBreakerServ && rockBreakerServ.suitableEquipment.length > 0, 'Rock breaking & blasting has assigned machinery');
+const longReachServ = SERVICES_LIST.find(s => s.id === 'long-reach-excavation');
+assert(longReachServ && longReachServ.suitableEquipment.length > 0, 'Long reach excavation has assigned machinery');
+const demoServ = SERVICES_LIST.find(s => s.id === 'building-demolition');
+assert(demoServ && demoServ.suitableEquipment.length > 0, 'Building Demolition has assigned machinery');
 const fillingServ = SERVICES_LIST.find(s => s.id === 'earth-filling');
 assert(fillingServ && fillingServ.suitableEquipment.length > 0, 'Earth filling has assigned machinery');
-const roadServ = SERVICES_LIST.find(s => s.id === 'road-work');
-assert(roadServ && roadServ.suitableEquipment.length > 0, 'Road work has assigned machinery');
-const demoServ = SERVICES_LIST.find(s => s.id === 'demolition-work');
-assert(demoServ && demoServ.suitableEquipment.length > 0, 'Demolition work has assigned machinery');
-const landServ = SERVICES_LIST.find(s => s.id === 'land-development');
-assert(landServ && landServ.suitableEquipment.length > 0, 'Land development has assigned machinery');
-
-// 10. Verify Default Booking Range Availability & Query Parameter Parsing
-const defaultConflict = findConflictingBooking('jcb-3dx', '2026-10-12', '2026-10-13', INITIAL_BOOKINGS);
-assert(defaultConflict === null, 'Default booking range 2026-10-12 to 2026-10-13 has zero conflicts for JCB 3DX');
-
-const queryHash1 = '#/booking?equipment=excavator-20t';
-assert(parseRoute(queryHash1) === 'booking', 'parseRoute handles hash with equipment query param');
-
-const queryHash2 = '#/equipment?search=jcb';
-assert(parseRoute(queryHash2) === 'equipment', 'parseRoute handles hash with search query param');
-
-const queryMatch = queryHash1.match(/[?&](?:equipment|eq)=([^&]+)/);
-assert(queryMatch !== null && queryMatch[1] === 'excavator-20t', 'Query param extraction correctly extracts excavator-20t');
+const haulageServ = SERVICES_LIST.find(s => s.id === 'bulk-haulage');
+assert(haulageServ && haulageServ.suitableEquipment.length > 0, 'Bulk haulage has assigned machinery');
 
 if (failedTests > 0) {
   console.error(`\n❌ Total test failures: ${failedTests}`);

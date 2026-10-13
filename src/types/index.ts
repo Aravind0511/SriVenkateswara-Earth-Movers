@@ -12,6 +12,10 @@ export interface EquipmentSpecs {
   transmission?: string;
   drumWidth?: string;
   reach?: string;
+  impactRate?: string;
+  chiselDiameter?: string;
+  hydraulicFlow?: string;
+  compressorCapacity?: string;
 }
 
 export interface EquipmentRates {
@@ -64,7 +68,7 @@ export interface ServiceItem {
   title: string;
   shortDesc: string;
   fullDesc: string;
-  iconName: 'excavation' | 'filling' | 'road' | 'demolition' | 'development';
+  iconName: 'excavation' | 'filling' | 'road' | 'demolition' | 'development' | 'breaker' | 'blasting' | 'reach' | 'haulage';
   suitableEquipment: string[];
   features: string[];
 }

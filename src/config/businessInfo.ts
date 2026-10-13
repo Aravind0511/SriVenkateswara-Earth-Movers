@@ -11,8 +11,8 @@ import { formatDateDisplay } from '../utils/dateUtils.ts';
 export const BUSINESS_INFO = {
   name: "SRI VENKATESHWARA EARTH MOVERS",
   shortName: "SV Earth Movers",
-  tagline: "Reliable Earth Moving Equipment for Your Project",
-  subtitle: "Quality machinery. On-time service. Ready when you need it.",
+  tagline: "Excavator, Breaker & Tipper Rental Services",
+  subtitle: "Hitachi Excavators, 50ft Long Reach, Rock Breaker, BharatBenz Tipper & Blasting Services.",
   
   // Contact Details (Matching official business logo)
   phone: "+91 9944745410",              // Official Contact Number
