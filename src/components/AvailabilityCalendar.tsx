@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Booking } from '../types';
 import { generateMonthGrid, findConflictingBooking, formatDateDisplay } from '../utils/dateUtils';
+import './AvailabilityCalendar.css';
 
 interface AvailabilityCalendarProps {
   equipmentId: string;

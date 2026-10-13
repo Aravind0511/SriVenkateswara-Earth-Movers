@@ -9,6 +9,10 @@
   padding-bottom: 3rem;
   color: #1e293b;
   font-family: inherit;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* --------------------------------------------------------------------------
@@ -87,6 +91,24 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .svem-booking-hero {
+    padding: 2rem 1rem;
+  }
+
+  .svem-booking-hero-title {
+    font-size: 1.85rem;
+  }
+
+  .svem-booking-hero-tagline {
+    font-size: 1rem;
+  }
+
+  .svem-booking-hero-desc {
+    font-size: 0.875rem;
+  }
+}
+
 /* --------------------------------------------------------------------------
    2. 5-STEP PROGRESS BAR SECTION
    -------------------------------------------------------------------------- */
@@ -95,6 +117,9 @@
   border-bottom: 1px solid #e2e8f0;
   padding: 1.25rem 1rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .svem-booking-steps-grid {
@@ -104,6 +129,7 @@
   gap: 0.75rem;
   overflow-x: auto;
   padding-bottom: 0.25rem;
+  width: 100%;
 }
 
 .svem-step-item {
@@ -171,11 +197,69 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 768px) {
+  .svem-booking-steps-section {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .svem-booking-steps-grid {
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem 0.4rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .svem-booking-steps-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .svem-step-item {
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    scroll-snap-align: start;
+  }
+
+  .svem-step-active {
+    background: #fffbeb !important;
+    border-color: #fde68a !important;
+  }
+
+  .svem-step-icon-wrap {
+    width: 26px;
+    height: 26px;
+  }
+
+  .svem-step-icon-wrap svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .svem-step-num-title {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .svem-step-sub {
+    display: none;
+  }
+
+  .svem-step-arrow {
+    display: none;
+  }
+}
+
 /* --------------------------------------------------------------------------
    3. MAIN TWO-COLUMN CONTAINER & LAYOUT
    -------------------------------------------------------------------------- */
 .svem-booking-main-container {
   margin-top: 2rem;
+  width: 100%;
+  max-width: 1240px;
 }
 
 .svem-booking-grid-wrapper {
@@ -183,11 +267,35 @@
   grid-template-columns: 1fr 380px;
   gap: 2rem;
   align-items: start;
+  width: 100%;
+  min-width: 0;
+}
+
+.svem-booking-form-column {
+  min-width: 0;
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
   .svem-booking-grid-wrapper {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .svem-booking-main-container {
+    margin-top: 1.25rem;
+  }
+
+  .svem-booking-card-section {
+    padding: 1.25rem 1rem !important;
+    border-radius: 12px;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .svem-card-section-title {
+    font-size: 1.15rem !important;
   }
 }
 
@@ -199,6 +307,9 @@
   padding: 1.75rem;
   margin-bottom: 1.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .svem-section-title-bar {
@@ -289,6 +400,9 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .svem-equipment-carousel-track {
@@ -296,8 +410,12 @@
   gap: 1.25rem;
   overflow-x: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   padding: 0.5rem 0.25rem 1rem;
   scrollbar-width: thin;
+  width: 100%;
+  min-width: 0;
 }
 
 .svem-carousel-arrow {
@@ -334,7 +452,8 @@
 
 .svem-carousel-card {
   position: relative;
-  flex: 0 0 220px;
+  flex: 0 0 230px;
+  max-width: 260px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
@@ -343,6 +462,24 @@
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 640px) {
+  .svem-equipment-carousel-track {
+    gap: 0.85rem;
+    padding: 0.25rem 0.25rem 0.85rem;
+  }
+
+  .svem-carousel-card {
+    flex: 0 0 80%;
+    max-width: 290px;
+    scroll-snap-align: center;
+  }
+
+  .svem-carousel-arrow {
+    display: none;
+  }
 }
 
 .svem-carousel-card:hover {
@@ -571,22 +708,34 @@
 
 .svem-section2-body-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 1.5rem;
   align-items: start;
+  width: 100%;
+  min-width: 0;
 }
 
 @media (max-width: 768px) {
   .svem-section2-body-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .svem-section2-calendar-box {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
   }
 }
 
 .svem-section2-calendar-box {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 1rem;
+  border-radius: 12px;
+  padding: 0.85rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .svem-section2-duration-col {
@@ -605,6 +754,36 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .svem-duration-cards-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .svem-duration-card {
+    padding: 0.65rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .svem-duration-card-icon-wrap {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .svem-duration-name {
+    font-size: 0.85rem !important;
+  }
+
+  .svem-duration-desc {
+    display: none !important;
+  }
+
+  .svem-popular-badge {
+    display: none;
+  }
 }
 
 .svem-duration-card {
@@ -1380,3 +1559,41 @@
 .svem-btn-banner-call:hover {
   background: #d97706;
 }
+
+@media (max-width: 768px) {
+  .svem-booking-cta-banner {
+    margin: 0 0 2rem;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+
+  .svem-cta-banner-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .svem-cta-banner-left {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .svem-cta-banner-heading {
+    font-size: 1.25rem;
+  }
+
+  .svem-cta-banner-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .svem-btn-banner-wa,
+  .svem-btn-banner-call {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1rem;
+  }
+}
+
