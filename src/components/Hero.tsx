@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Calendar, Settings, ShieldCheck, Zap, Clock } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 interface HeroProps {
   onViewEquipment: () => void;
@@ -11,7 +12,10 @@ export const Hero: React.FC<HeroProps> = ({ onViewEquipment, onBookNow }) => {
     <section id="home" className="svem-hero">
       {/* Background machinery photography with atmospheric industrial grading */}
       <div className="svem-hero-bg-overlay" />
-      <div className="svem-hero-bg-image" />
+      <div
+        className="svem-hero-bg-image"
+        style={{ backgroundImage: `url(${getAssetUrl('/equipment/hitachi-140.jpg')})` }}
+      />
 
       <div className="svem-hero-content-container">
         <div className="svem-hero-text-block">
