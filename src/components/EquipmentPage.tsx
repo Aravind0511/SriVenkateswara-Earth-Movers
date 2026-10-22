@@ -39,6 +39,7 @@ export const EquipmentPage: React.FC<EquipmentPageProps> = ({
 
   const categories = [
     { key: 'all', label: `All Fleet (${equipmentList.length})` },
+    { key: 'Full Fleet', label: 'Complete Fleet (All)' },
     { key: 'Excavator', label: 'Hitachi Excavators' },
     { key: 'Long Reach Excavator', label: '50ft Long Reach' },
     { key: 'Rock Breaker', label: 'Rock Breakers' },

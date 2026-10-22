@@ -3,6 +3,44 @@ import { getAssetUrl } from '../utils/assets.ts';
 
 export const EQUIPMENT_LIST: EquipmentItem[] = [
   {
+    id: 'all-vehicles-fleet',
+    name: 'Complete Fleet Package (All Vehicles)',
+    type: 'Full Fleet Turnkey Solution',
+    category: 'Full Fleet',
+    model: 'Sri Venkateshwara Heavy Machinery Fleet (8 Units Combined)',
+    shortDesc: 'Book our entire fleet together with one card: Hitachi 140/215/220, 50ft Long Reach, Rock Breaker, BharatBenz Tipper, Compressor & JCB 3DX.',
+    fullDesc: 'The Complete Fleet Package provides full-scale end-to-end turnkey machinery deployment for major infrastructure, township development, large industrial construction, and highway contracts. Includes all 8 core machines: Hitachi 140 Excavator, Hyundai Robex 215L, Tata Hitachi ZAXIS 220LC Quarry Excavator, 50 Feet Long Reach Excavator, Excavator with Heavy Rock Breaker, BharatBenz 10-Wheeler Tipper Lorry, Tractor Compressor with Blasting Unit, and JCB 3DX Backhoe Loader, complete with dedicated certified heavy machine operators, on-site fuel coordination, and priority mobilization.',
+    status: 'available',
+    statusText: 'Available',
+    image: getAssetUrl('/equipment/all-vehicles-fleet.jpg'),
+    specs: {
+      operatingWeight: '100+ Tonnes Combined Fleet Weight',
+      enginePower: '1,000+ HP Cumulative Engine Output',
+      bucketCapacity: 'Multi-size: 0.26 m³ to 1.15 m³ + 16 CBM Dump Truck',
+      diggingDepth: 'Up to 12.5 meters (41 ft) with 50ft Long Reach',
+      reach: '50 Feet (15.2m) Long Reach + Heavy Rock Breaker',
+      payloadCapacity: '16 CBM Tipper + Heavy Haulage Support',
+      fuelCapacity: 'Full Fleet Multi-Tank Continuous Operation',
+      transmission: 'Hydrostatic Crawler, 4WD & Multi-Axle Heavy Drives'
+    },
+    rates: {
+      hourly: 'Available on Call',
+      daily: 'Tariff on Request',
+      weekly: 'Custom Weekly Tariff',
+      project: 'Turnkey Project Contract Quote'
+    },
+    applications: [
+      'Turnkey Infrastructure & Four-Lane Highway Projects',
+      'Mega Industrial & Residential Township Development',
+      'Mass Earth Excavation, Truck Haulage & Site Leveling',
+      'Deep Well Sinking, Canal & Riverbed Desilting',
+      'Hard Granite Quarry Overburden & Controlled Blasting',
+      'RCC Building Demolition & Instant Debris Removal'
+    ],
+    operatorIncluded: true,
+    minRentalHours: 8
+  },
+  {
     id: 'hitachi-140',
     name: 'Hitachi 140 Excavator',
     type: 'Crawler Hydraulic Excavator',

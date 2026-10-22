@@ -437,6 +437,7 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                       aria-label="Filter by Category"
                     >
                       <option value="all">All Categories</option>
+                      <option value="Full Fleet">Complete Fleet (All Vehicles)</option>
                       <option value="Excavator">Hitachi Excavators</option>
                       <option value="Long Reach Excavator">50ft Long Reach</option>
                       <option value="Rock Breaker">Rock Breakers</option>
@@ -459,6 +460,19 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                     </select>
                   </div>
                 </div>
+
+                {/* Special notice if All Vehicles Fleet package is active */}
+                {activeEquipment.id === 'all-vehicles-fleet' && (
+                  <div className="svem-booking-fleet-banner">
+                    <div className="svem-booking-fleet-banner-badge">⭐ Turnkey Full Fleet Booking</div>
+                    <div className="svem-booking-fleet-banner-content">
+                      <h4 className="svem-booking-fleet-banner-title">Complete Heavy Machinery Fleet Package Selected</h4>
+                      <p className="svem-booking-fleet-banner-desc">
+                        This single booking coordinates all 8 core machinery units for your project: Hitachi 140, Robex 215L, Hitachi 220 Quarry, 50ft Long Reach, Hydraulic Rock Breaker, BharatBenz 10-Wheeler Tipper, Tractor Compressor &amp; Blasting Unit, and JCB 3DX Backhoe Loader with seasoned certified operators.
+                      </p>
+                    </div>
+                  </div>
+                )}
 
                 {/* Carousel Card Slider */}
                 <div className="svem-equipment-carousel-wrapper">
@@ -518,6 +532,11 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                                 className="svem-carousel-card-img"
                                 loading="lazy"
                               />
+                              {item.id === 'all-vehicles-fleet' && (
+                                <div className="svem-carousel-card-package-badge">
+                                  ⭐ All 8 Vehicles
+                                </div>
+                              )}
                             </div>
 
                             <div className="svem-carousel-card-info">
@@ -1057,6 +1076,15 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                     </span>
                   </div>
                 </div>
+
+                {activeEquipment.id === 'all-vehicles-fleet' && (
+                  <div className="svem-sidebar-fleet-callout">
+                    <span className="svem-sidebar-fleet-callout-title">⭐ Complete Fleet Included:</span>
+                    <p className="svem-sidebar-fleet-callout-desc">
+                      Hitachi 140, Robex 215L, Hitachi 220 Quarry, 50ft Long Reach, Rock Breaker, BharatBenz 10W Tipper, Compressor &amp; Blasting, and JCB 3DX with certified operators.
+                    </p>
+                  </div>
+                )}
 
                 <button
                   type="button"

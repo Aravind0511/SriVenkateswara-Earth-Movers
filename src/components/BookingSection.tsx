@@ -251,6 +251,14 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                         </option>
                       ))}
                     </select>
+                    {activeEquipment.id === 'all-vehicles-fleet' && (
+                      <div className="svem-booking-fleet-callout">
+                        <span className="svem-booking-fleet-callout-pill">⭐ All 8 Vehicles Combo</span>
+                        <p className="svem-booking-fleet-callout-desc">
+                          Includes Hitachi 140, 215, 220, 50ft Long Reach, Rock Breaker, BharatBenz Tipper, Compressor &amp; Blasting, and JCB 3DX with certified operators.
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   <div className="svem-form-group">

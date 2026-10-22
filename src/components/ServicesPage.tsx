@@ -74,6 +74,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
   const mapMachineryToId = (machineryName: string): string => {
     const lower = machineryName.toLowerCase();
+    if (lower.includes('all') || lower.includes('fleet') || lower.includes('complete')) return 'all-vehicles-fleet';
     if (lower.includes('long reach') || lower.includes('50')) return 'hitachi-long-reach-50ft';
     if (lower.includes('breaker')) return 'rock-breaker';
     if (lower.includes('compressor') || lower.includes('blasting')) return 'compressor-blasting';

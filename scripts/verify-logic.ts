@@ -28,7 +28,10 @@ function assert(condition, message) {
 }
 
 // 1. Verify Equipment Data
-assert(EQUIPMENT_LIST.length === 8, 'Equipment list has exactly 8 items');
+assert(EQUIPMENT_LIST.length === 9, 'Equipment list has exactly 9 items including Complete Fleet Package');
+const fullFleet = EQUIPMENT_LIST.find(e => e.id === 'all-vehicles-fleet');
+assert(fullFleet && fullFleet.status === 'available', 'Complete Fleet Package (All Vehicles) is available');
+
 const jcb = EQUIPMENT_LIST.find(e => e.id === 'jcb-3dx');
 assert(jcb && jcb.status === 'available', 'JCB 3DX is available');
 
@@ -114,6 +117,7 @@ assert(getWhatsAppUrl().includes('919944745410'), 'WhatsApp URL points to owner 
 
 // 8. Verify No Monetary Amounts in Equipment Rates & Local Equipment Assets Exist
 const equipmentImages = [
+  'all-vehicles-fleet.jpg',
   'hitachi-140.jpg',
   'hitachi-215.jpg',
   'hitachi-220.jpg',

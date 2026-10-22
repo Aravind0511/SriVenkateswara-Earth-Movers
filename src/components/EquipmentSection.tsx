@@ -20,6 +20,7 @@ export const EquipmentSection: React.FC<EquipmentSectionProps> = ({
 
   const categories = [
     { key: 'all', label: 'All Equipment' },
+    { key: 'Full Fleet', label: 'Complete Fleet (All)' },
     { key: 'Excavator', label: 'Hitachi Excavators' },
     { key: 'Long Reach Excavator', label: '50ft Long Reach' },
     { key: 'Rock Breaker', label: 'Rock Breakers' },

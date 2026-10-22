@@ -144,6 +144,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <a
                   href="#/equipment"
+                  className="font-bold text-amber-400"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('equipment');
+                    }
+                  }}
+                >
+                  ⭐ Complete Fleet (All Vehicles)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/equipment"
                   onClick={(e) => {
                     if (onNavigate) {
                       e.preventDefault();

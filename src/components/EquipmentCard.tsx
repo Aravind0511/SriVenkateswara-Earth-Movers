@@ -15,9 +15,10 @@ export const EquipmentCard: React.FC<EquipmentCardProps> = ({
   onBookNow
 }) => {
   const isAvailable = equipment.status === 'available';
+  const isAllVehicles = equipment.id === 'all-vehicles-fleet';
 
   return (
-    <div className="svem-eq-card">
+    <div className={`svem-eq-card ${isAllVehicles ? 'svem-eq-card-featured' : ''}`}>
       {/* Machinery Image Header */}
       <div className="svem-eq-img-wrapper">
         <img
@@ -29,6 +30,11 @@ export const EquipmentCard: React.FC<EquipmentCardProps> = ({
         <div className="svem-eq-badge-category">
           {equipment.type}
         </div>
+        {isAllVehicles && (
+          <div className="svem-eq-badge-package">
+            ⭐ All 8 Vehicles Combo
+          </div>
+        )}
       </div>
 
       {/* Equipment Card Body */}
@@ -69,6 +75,23 @@ export const EquipmentCard: React.FC<EquipmentCardProps> = ({
 
         <p className="svem-eq-desc">{equipment.shortDesc}</p>
 
+        {/* Included Vehicles List for Complete Fleet Card */}
+        {isAllVehicles && (
+          <div className="svem-eq-fleet-included">
+            <span className="svem-eq-fleet-included-title">Included in this booking:</span>
+            <div className="svem-eq-fleet-tags">
+              <span className="svem-eq-fleet-tag">Hitachi 140</span>
+              <span className="svem-eq-fleet-tag">Robex 215L</span>
+              <span className="svem-eq-fleet-tag">Hitachi 220 Quarry</span>
+              <span className="svem-eq-fleet-tag">50ft Long Reach</span>
+              <span className="svem-eq-fleet-tag">Rock Breaker</span>
+              <span className="svem-eq-fleet-tag">BharatBenz Tipper</span>
+              <span className="svem-eq-fleet-tag">Compressor &amp; Blasting</span>
+              <span className="svem-eq-fleet-tag">JCB 3DX</span>
+            </div>
+          </div>
+        )}
+
         {/* Action Buttons */}
         <div className="svem-eq-actions">
           <button
@@ -82,11 +105,13 @@ export const EquipmentCard: React.FC<EquipmentCardProps> = ({
 
           <button
             type="button"
-            className="svem-btn-outline-dark svem-btn-eq-book"
+            className={`svem-btn-outline-dark svem-btn-eq-book ${
+              isAllVehicles ? 'svem-btn-book-all-fleet' : ''
+            }`}
             onClick={() => onBookNow(equipment)}
             title={`Book ${equipment.name}`}
           >
-            <span>Book Now</span>
+            <span>{isAllVehicles ? 'Book All Vehicles' : 'Book Now'}</span>
           </button>
         </div>
       </div>
