@@ -61,7 +61,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
     },
     {
       q: 'How fast can machinery be mobilized to my worksite?',
-      a: 'For sites in Namakkal, Salem, and surrounding districts, we can mobilize our fleet within 2 to 4 hours of confirmation via dedicated lowbed transport.',
+      a: 'We mobilize our machinery rapidly across Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka via dedicated lowbed trailers with prompt on-site setup.',
     },
     {
       q: 'Who supplies diesel / fuel for the machines?',
@@ -140,9 +140,18 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   <div className="svem-detail-text">
                     <span className="svem-detail-label">Main Yard Address</span>
                     <p className="svem-detail-val">{BUSINESS_INFO.address}</p>
-                    <span className="svem-coverage-badge">
-                      Coverage: {BUSINESS_INFO.serviceArea}
-                    </span>
+                    <div className="svem-coverage-wrap">
+                      <span className="svem-coverage-badge">
+                        Coverage: {BUSINESS_INFO.serviceArea}
+                      </span>
+                      <div className="svem-coverage-states-row">
+                        {BUSINESS_INFO.serviceStates.map((state) => (
+                          <span key={state} className="svem-state-pill">
+                            ✓ {state}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
 

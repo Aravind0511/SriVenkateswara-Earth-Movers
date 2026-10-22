@@ -30,7 +30,13 @@ export const BUSINESS_INFO = {
   emergencySupport: "24/7 Breakdown Assistance & Operator Support",
   
   // Service Coverage Area
-  serviceArea: "Salem, Namakkal, Erode, Coimbatore, Karur, Tiruppur & Surrounding Districts",
+  serviceArea: "Tamil Nadu, Kerala, Andhra Pradesh & Karnataka",
+  serviceStates: [
+    "Tamil Nadu",
+    "Kerala",
+    "Andhra Pradesh",
+    "Karnataka"
+  ],
   
   // Social & Map Links
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125218.42398516244!2d78.07722425!3d11.218889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babce281315e985%3A0xa1969a2399999a0!2sNamakkal%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",

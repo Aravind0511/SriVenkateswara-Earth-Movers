@@ -18,11 +18,11 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
 
   const categories = [
     { key: 'all', label: 'All Projects' },
-    { key: 'Excavation', label: 'Deep Excavation' },
-    { key: 'Hauling', label: 'Tipper Hauling' },
-    { key: 'Backhoe Operations', label: 'JCB Backhoe' },
-    { key: 'Road Work', label: 'Road Compaction' },
-    { key: 'Land Development', label: 'Land Leveling' },
+    { key: 'Excavation', label: 'Excavation & Long Reach' },
+    { key: 'Rock Breaking', label: 'Rock Breaking' },
+    { key: 'Haulage', label: 'Tipper Haulage' },
+    { key: 'Earthmoving', label: 'Earthmoving' },
+    { key: 'Drilling & Blasting', label: 'Compressor & Blasting' },
   ];
 
   const filteredItems = useMemo(() => {
@@ -77,7 +77,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
             Our Worksite <span className="text-amber-500">Project Gallery</span>
           </h1>
           <p className="svem-galpage-hero-subtitle">
-            Take a look inside our real-world construction sites, highway infrastructure projects, and bulk earthworks across Salem, Namakkal, and surrounding districts.
+            Take a look inside our real-world construction sites, highway infrastructure projects, and bulk earthworks across Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka.
           </p>
 
           <div className="svem-galpage-hero-stats">

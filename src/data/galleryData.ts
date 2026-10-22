@@ -81,5 +81,21 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     location: 'Infrastructure Corridor',
     image: getAssetUrl('/gallery/kobelco-220-closeup.jpg'),
     description: 'Close-up perspective of 22-ton heavy crawler excavator showcasing reinforced boom and heavy-duty bucket.'
+  },
+  {
+    id: 'gal-11',
+    title: '50 Feet Long Reach Excavator Riverbed & Canal Desilting',
+    category: 'Excavation',
+    location: 'Interstate Project (Tamil Nadu & Kerala)',
+    image: getAssetUrl('/gallery/long-reach-50ft-trench.jpg'),
+    description: 'Specialized 50-foot extended reach boom carrying out deep canal excavation, embankment shaping, and waterway clearing without track edge hazards.'
+  },
+  {
+    id: 'gal-12',
+    title: '50 Feet Long Reach Excavator Deep Pit & Slope Excavation',
+    category: 'Excavation',
+    location: 'Commercial Infrastructure (Karnataka & Andhra Pradesh)',
+    image: getAssetUrl('/gallery/long-reach-50ft-action.jpg'),
+    description: 'Extended boom excavator executing deep foundation digging and high-reach trimming across interstate infrastructure contracts.'
   }
 ];

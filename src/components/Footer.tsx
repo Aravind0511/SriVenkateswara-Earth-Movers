@@ -37,6 +37,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="svem-footer-reg-pill">
               <span>Verified Heavy Equipment Fleet Operator</span>
             </div>
+            <div className="mt-3">
+              <span className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block mb-1.5">
+                Service Coverage States
+              </span>
+              <div className="flex flex-wrap gap-1">
+                {BUSINESS_INFO.serviceStates.map((st) => (
+                  <span
+                    key={st}
+                    className="text-[11px] font-medium bg-slate-800 text-amber-400 border border-slate-700 rounded px-2 py-0.5"
+                  >
+                    {st}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Col 2: Quick Links */}
@@ -269,6 +284,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <p className="svem-footer-contact-item">
                 <MapPin size={16} className="text-amber-500 shrink-0" />
                 <span>{BUSINESS_INFO.address}</span>
+              </p>
+              <p className="svem-footer-contact-item">
+                <span className="text-amber-500 font-bold shrink-0 text-xs">📍</span>
+                <span className="text-xs text-amber-300">Coverage: {BUSINESS_INFO.serviceArea}</span>
               </p>
               <p className="svem-footer-contact-item">
                 <Phone size={16} className="text-amber-500 shrink-0" />

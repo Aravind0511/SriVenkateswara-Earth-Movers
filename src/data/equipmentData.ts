@@ -152,7 +152,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     category: 'Long Reach Excavator',
     model: 'Hitachi Super Long Front 50-Foot Extended Reach',
     shortDesc: 'Specialized 50-foot extended reach boom for deep wells, canal & river desilting, and high-reach demolition.',
-    fullDesc: 'Equipped with a custom-engineered 50-foot (15.2 meter) extended reach boom and arm assembly. Indispensable for job sites where machines cannot operate near edges or deep contours — including deep agricultural well digging, desilting wide canals and rivers from embankments, deep lake reclamation, and safe high-reach building demolition.',
+    fullDesc: 'Equipped with a custom-engineered 50-foot (15.2 meter) extended reach boom and arm assembly. Indispensable for job sites where machines cannot operate near edges or deep contours — including deep agricultural well digging, desilting wide canals and rivers from embankments, deep lake reclamation, and safe high-reach building demolition. Available for rapid interstate deployment across Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka.',
     status: 'available',
     statusText: 'Available',
     image: getAssetUrl('/equipment/hitachi-long-reach-50ft.jpg'),
@@ -175,7 +175,8 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
       '50-Foot Deep Well Sinking & Desilting',
       'Canal, Riverbed & Lake Clearing from Embankment',
       'Steep Slope Trimming & Highway Embankments',
-      'High-Reach Building & Structure Demolition'
+      'High-Reach Building & Structure Demolition',
+      'Interstate Contracts across Tamil Nadu, Kerala, AP & Karnataka'
     ],
     operatorIncluded: true,
     minRentalHours: 6

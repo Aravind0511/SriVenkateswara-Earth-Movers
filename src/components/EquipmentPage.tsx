@@ -94,7 +94,7 @@ export const EquipmentPage: React.FC<EquipmentPageProps> = ({
             Our Heavy <span className="text-amber-500">Equipment Fleet</span>
           </h1>
           <p className="svem-eqpage-hero-subtitle">
-            Reliable, well-maintained earth-moving machinery with certified operators. Ready for immediate project deployment across South India.
+            Reliable, well-maintained earth-moving machinery with certified operators. Ready for immediate project deployment across Tamil Nadu, Kerala, Andhra Pradesh &amp; Karnataka.
           </p>
 
           <div className="svem-eqpage-hero-stats">

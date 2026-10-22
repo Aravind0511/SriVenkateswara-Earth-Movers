@@ -314,7 +314,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
               <div className="svem-cta-banner-text">
                 <h3 className="svem-cta-banner-heading">Need an On-Site Earthwork Estimate?</h3>
                 <p className="svem-cta-banner-sub">
-                  Our site supervisor will visit your location in Salem, Namakkal, or surrounding areas.
+                  Our site supervisor will coordinate your project across Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka.
                 </p>
               </div>
             </div>

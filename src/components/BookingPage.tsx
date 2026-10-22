@@ -854,6 +854,9 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                       onChange={(e) => setProjectLocation(e.target.value)}
                       required
                     />
+                    <span className="text-xs text-amber-800 font-medium mt-1 block">
+                      📍 Service Coverage: Tamil Nadu, Kerala, Andhra Pradesh &amp; Karnataka
+                    </span>
                   </div>
 
                   <div className="svem-form-field">

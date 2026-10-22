@@ -292,6 +292,9 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                       onChange={(e) => setProjectLocation(e.target.value)}
                       required
                     />
+                    <span className="text-xs text-amber-700 font-medium block mt-1">
+                      Service coverage: Tamil Nadu, Kerala, Andhra Pradesh &amp; Karnataka
+                    </span>
                   </div>
                 </div>
 

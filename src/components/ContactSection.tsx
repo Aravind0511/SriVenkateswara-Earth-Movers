@@ -48,6 +48,13 @@ export const ContactSection: React.FC = () => {
                     <span className="svem-contact-label">Business Yard Address</span>
                     <p className="svem-contact-val">{BUSINESS_INFO.address}</p>
                     <span className="svem-placeholder-tag">Service coverage: {BUSINESS_INFO.serviceArea}</span>
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      {BUSINESS_INFO.serviceStates.map((state) => (
+                        <span key={state} className="inline-flex items-center text-[11px] font-semibold text-slate-700 bg-slate-100 border border-slate-300 rounded-full px-2 py-0.5">
+                          ✓ {state}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 

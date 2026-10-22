@@ -23,7 +23,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     id: 'long-reach-excavation',
     title: '50 Feet Long Reach Excavation',
     shortDesc: 'Deep well sinking, wide canal desilting, and high-reach embankment works.',
-    fullDesc: 'Specialized 50-foot extended reach boom excavator designed for jobs where machines cannot get close to edges. Ideal for deep agricultural open wells, canal and river desilting from bank tops, and high-reach demolition.',
+    fullDesc: 'Specialized 50-foot extended reach boom excavator designed for jobs where machines cannot get close to edges. Ideal for deep agricultural open wells, canal and river desilting from bank tops, and high-reach demolition. Available for interstate mobilization across Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka.',
     iconName: 'reach',
     suitableEquipment: ['50 Feet Long Reach Hitachi Excavator'],
     features: ['50-foot deep well digging & desilting', 'Canal & river cleaning from top bank', 'Steep slope profiling & highway dressing', 'High-reach structural access']
@@ -50,7 +50,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     id: 'bulk-haulage',
     title: 'Bulk Haulage & Tipper Transport',
     shortDesc: '16 CBM BharatBenz 10-wheeler tipper fleet for aggregate and muck shifting.',
-    fullDesc: 'High-capacity commercial tipper lorry fleet for transporting blue metal aggregates, M-sand, gravel, excavated earth, and demolition debris across Salem, Namakkal, and surrounding districts.',
+    fullDesc: 'High-capacity commercial tipper lorry fleet for transporting blue metal aggregates, M-sand, gravel, excavated earth, and demolition debris across Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka.',
     iconName: 'haulage',
     suitableEquipment: ['BharatBenz Heavy Tipper Lorry (10-Wheeler)'],
     features: ['16 CBM heavy-tonnage capacity', 'Quarry blue metal & gravel delivery', 'Excavation muck & debris haulage', 'Prompt multi-vehicle fleet deployment']

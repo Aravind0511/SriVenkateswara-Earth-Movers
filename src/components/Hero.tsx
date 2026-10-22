@@ -38,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ onViewEquipment, onBookNow }) => {
 
           {/* Subtitle */}
           <p className="svem-hero-description">
-            Quality machinery. Practical solutions. Support for every project. Hitachi excavators (140, 215, 220), 50-foot long reach, hydraulic rock breaker, BharatBenz tipper trucks, and compressor blasting with experienced operators.
+            Quality machinery. Practical solutions. Support for every project. Hitachi excavators (140, 215, 220), 50-foot long reach, hydraulic rock breaker, BharatBenz tipper trucks, and compressor blasting with experienced operators across Tamil Nadu, Kerala, Andhra Pradesh &amp; Karnataka.
           </p>
 
           {/* Action Buttons */}

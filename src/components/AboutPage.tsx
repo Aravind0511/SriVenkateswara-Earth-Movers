@@ -140,14 +140,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
               </h2>
 
               <p className="about-who-desc">
-                Sri Venkateshwara Earth Movers provides earth-moving equipment rental and
-                support for construction, excavation, road work and land development
-                projects.
+                Sri Venkateshwara Earth Movers provides heavy earth-moving equipment rental and
+                support for construction, excavation, road work, demolition, and land development
+                projects across Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka.
               </p>
               <p className="about-who-desc" style={{ marginTop: '0.65rem' }}>
                 We aim to make it easy for our customers to get the right machinery for
                 their project with clear communication, flexible rental options and reliable
-                service.
+                service throughout the South Indian region.
               </p>
 
               {/* 3 Core Points */}

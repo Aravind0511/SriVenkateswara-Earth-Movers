@@ -148,7 +148,7 @@ for (const item of EQUIPMENT_LIST) {
 }
 
 // 9. Verify Worksite Gallery Assets
-assert(GALLERY_ITEMS.length === 10, 'Gallery contains exactly 10 authentic worksite photos');
+assert(GALLERY_ITEMS.length === 12, 'Gallery contains exactly 12 authentic worksite photos including 50ft Long Reach');
 for (const item of GALLERY_ITEMS) {
   const fileName = path.basename(item.image);
   const fullPath = path.resolve('public/gallery', fileName);
@@ -159,6 +159,16 @@ for (const item of GALLERY_ITEMS) {
     assert(stat.size > 5000, `Gallery image ${fileName} is non-empty (${stat.size} bytes)`);
   }
 }
+
+// 9b. Verify Service Coverage States
+assert(BUSINESS_INFO.serviceArea.includes('Tamil Nadu'), 'serviceArea includes Tamil Nadu');
+assert(BUSINESS_INFO.serviceArea.includes('Kerala'), 'serviceArea includes Kerala');
+assert(BUSINESS_INFO.serviceArea.includes('Andhra Pradesh'), 'serviceArea includes Andhra Pradesh');
+assert(BUSINESS_INFO.serviceArea.includes('Karnataka'), 'serviceArea includes Karnataka');
+assert(BUSINESS_INFO.serviceStates.includes('Tamil Nadu'), 'serviceStates includes Tamil Nadu');
+assert(BUSINESS_INFO.serviceStates.includes('Kerala'), 'serviceStates includes Kerala');
+assert(BUSINESS_INFO.serviceStates.includes('Andhra Pradesh'), 'serviceStates includes Andhra Pradesh');
+assert(BUSINESS_INFO.serviceStates.includes('Karnataka'), 'serviceStates includes Karnataka');
 
 // 10. Verify All 7 Dedicated Routes & Route Parsing
 assert(VALID_ROUTES.length === 7, 'Exactly 7 dedicated routes configured');
