@@ -60,7 +60,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
       case 'rock-breaking-blasting':
         return getAssetUrl('/equipment/rock-breaker.jpg');
       case 'long-reach-excavation':
-        return getAssetUrl('/equipment/hitachi-long-reach-50ft.jpg');
+        return getAssetUrl('/services/50ft-long-reach-service.jpg?v=20261022');
       case 'building-demolition':
         return getAssetUrl('/gallery/rock-breaker-action.jpg');
       case 'earth-filling':

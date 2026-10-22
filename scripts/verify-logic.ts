@@ -122,6 +122,7 @@ const equipmentImages = [
   'hitachi-215.jpg',
   'hitachi-220.jpg',
   'hitachi-long-reach-50ft.jpg',
+  'hitachi-50ft-long-reach-v2.jpg',
   'rock-breaker.jpg',
   'tipper-lorry.jpg',
   'compressor-blasting.jpg',
@@ -138,7 +139,15 @@ for (const eqImg of equipmentImages) {
   }
 }
 
+// Verify dedicated 50ft service image exists
+const serviceImgPath = path.resolve('public/services/50ft-long-reach-service.jpg');
+assert(fs.existsSync(serviceImgPath), 'Dedicated 50ft long reach service image exists in public/services');
+assert(fs.statSync(serviceImgPath).size > 5000, 'Dedicated 50ft long reach service image is non-empty');
+
 for (const item of EQUIPMENT_LIST) {
+  const eqImgName = path.basename(item.image.split('?')[0]);
+  const fullEqPath = path.resolve('public/equipment', eqImgName);
+  assert(fs.existsSync(fullEqPath), `Configured equipment image ${eqImgName} exists on disk`);
   assert(!item.rates.daily.includes('₹'), `No monetary currency symbol in ${item.name} daily rate`);
   assert(!item.rates.hourly.includes('₹'), `No monetary currency symbol in ${item.name} hourly rate`);
   assert(!item.rates.weekly.includes('₹'), `No monetary currency symbol in ${item.name} weekly rate`);
@@ -150,7 +159,7 @@ for (const item of EQUIPMENT_LIST) {
 // 9. Verify Worksite Gallery Assets
 assert(GALLERY_ITEMS.length === 12, 'Gallery contains exactly 12 authentic worksite photos including 50ft Long Reach');
 for (const item of GALLERY_ITEMS) {
-  const fileName = path.basename(item.image);
+  const fileName = path.basename(item.image.split('?')[0]);
   const fullPath = path.resolve('public/gallery', fileName);
   const exists = fs.existsSync(fullPath);
   assert(exists, `Gallery image ${item.title} exists in public/gallery (${fileName})`);

@@ -155,7 +155,7 @@ export const EQUIPMENT_LIST: EquipmentItem[] = [
     fullDesc: 'Equipped with a custom-engineered 50-foot (15.2 meter) extended reach boom and arm assembly. Indispensable for job sites where machines cannot operate near edges or deep contours — including deep agricultural well digging, desilting wide canals and rivers from embankments, deep lake reclamation, and safe high-reach building demolition. Available for rapid interstate deployment across Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka.',
     status: 'available',
     statusText: 'Available',
-    image: getAssetUrl('/equipment/hitachi-long-reach-50ft.jpg'),
+    image: getAssetUrl('/equipment/hitachi-50ft-long-reach-v2.jpg?v=20261022'),
     specs: {
       operatingWeight: '24,500 kg',
       enginePower: '160 HP Common Rail Turbo Diesel',

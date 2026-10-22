@@ -87,7 +87,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: '50 Feet Long Reach Excavator Riverbed & Canal Desilting',
     category: 'Excavation',
     location: 'Interstate Project (Tamil Nadu & Kerala)',
-    image: getAssetUrl('/gallery/long-reach-50ft-trench.jpg'),
+    image: getAssetUrl('/gallery/long-reach-50ft-trench.jpg?v=20261022'),
     description: 'Specialized 50-foot extended reach boom carrying out deep canal excavation, embankment shaping, and waterway clearing without track edge hazards.'
   },
   {
@@ -95,7 +95,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: '50 Feet Long Reach Excavator Deep Pit & Slope Excavation',
     category: 'Excavation',
     location: 'Commercial Infrastructure (Karnataka & Andhra Pradesh)',
-    image: getAssetUrl('/gallery/long-reach-50ft-action.jpg'),
+    image: getAssetUrl('/gallery/long-reach-50ft-action.jpg?v=20261022'),
     description: 'Extended boom excavator executing deep foundation digging and high-reach trimming across interstate infrastructure contracts.'
   }
 ];
