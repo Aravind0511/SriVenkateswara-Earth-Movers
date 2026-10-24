@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense, useCallback } from 'react';
 import { EQUIPMENT_LIST } from './data/equipmentData';
 import { INITIAL_BOOKINGS } from './data/initialBookings';
 import type { EquipmentItem, Booking, ServiceItem, AppPage } from './types';
@@ -14,13 +14,31 @@ import { FooterCTA } from './components/FooterCTA';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { BookingConfirmationModal } from './components/BookingConfirmationModal';
-import { AboutPage } from './components/AboutPage';
-import { EquipmentPage } from './components/EquipmentPage';
-import { ServicesPage } from './components/ServicesPage';
-import { GalleryPage } from './components/GalleryPage';
-import { BookingPage } from './components/BookingPage';
-import { ContactPage } from './components/ContactPage';
 import { parseRoute } from './utils/routeUtils';
+
+// Asynchronously load subpages to reduce initial bundle size and optimize LCP/TTI
+const AboutPage = lazy(() => import('./components/AboutPage').then((m) => ({ default: m.AboutPage })));
+const EquipmentPage = lazy(() => import('./components/EquipmentPage').then((m) => ({ default: m.EquipmentPage })));
+const ServicesPage = lazy(() => import('./components/ServicesPage').then((m) => ({ default: m.ServicesPage })));
+const GalleryPage = lazy(() => import('./components/GalleryPage').then((m) => ({ default: m.GalleryPage })));
+const BookingPage = lazy(() => import('./components/BookingPage').then((m) => ({ default: m.BookingPage })));
+const ContactPage = lazy(() => import('./components/ContactPage').then((m) => ({ default: m.ContactPage })));
+
+const PageLoadingFallback = () => (
+  <div className="svem-page-loading" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div
+      className="svem-spinner"
+      style={{
+        width: '40px',
+        height: '40px',
+        border: '3px solid #e2e8f0',
+        borderTopColor: '#f59e0b',
+        borderRadius: '50%',
+        animation: 'spin 0.8s linear infinite',
+      }}
+    />
+  </div>
+);
 
 export function App() {
   const [currentPage, setCurrentPage] = useState<AppPage>(() => {
@@ -65,7 +83,7 @@ export function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: AppPage, sectionId?: string) => {
+  const navigateTo = useCallback((page: AppPage, sectionId?: string) => {
     setCurrentPage(page);
     if (page === 'home') {
       if (sectionId) {
@@ -87,25 +105,25 @@ export function App() {
       window.location.hash = `#/${page}`;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  };
+  }, []);
 
-  const handleBookNow = (item: EquipmentItem) => {
+  const handleBookNow = useCallback((item: EquipmentItem) => {
     setSelectedEquipmentId(item.id);
     setActiveEquipmentModal(null);
     navigateTo('booking');
-  };
+  }, [navigateTo]);
 
-  const handleAddBooking = (newBooking: Booking) => {
+  const handleAddBooking = useCallback((newBooking: Booking) => {
     setBookings((prev) => [newBooking, ...prev]);
-  };
+  }, []);
 
-  const handleBookingSuccess = (booking: Booking) => {
+  const handleBookingSuccess = useCallback((booking: Booking) => {
     setActiveBookingConfirmation(booking);
-  };
+  }, []);
 
-  const handleSelectService = (_service: ServiceItem) => {
+  const handleSelectService = useCallback((_service: ServiceItem) => {
     navigateTo('services');
-  };
+  }, [navigateTo]);
 
   return (
     <div className="svem-app">
@@ -116,111 +134,113 @@ export function App() {
         onOpenBooking={() => navigateTo('booking')}
       />
 
-      {/* Main Content Router */}
+      {/* Main Content Router with Suspense lazy loading boundary */}
       <main>
-        {currentPage === 'about' && (
-          <AboutPage
-            onNavigate={navigateTo}
-            onOpenBooking={() => navigateTo('booking')}
-          />
-        )}
-
-        {currentPage === 'equipment' && (
-          <>
-            <EquipmentPage
-              equipmentList={equipmentList}
-              onBookNow={handleBookNow}
-              onViewDetails={(item) => setActiveEquipmentModal(item)}
+        <Suspense fallback={<PageLoadingFallback />}>
+          {currentPage === 'about' && (
+            <AboutPage
               onNavigate={navigateTo}
+              onOpenBooking={() => navigateTo('booking')}
             />
-            <Footer onNavigate={navigateTo} />
-          </>
-        )}
+          )}
 
-        {currentPage === 'services' && (
-          <>
-            <ServicesPage
-              onNavigate={navigateTo}
-              onSelectEquipmentToBook={(eqId) => {
-                setSelectedEquipmentId(eqId);
-              }}
-            />
-            <Footer onNavigate={navigateTo} />
-          </>
-        )}
+          {currentPage === 'equipment' && (
+            <>
+              <EquipmentPage
+                equipmentList={equipmentList}
+                onBookNow={handleBookNow}
+                onViewDetails={(item) => setActiveEquipmentModal(item)}
+                onNavigate={navigateTo}
+              />
+              <Footer onNavigate={navigateTo} />
+            </>
+          )}
 
-        {currentPage === 'gallery' && (
-          <>
-            <GalleryPage onNavigate={navigateTo} />
-            <Footer onNavigate={navigateTo} />
-          </>
-        )}
+          {currentPage === 'services' && (
+            <>
+              <ServicesPage
+                onNavigate={navigateTo}
+                onSelectEquipmentToBook={(eqId) => {
+                  setSelectedEquipmentId(eqId);
+                }}
+              />
+              <Footer onNavigate={navigateTo} />
+            </>
+          )}
 
-        {currentPage === 'booking' && (
-          <>
-            <BookingPage
-              equipmentList={equipmentList}
-              selectedEquipmentId={selectedEquipmentId}
-              onSelectEquipmentId={setSelectedEquipmentId}
-              bookings={bookings}
-              onAddBooking={handleAddBooking}
-              onBookingSuccess={handleBookingSuccess}
-              onViewEquipmentDetails={(item) => setActiveEquipmentModal(item)}
-              onNavigate={navigateTo}
-            />
-            <Footer onNavigate={navigateTo} />
-          </>
-        )}
+          {currentPage === 'gallery' && (
+            <>
+              <GalleryPage onNavigate={navigateTo} />
+              <Footer onNavigate={navigateTo} />
+            </>
+          )}
 
-        {currentPage === 'contact' && (
-          <>
-            <ContactPage onNavigate={navigateTo} />
-            <Footer onNavigate={navigateTo} />
-          </>
-        )}
+          {currentPage === 'booking' && (
+            <>
+              <BookingPage
+                equipmentList={equipmentList}
+                selectedEquipmentId={selectedEquipmentId}
+                onSelectEquipmentId={setSelectedEquipmentId}
+                bookings={bookings}
+                onAddBooking={handleAddBooking}
+                onBookingSuccess={handleBookingSuccess}
+                onViewEquipmentDetails={(item) => setActiveEquipmentModal(item)}
+                onNavigate={navigateTo}
+              />
+              <Footer onNavigate={navigateTo} />
+            </>
+          )}
 
-        {currentPage === 'home' && (
-          <>
-            {/* Full-width Hero Section */}
-            <Hero
-              onViewEquipment={() => navigateTo('equipment')}
-              onBookNow={() => navigateTo('booking')}
-            />
+          {currentPage === 'contact' && (
+            <>
+              <ContactPage onNavigate={navigateTo} />
+              <Footer onNavigate={navigateTo} />
+            </>
+          )}
 
-            {/* Equipment Catalogue Section */}
-            <EquipmentSection
-              equipmentList={equipmentList}
-              onViewDetails={(item) => setActiveEquipmentModal(item)}
-              onBookNow={handleBookNow}
-              onViewAll={() => navigateTo('equipment')}
-            />
+          {currentPage === 'home' && (
+            <>
+              {/* Full-width Hero Section */}
+              <Hero
+                onViewEquipment={() => navigateTo('equipment')}
+                onBookNow={() => navigateTo('booking')}
+              />
 
-            {/* Core Booking Section with Interactive Availability Calendar & Why Choose Us */}
-            <BookingSection
-              equipmentList={equipmentList}
-              selectedEquipmentId={selectedEquipmentId}
-              onSelectEquipmentId={setSelectedEquipmentId}
-              bookings={bookings}
-              onAddBooking={handleAddBooking}
-              onBookingSuccess={handleBookingSuccess}
-            />
+              {/* Equipment Catalogue Section */}
+              <EquipmentSection
+                equipmentList={equipmentList}
+                onViewDetails={(item) => setActiveEquipmentModal(item)}
+                onBookNow={handleBookNow}
+                onViewAll={() => navigateTo('equipment')}
+              />
 
-            {/* 5 Core Earth-Moving Services */}
-            <ServicesSection onSelectService={handleSelectService} />
+              {/* Core Booking Section with Interactive Availability Calendar & Why Choose Us */}
+              <BookingSection
+                equipmentList={equipmentList}
+                selectedEquipmentId={selectedEquipmentId}
+                onSelectEquipmentId={setSelectedEquipmentId}
+                bookings={bookings}
+                onAddBooking={handleAddBooking}
+                onBookingSuccess={handleBookingSuccess}
+              />
 
-            {/* Worksite Gallery & Customer Reviews Side-by-Side */}
-            <WorkAndReviewsSection />
+              {/* 5 Core Earth-Moving Services */}
+              <ServicesSection onSelectService={handleSelectService} />
 
-            {/* Contact Yard Details & Message Form */}
-            <ContactSection />
+              {/* Worksite Gallery & Customer Reviews Side-by-Side */}
+              <WorkAndReviewsSection />
 
-            {/* Dark Footer Action Bar */}
-            <FooterCTA onOpenBooking={() => navigateTo('booking')} />
+              {/* Contact Yard Details & Message Form */}
+              <ContactSection />
 
-            {/* Complete Home Footer */}
-            <Footer onNavigate={navigateTo} />
-          </>
-        )}
+              {/* Dark Footer Action Bar */}
+              <FooterCTA onOpenBooking={() => navigateTo('booking')} />
+
+              {/* Complete Home Footer */}
+              <Footer onNavigate={navigateTo} />
+            </>
+          )}
+        </Suspense>
       </main>
 
       {/* Floating Bottom-Right WhatsApp CTA */}

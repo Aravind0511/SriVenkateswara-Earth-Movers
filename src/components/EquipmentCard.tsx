@@ -26,6 +26,7 @@ export const EquipmentCard: React.FC<EquipmentCardProps> = ({
           alt={equipment.name}
           className="svem-eq-img"
           loading="lazy"
+          decoding="async"
         />
         <div className="svem-eq-badge-category">
           {equipment.type}

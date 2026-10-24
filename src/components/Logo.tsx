@@ -32,6 +32,9 @@ export const Logo: React.FC<LogoProps> = ({
           alt="Sri Venkateshwara Earth Movers"
           className="svem-logo-img"
           loading="eager"
+          {...({ fetchpriority: 'high' } as any)}
+          width="48"
+          height="48"
         />
       </div>
 

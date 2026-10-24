@@ -59,6 +59,9 @@ export const EquipmentModal: React.FC<EquipmentModalProps> = ({
               src={equipment.image}
               alt={equipment.name}
               className="svem-modal-img"
+              loading="lazy"
+              decoding="async"
+              {...({ fetchpriority: 'low' } as any)}
             />
             <div className="svem-modal-media-overlay">
               <span
