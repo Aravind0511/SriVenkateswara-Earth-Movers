@@ -357,6 +357,12 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                       endDate={endDate}
                       onSelectDateRange={handleSelectDateRange}
                       onUnavailableDateSelected={handleUnavailableDateSelected}
+                      onClearDates={() => {
+                        setStartDate('');
+                        setEndDate('');
+                        setManualWarning(null);
+                        setFormError(null);
+                      }}
                     />
                   </div>
 

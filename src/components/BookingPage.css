@@ -1,1672 +1,694 @@
 /* ==========================================================================
-   SRI VENKATESHWARA EARTH MOVERS - DETAILED BOOKING PAGE STYLES
-   Faithful recreation of reference template UI
+   SRI VENKATESHWARA EARTH MOVERS - STREAMLINED BOOKING PAGE STYLES
+   Clean, modern, simple, mobile-friendly 2-column layout
    ========================================================================== */
 
 .svem-booking-page {
   background-color: #f8fafc;
   min-height: 100vh;
-  padding-bottom: 3rem;
-  color: #1e293b;
-  font-family: inherit;
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-  box-sizing: border-box;
+  padding-bottom: 4rem;
 }
 
-/* --------------------------------------------------------------------------
-   1. HERO SECTION
-   -------------------------------------------------------------------------- */
-.svem-booking-hero {
-  position: relative;
-  background: linear-gradient(
-      135deg,
-      #0f172a 0%,
-      #1e293b 50%,
-      #0f172a 100%
-    );
-  padding: 3.5rem 1rem 3.5rem;
+/* -------------------------------------------------------------------------- */
+/* Hero Header Banner                                                         */
+/* -------------------------------------------------------------------------- */
+.svem-booking-simple-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #ffffff;
+  padding: 3rem 1rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.svem-booking-simple-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f59e0b, #d97706, #b45309);
 }
 
 .svem-booking-breadcrumb {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  color: #cbd5e1;
-  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  margin-bottom: 1rem;
 }
 
 .svem-breadcrumb-link {
-  color: #94a3b8;
+  color: #cbd5e1;
   cursor: pointer;
   transition: color 0.15s ease;
 }
 
 .svem-breadcrumb-link:hover {
-  color: #fbbf24;
+  color: #f59e0b;
 }
 
 .svem-breadcrumb-sep {
   color: #64748b;
-  font-size: 0.75rem;
 }
 
 .svem-breadcrumb-current {
-  color: #f1f5f9;
-  font-weight: 500;
+  color: #f59e0b;
+  font-weight: 600;
 }
 
 .svem-booking-hero-title {
-  font-size: 2.75rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
+  line-height: 1.2;
   color: #ffffff;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
 }
 
 .svem-booking-hero-accent {
   color: #f59e0b;
 }
 
-.svem-booking-hero-tagline {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #e2e8f0;
-  margin-bottom: 0.5rem;
-}
-
 .svem-booking-hero-desc {
-  font-size: 1rem;
-  color: #94a3b8;
-  max-width: 600px;
-  line-height: 1.5;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .svem-booking-hero {
-    padding: 2rem 1rem;
-  }
-
-  .svem-booking-hero-title {
-    font-size: 1.85rem;
-  }
-
-  .svem-booking-hero-tagline {
-    font-size: 1rem;
-  }
-
-  .svem-booking-hero-desc {
-    font-size: 0.875rem;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   2. 5-STEP PROGRESS BAR SECTION
-   -------------------------------------------------------------------------- */
-.svem-booking-steps-section {
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 1.25rem 1rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.svem-booking-steps-grid {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  overflow-x: auto;
-  padding-bottom: 0.25rem;
-  width: 100%;
-}
-
-.svem-step-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-shrink: 0;
-}
-
-.svem-step-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-weight: 700;
-}
-
-.svem-step-icon-primary {
-  background: #f59e0b;
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.35);
-}
-
-.svem-step-icon-secondary {
-  background: #f1f5f9;
-  color: #475569;
-  border: 1px solid #e2e8f0;
-}
-
-.svem-step-active .svem-step-icon-secondary {
-  background: #fffbeb;
-  color: #d97706;
-  border-color: #fde68a;
-}
-
-.svem-step-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.svem-step-num-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0f172a;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.svem-step-num {
-  color: #f59e0b;
-}
-
-.svem-step-sub {
-  font-size: 0.75rem;
-  color: #64748b;
-  white-space: nowrap;
-}
-
-.svem-step-arrow {
+  max-width: 620px;
+  margin: 0 auto 1.25rem;
   color: #cbd5e1;
-  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-  .svem-booking-steps-section {
-    padding: 0.75rem 0.5rem;
-  }
-
-  .svem-booking-steps-grid {
-    justify-content: flex-start;
-    gap: 0.5rem;
-    padding: 0.25rem 0.5rem 0.4rem;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .svem-booking-steps-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .svem-step-item {
-    gap: 0.4rem;
-    padding: 0.35rem 0.75rem;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 9999px;
-    scroll-snap-align: start;
-  }
-
-  .svem-step-active {
-    background: #fffbeb !important;
-    border-color: #fde68a !important;
-  }
-
-  .svem-step-icon-wrap {
-    width: 26px;
-    height: 26px;
-  }
-
-  .svem-step-icon-wrap svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .svem-step-num-title {
-    font-size: 0.8rem;
-    white-space: nowrap;
-  }
-
-  .svem-step-sub {
-    display: none;
-  }
-
-  .svem-step-arrow {
-    display: none;
-  }
+.svem-booking-coverage-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fbbf24;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
 }
 
-/* --------------------------------------------------------------------------
-   3. MAIN TWO-COLUMN CONTAINER & LAYOUT
-   -------------------------------------------------------------------------- */
-.svem-booking-main-container {
-  margin-top: 2rem;
-  width: 100%;
-  max-width: 1240px;
+/* -------------------------------------------------------------------------- */
+/* Main Content & Two-Column Grid                                             */
+/* -------------------------------------------------------------------------- */
+.svem-booking-main-section {
+  padding-top: 2rem;
 }
 
-.svem-booking-grid-wrapper {
+.svem-booking-simple-layout {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  align-items: start;
-  width: 100%;
-  min-width: 0;
+  align-items: flex-start;
 }
 
-.svem-booking-form-column {
-  min-width: 0;
-  width: 100%;
-}
-
-@media (max-width: 1024px) {
-  .svem-booking-grid-wrapper {
+@media (max-width: 960px) {
+  .svem-booking-simple-layout {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 }
 
-@media (max-width: 768px) {
-  .svem-booking-main-container {
-    margin-top: 1.25rem;
-  }
-
-  .svem-booking-card-section {
-    padding: 1.25rem 1rem !important;
-    border-radius: 12px;
-    margin-bottom: 1.25rem !important;
-  }
-
-  .svem-card-section-title {
-    font-size: 1.15rem !important;
-  }
-}
-
-/* Common Card Section Styling */
-.svem-booking-card-section {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.75rem;
-  margin-bottom: 1.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-/* Complete Fleet Banner & Callout Styles */
-.svem-booking-fleet-banner {
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  border: 1px solid #fde68a;
-  border-left: 4px solid #f59e0b;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
+.svem-booking-left-col,
+.svem-booking-right-col {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 1.5rem;
 }
 
-.svem-booking-fleet-banner-badge {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 0.725rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #92400e;
-  background: #fde68a;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
+/* -------------------------------------------------------------------------- */
+/* Clean Card Components                                                      */
+/* -------------------------------------------------------------------------- */
+.svem-simple-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
-.svem-booking-fleet-banner-title {
-  font-size: 1rem;
-  font-weight: 800;
-  color: #78350f;
-  margin: 0.25rem 0 0.15rem;
+.svem-card-primary-form {
+  border-top: 4px solid #f59e0b;
 }
 
-.svem-booking-fleet-banner-desc {
-  font-size: 0.825rem;
-  color: #92400e;
-  line-height: 1.45;
-  margin: 0;
+.svem-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.svem-carousel-card-package-badge {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: #0f172a;
-  font-size: 0.675rem;
-  font-weight: 800;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-  z-index: 2;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.svem-sidebar-fleet-callout {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: #fffbeb;
-  border: 1px dashed #f59e0b;
-  border-radius: 8px;
-}
-
-.svem-sidebar-fleet-callout-title {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: #92400e;
-  margin-bottom: 0.25rem;
-}
-
-.svem-sidebar-fleet-callout-desc {
-  font-size: 0.75rem;
-  color: #78350f;
-  line-height: 1.4;
-  margin: 0;
-}
-
-.svem-section-title-bar {
+.svem-step-badge {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background-color: #f59e0b;
+  color: #ffffff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
 }
 
-.svem-section-accent-bar {
-  width: 5px;
-  height: 24px;
-  background: #f59e0b;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-.svem-card-section-title {
-  font-size: 1.35rem;
+.svem-card-title {
+  font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
+  line-height: 1.2;
   margin: 0;
 }
 
-/* --------------------------------------------------------------------------
-   SECTION 1: SELECT EQUIPMENT
-   -------------------------------------------------------------------------- */
-.svem-filter-controls-row {
-  display: grid;
-  grid-template-columns: 2fr 1.2fr 1.2fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+.svem-card-subtitle {
+  font-size: 0.8125rem;
+  color: #64748b;
+  margin: 0.25rem 0 0;
 }
 
-@media (max-width: 768px) {
-  .svem-filter-controls-row {
-    grid-template-columns: 1fr;
-  }
+/* -------------------------------------------------------------------------- */
+/* Equipment Selector & Preview                                               */
+/* -------------------------------------------------------------------------- */
+.svem-eq-dropdown-wrap {
+  margin-bottom: 1rem;
 }
 
-.svem-search-input-box {
-  position: relative;
+.svem-input-label {
   display: flex;
   align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.4rem;
 }
 
-.svem-search-icon {
-  position: absolute;
-  left: 0.875rem;
-  color: #94a3b8;
-  pointer-events: none;
+.svem-label-icon {
+  color: #d97706;
 }
 
-.svem-search-input {
+.svem-req {
+  color: #ef4444;
+}
+
+.svem-select-input {
   width: 100%;
-  padding: 0.65rem 0.875rem 0.65rem 2.5rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0f172a;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
   outline: none;
-  background: #ffffff;
-  transition: border-color 0.15s ease;
 }
 
-.svem-search-input:focus {
+.svem-select-input:focus {
   border-color: #f59e0b;
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
 }
 
-.svem-filter-dropdown {
-  width: 100%;
-  padding: 0.65rem 0.875rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: #334155;
-  background-color: #ffffff;
-  outline: none;
-  cursor: pointer;
-}
-
-.svem-filter-dropdown:focus {
-  border-color: #f59e0b;
-}
-
-/* Carousel */
-.svem-equipment-carousel-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.svem-equipment-carousel-track {
-  display: flex;
-  gap: 1.25rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 0.5rem 0.25rem 1rem;
-  scrollbar-width: thin;
-  width: 100%;
-  min-width: 0;
-}
-
-.svem-carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #334155;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.15s ease;
-}
-
-.svem-carousel-arrow:hover {
-  background: #f8fafc;
-  color: #f59e0b;
-}
-
-.svem-carousel-arrow-prev {
-  left: -12px;
-}
-
-.svem-carousel-arrow-next {
-  right: -12px;
-}
-
-.svem-carousel-card {
-  position: relative;
-  flex: 0 0 230px;
-  max-width: 260px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+/* Turnkey Fleet Banner */
+.svem-fleet-highlight-box {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 1px solid #fde68a;
   border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  scroll-snap-align: start;
-}
-
-@media (max-width: 640px) {
-  .svem-equipment-carousel-track {
-    gap: 0.85rem;
-    padding: 0.25rem 0.25rem 0.85rem;
-  }
-
-  .svem-carousel-card {
-    flex: 0 0 80%;
-    max-width: 290px;
-    scroll-snap-align: center;
-  }
-
-  .svem-carousel-arrow {
-    display: none;
-  }
-}
-
-.svem-carousel-card:hover {
-  border-color: #cbd5e1;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-.svem-carousel-card-selected {
-  border: 2px solid #f59e0b !important;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.18);
-}
-
-.svem-card-check-badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #f59e0b;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.svem-carousel-card-img-wrap {
-  width: 100%;
-  height: 130px;
-  background: #f1f5f9;
-  overflow: hidden;
-}
-
-.svem-carousel-card-img {
-  width: 100%;
-  height: 130px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.svem-carousel-card:hover .svem-carousel-card-img {
-  transform: scale(1.04);
-}
-
-.svem-carousel-card-info {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.svem-carousel-card-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 0.2rem;
-}
-
-.svem-carousel-card-type {
-  font-size: 0.8rem;
-  color: #64748b;
-  margin: 0 0 0.75rem;
-}
-
-.svem-carousel-card-status {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.875rem;
-}
-
-.svem-status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.svem-status-dot-green {
-  background: #10b981;
-}
-
-.svem-status-dot-amber {
-  background: #f59e0b;
-}
-
-.svem-status-text {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #475569;
-}
-
-.svem-card-select-btn {
-  margin-top: auto;
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  color: #334155;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.svem-card-select-btn:hover {
-  background: #f8fafc;
-  border-color: #94a3b8;
-}
-
-.svem-card-select-btn-active {
-  background: #f59e0b !important;
-  border-color: #f59e0b !important;
-  color: #ffffff !important;
-}
-
-.svem-carousel-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-top: 0.75rem;
-}
-
-.svem-carousel-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #cbd5e1;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.svem-carousel-dot-active {
-  width: 20px;
-  border-radius: 4px;
-  background: #f59e0b;
-}
-
-.svem-carousel-empty-box {
-  width: 100%;
-  padding: 2.5rem 1rem;
-  text-align: center;
-  background: #f8fafc;
-  border: 1px dashed #cbd5e1;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-.svem-carousel-empty-msg {
-  font-size: 0.95rem;
-  color: #64748b;
-  margin: 0;
-}
-
-.svem-carousel-reset-btn {
-  padding: 0.5rem 1rem;
-  background: #f59e0b;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.svem-carousel-reset-btn:hover {
-  background: #d97706;
-}
-
-/* --------------------------------------------------------------------------
-   SECTION 2: SELECT RENTAL DATE & DURATION (CRITICAL ADJUSTMENT)
-   Single calendar on Left, Duration cards on Right
-   -------------------------------------------------------------------------- */
-.svem-dates-input-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
-}
-
-@media (max-width: 640px) {
-  .svem-dates-input-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.svem-form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.svem-field-label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #334155;
-}
-
-.svem-req-star {
-  color: #ef4444;
-}
-
-.svem-date-picker-input {
-  width: 100%;
-  padding: 0.65rem 0.875rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: #1e293b;
-  background: #ffffff;
-  outline: none;
-}
-
-.svem-date-picker-input:focus {
-  border-color: #f59e0b;
-}
-
-.svem-section2-body-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.5rem;
-  align-items: start;
-  width: 100%;
-  min-width: 0;
-}
-
-@media (max-width: 768px) {
-  .svem-section2-body-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .svem-section2-calendar-box {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-  }
-}
-
-.svem-section2-calendar-box {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0.85rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.svem-section2-duration-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.svem-duration-group-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 0.875rem;
-}
-
-.svem-duration-cards-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-@media (max-width: 640px) {
-  .svem-duration-cards-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.65rem;
-  }
-
-  .svem-duration-card {
-    padding: 0.65rem 0.75rem !important;
-    gap: 0.5rem !important;
-  }
-
-  .svem-duration-card-icon-wrap {
-    width: 32px !important;
-    height: 32px !important;
-  }
-
-  .svem-duration-name {
-    font-size: 0.85rem !important;
-  }
-
-  .svem-duration-desc {
-    display: none !important;
-  }
-
-  .svem-popular-badge {
-    display: none;
-  }
-}
-
-.svem-duration-card {
-  display: flex;
-  align-items: center;
-  gap: 0.875rem;
   padding: 0.875rem 1rem;
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.svem-duration-card:hover {
-  border-color: #cbd5e1;
-  background: #fcfcfd;
-}
-
-.svem-duration-card-active {
-  border-color: #f59e0b !important;
-  background: #fffbeb !important;
-}
-
-.svem-duration-card-icon-wrap {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background: #f1f5f9;
-  color: #475569;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.svem-duration-card-active .svem-duration-card-icon-wrap {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.svem-duration-card-info {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.svem-duration-tag-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.svem-duration-name {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.svem-popular-badge {
-  font-size: 0.7rem;
-  font-weight: 600;
-  background: #fef3c7;
-  color: #b45309;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-}
-
-.svem-duration-desc {
-  font-size: 0.75rem;
-  color: #64748b;
-  margin-top: 0.1rem;
-}
-
-.svem-duration-radio {
-  flex-shrink: 0;
-}
-
-.svem-radio-circle {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid #cbd5e1;
-  background: #ffffff;
-  transition: all 0.15s ease;
-}
-
-.svem-radio-circle-checked {
-  border-color: #f59e0b;
-  background: #f59e0b;
-  box-shadow: inset 0 0 0 3px #ffffff;
-}
-
-/* --------------------------------------------------------------------------
-   SECTION 3 & 4: FORMS
-   -------------------------------------------------------------------------- */
-.svem-form-row-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-
-.svem-form-row-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
   margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-  .svem-form-row-3,
-  .svem-form-row-2 {
-    grid-template-columns: 1fr;
-  }
-}
-
-.svem-form-dropdown,
-.svem-form-text-input,
-.svem-form-textarea {
-  width: 100%;
-  padding: 0.65rem 0.875rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: #1e293b;
-  background: #ffffff;
-  outline: none;
-  font-family: inherit;
-  transition: border-color 0.15s ease;
-}
-
-.svem-form-dropdown:focus,
-.svem-form-text-input:focus,
-.svem-form-textarea:focus {
-  border-color: #f59e0b;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.12);
-}
-
-.svem-field-full {
-  margin-bottom: 1.25rem;
-}
-
-.svem-terms-checkbox-wrap {
-  margin: 1.25rem 0 1.5rem;
-}
-
-.svem-checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  cursor: pointer;
-  font-size: 0.875rem;
-  color: #475569;
-}
-
-.svem-checkbox-input {
-  margin-top: 0.2rem;
-  cursor: pointer;
-  accent-color: #f59e0b;
-}
-
-.svem-form-error-banner {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #b91c1c;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1.25rem;
-}
-
-.svem-submit-btn-row {
-  margin-top: 1rem;
-}
-
-.svem-btn-booking-submit-big {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  background: #f59e0b;
-  color: #ffffff;
-  font-size: 1.05rem;
-  font-weight: 700;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-}
-
-.svem-btn-booking-submit-big:hover:not(:disabled) {
-  background: #d97706;
-  box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35);
-  transform: translateY(-1px);
-}
-
-.svem-btn-disabled {
-  opacity: 0.6;
-  cursor: not-allowed !important;
-  background: #94a3b8 !important;
-  box-shadow: none !important;
-}
-
-/* --------------------------------------------------------------------------
-   RIGHT STICKY SIDEBAR
-   -------------------------------------------------------------------------- */
-.svem-booking-sidebar-column {
-  position: relative;
-}
-
-.svem-sidebar-sticky-wrap {
-  position: sticky;
-  top: 90px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.svem-sidebar-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.svem-sidebar-card-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.svem-sidebar-card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0;
-}
-
-.svem-title-with-icon {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.875rem;
-}
-
-.svem-link-change-eq {
-  background: none;
-  border: none;
-  color: #2563eb;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0;
-}
-
-.svem-link-change-eq:hover {
-  text-decoration: underline;
-}
-
-.svem-sidebar-eq-preview {
-  display: flex;
-  align-items: center;
-  gap: 0.875rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #f1f5f9;
-  margin-bottom: 0.875rem;
-}
-
-.svem-sidebar-eq-img {
-  width: 72px;
-  height: 54px;
-  object-fit: cover;
-  border-radius: 8px;
-  background: #f1f5f9;
-}
-
-.svem-sidebar-eq-meta {
-  display: flex;
-  flex-direction: column;
-}
-
-.svem-sidebar-eq-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0;
-}
-
-.svem-sidebar-eq-type {
-  font-size: 0.8rem;
-  color: #64748b;
-}
-
-.svem-sidebar-specs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  margin-bottom: 1rem;
-}
-
-.svem-sidebar-spec-row {
-  display: flex;
-  align-items: flex-start;
-  font-size: 0.825rem;
-}
-
-.svem-spec-label {
-  width: 105px;
-  color: #64748b;
-  display: flex;
+.svem-fleet-highlight-badge {
+  display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  flex-shrink: 0;
-}
-
-.svem-spec-icon {
-  color: #94a3b8;
-}
-
-.svem-spec-value {
-  color: #1e293b;
-  font-weight: 500;
-  flex-grow: 1;
-}
-
-.svem-sidebar-view-details-btn {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #334155;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.svem-sidebar-view-details-btn:hover {
-  background: #f8fafc;
-  border-color: #94a3b8;
-}
-
-/* Availability Status Banners */
-.svem-status-banner {
-  border-radius: 8px;
-  padding: 0.875rem 1rem;
-}
-
-.svem-status-banner-available {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #166534;
-}
-
-.svem-status-banner-unavailable {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #991b1b;
-}
-
-.svem-status-banner-header {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  background-color: #d97706;
+  color: #ffffff;
+  font-size: 0.75rem;
   font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  margin-bottom: 0.4rem;
 }
 
-.svem-banner-dates {
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin: 0 0 0.2rem;
-}
-
-.svem-banner-hint {
-  font-size: 0.75rem;
-  margin: 0;
-  opacity: 0.9;
-}
-
-/* Booking Summary Card */
-.svem-summary-items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  padding-bottom: 0.875rem;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.svem-summary-row {
-  display: flex;
-  align-items: center;
-}
-
-.svem-sum-label {
-  width: 105px;
-  color: #64748b;
-  flex-shrink: 0;
-}
-
-.svem-sum-val {
-  color: #0f172a;
-  font-weight: 600;
-}
-
-.svem-sum-status-val {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.svem-status-dot-inline {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  display: inline-block;
-}
-
-.svem-summary-tariff-notice {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  background: #fffbeb;
-  border: 1px solid #fef3c7;
-  border-radius: 6px;
-  padding: 0.65rem 0.75rem;
-  margin-top: 0.875rem;
-}
-
-.svem-notice-icon {
-  color: #d97706;
-  flex-shrink: 0;
-  margin-top: 0.1rem;
-}
-
-.svem-notice-text {
-  font-size: 0.75rem;
+.svem-fleet-highlight-text {
+  font-size: 0.8125rem;
   color: #92400e;
   line-height: 1.4;
   margin: 0;
 }
 
-/* Quick Contact Options */
-.svem-sidebar-contact-actions {
+/* Machinery Snapshot Preview */
+.svem-machinery-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.75rem;
+  margin-bottom: 0.875rem;
+}
+
+.svem-preview-thumbnail {
+  width: 88px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background-color: #e2e8f0;
+}
+
+.svem-preview-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.svem-preview-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.svem-preview-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.3;
+  margin: 0 0 0.4rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.svem-preview-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.svem-preview-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #475569;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+}
+
+.svem-preview-tag-operator {
+  color: #065f46;
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.svem-preview-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.svem-btn-view-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #d97706;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  transition: color 0.15s ease;
+}
+
+.svem-btn-view-details:hover {
+  color: #92400e;
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Calendar Container & Date Inputs                                           */
+/* -------------------------------------------------------------------------- */
+.svem-calendar-embed-wrap {
+  margin-bottom: 1rem;
+}
+
+.svem-date-inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.svem-date-field {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
 }
 
-.svem-btn-sidebar-wa {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.7rem;
-  background: #25d366;
-  color: #ffffff;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.15s ease;
-}
-
-.svem-btn-sidebar-wa:hover {
-  background: #1eb956;
-}
-
-.svem-btn-sidebar-call {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.7rem;
-  background: #f59e0b;
-  color: #ffffff;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.15s ease;
-}
-
-.svem-btn-sidebar-call:hover {
-  background: #d97706;
-}
-
-.svem-btn-sidebar-quote {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.7rem;
-  background: #ffffff;
-  color: #334155;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
+.svem-date-input {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 600;
+  color: #1e293b;
+  outline: none;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.svem-date-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+/* Live Availability Status Banner */
+.svem-live-availability-status {
+  margin-top: 0.5rem;
+}
+
+.svem-avail-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.svem-avail-banner strong {
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 0.1rem;
+}
+
+.svem-avail-banner p {
+  margin: 0;
+}
+
+.svem-avail-banner-yes {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.svem-avail-banner-yes .svem-avail-icon {
+  color: #059669;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.svem-avail-banner-no {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.svem-avail-banner-no .svem-avail-icon {
+  color: #dc2626;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Streamlined 3-Field Booking Form                                           */
+/* -------------------------------------------------------------------------- */
+.svem-streamlined-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.svem-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.svem-text-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  color: #0f172a;
+  outline: none;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.svem-text-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.svem-text-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+/* Rental Duration Shift Segmented Pills */
+.svem-rental-type-pills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+  background-color: #f1f5f9;
+  padding: 0.25rem;
+  border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+  .svem-rental-type-pills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.svem-rental-type-pill {
+  padding: 0.5rem 0.25rem;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
   cursor: pointer;
+  text-align: center;
   transition: all 0.15s ease;
 }
 
-.svem-btn-sidebar-quote:hover {
-  background: #f8fafc;
-  border-color: #94a3b8;
+.svem-rental-type-pill:hover {
+  color: #0f172a;
 }
 
-/* --------------------------------------------------------------------------
-   4. BOTTOM ACTIVITY CARDS ROW (3 CARDS)
-   -------------------------------------------------------------------------- */
-.svem-booking-bottom-cards-grid {
+.svem-type-pill-active {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+/* Error Banner */
+.svem-form-error-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 0.65rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+/* Primary Big Submit Button */
+.svem-btn-primary-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background-color: #f59e0b;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.35);
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.svem-btn-primary-submit:hover:not(:disabled) {
+  background-color: #d97706;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+}
+
+.svem-btn-primary-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.svem-btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Divider */
+.svem-direct-actions-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 1.25rem 0 0.875rem;
+}
+
+.svem-direct-actions-divider::before,
+.svem-direct-actions-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.svem-direct-actions-divider span {
+  padding: 0 0.75rem;
+}
+
+/* Instant Direct Actions (WhatsApp & Call) */
+.svem-instant-actions-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
 }
 
-@media (max-width: 900px) {
-  .svem-booking-bottom-cards-grid {
+@media (max-width: 480px) {
+  .svem-instant-actions-grid {
     grid-template-columns: 1fr;
   }
 }
 
-.svem-bottom-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+.svem-btn-action-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #22c55e;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.25);
 }
 
-.svem-bottom-card-header {
+.svem-btn-action-wa:hover {
+  background-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+.svem-btn-action-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+}
+
+.svem-btn-action-call:hover {
+  background-color: #1e293b;
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Trust Card & Guarantees                                                    */
+/* -------------------------------------------------------------------------- */
+.svem-trust-card {
+  background-color: #ffffff;
+}
+
+.svem-trust-card-title {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  margin-bottom: 1.25rem;
-}
-
-.svem-bottom-card-icon {
-  color: #f59e0b;
-}
-
-.svem-bottom-card-title {
-  font-size: 1.1rem;
+  gap: 0.5rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #0f172a;
-  margin: 0;
+  margin: 0 0 1rem;
 }
 
-.svem-recent-bookings-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.svem-recent-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.svem-recent-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.svem-recent-name {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #334155;
-}
-
-.svem-recent-badge {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-}
-
-.svem-badge-booked {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-.svem-badge-avail {
-  background: #dcfce7;
-  color: #15803d;
-}
-
-.svem-adv-features-list {
+.svem-trust-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.svem-adv-features-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: #475569;
-}
-
-.svem-adv-check {
-  color: #f59e0b;
-  flex-shrink: 0;
-}
-
-.svem-help-desc {
-  font-size: 0.875rem;
-  color: #64748b;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
-
-.svem-help-btns-row {
-  display: flex;
   gap: 0.75rem;
 }
 
-.svem-btn-help-call {
-  flex: 1;
+.svem-trust-list li {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 0.65rem;
-  background: #f59e0b;
-  color: #ffffff;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.15s ease;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #334155;
+  line-height: 1.4;
 }
 
-.svem-btn-help-call:hover {
-  background: #d97706;
+.svem-trust-list strong {
+  color: #0f172a;
 }
 
-.svem-btn-help-wa {
-  flex: 1;
+.svem-tariff-notice {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 0.65rem;
-  background: #25d366;
-  color: #ffffff;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.15s ease;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
 }
 
-.svem-btn-help-wa:hover {
-  background: #1eb956;
-}
-
-/* --------------------------------------------------------------------------
-   5. BOTTOM CTA BANNER
-   -------------------------------------------------------------------------- */
-.svem-booking-cta-banner {
-  background: #0f172a;
-  border-radius: 12px;
-  margin: 0 1rem;
-  padding: 2rem;
-  color: #ffffff;
-}
-
-.svem-cta-banner-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.svem-cta-banner-left {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.svem-cta-banner-icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: 10px;
-  background: #f59e0b;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.svem-tariff-notice svg {
+  color: #d97706;
   flex-shrink: 0;
+  margin-top: 1px;
 }
-
-.svem-cta-banner-heading {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin: 0 0 0.25rem;
-  color: #ffffff;
-}
-
-.svem-cta-banner-sub {
-  font-size: 0.95rem;
-  color: #94a3b8;
-  margin: 0;
-}
-
-.svem-cta-banner-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.svem-btn-banner-wa {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.4rem;
-  background: #25d366;
-  color: #ffffff;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.15s ease;
-}
-
-.svem-btn-banner-wa:hover {
-  background: #1eb956;
-}
-
-.svem-btn-banner-call {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.4rem;
-  background: #f59e0b;
-  color: #ffffff;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.15s ease;
-}
-
-.svem-btn-banner-call:hover {
-  background: #d97706;
-}
-
-@media (max-width: 768px) {
-  .svem-booking-cta-banner {
-    margin: 0 0 2rem;
-    padding: 1.5rem 1rem;
-    border-radius: 12px;
-  }
-
-  .svem-cta-banner-inner {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1.25rem;
-  }
-
-  .svem-cta-banner-left {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.75rem;
-  }
-
-  .svem-cta-banner-heading {
-    font-size: 1.25rem;
-  }
-
-  .svem-cta-banner-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.75rem;
-  }
-
-  .svem-btn-banner-wa,
-  .svem-btn-banner-call {
-    width: 100%;
-    justify-content: center;
-    padding: 0.85rem 1rem;
-  }
-}
-
