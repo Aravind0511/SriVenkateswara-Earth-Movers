@@ -217,6 +217,124 @@
   gap: 1.25rem;
 }
 
+.svem-form-group,
+.svem-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.svem-form-label,
+.svem-field-label {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.svem-req,
+.svem-req-star {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.svem-form-grid-2,
+.svem-form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .svem-form-grid-2,
+  .svem-form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.svem-form-input,
+.svem-form-text-input,
+.svem-form-select,
+.svem-form-dropdown,
+.svem-form-textarea {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  color: #0f172a;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.svem-form-input:focus,
+.svem-form-text-input:focus,
+.svem-form-select:focus,
+.svem-form-dropdown:focus,
+.svem-form-textarea:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.svem-form-input::placeholder,
+.svem-form-text-input::placeholder,
+.svem-form-textarea::placeholder {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.svem-form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+.svem-btn-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: #f59e0b;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.35);
+  transition: all 0.2s ease;
+}
+
+.svem-btn-full:hover {
+  background-color: #d97706;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.svem-btn-full:active {
+  transform: translateY(0);
+}
+
+.svem-form-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 0.65rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
 .svem-contactpage-success-card {
   display: flex;
   flex-direction: column;

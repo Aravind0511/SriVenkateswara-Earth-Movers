@@ -1271,7 +1271,8 @@ input, select, textarea, button {
   gap: 1rem;
 }
 
-.svem-form-grid-2 {
+.svem-form-grid-2,
+.svem-form-row-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -1281,29 +1282,35 @@ input, select, textarea, button {
   .svem-form-grid-3 {
     grid-template-columns: 1fr;
   }
-  .svem-form-grid-2 {
+  .svem-form-grid-2,
+  .svem-form-row-2 {
     grid-template-columns: 1fr;
   }
 }
 
-.svem-form-group {
+.svem-form-group,
+.svem-form-field {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
-.svem-form-label {
+.svem-form-label,
+.svem-field-label {
   font-size: 0.825rem;
   font-weight: 700;
   color: var(--svem-dark);
 }
 
-.svem-req {
+.svem-req,
+.svem-req-star {
   color: #dc2626;
 }
 
 .svem-form-input,
+.svem-form-text-input,
 .svem-form-select,
+.svem-form-dropdown,
 .svem-form-textarea {
   width: 100%;
   padding: 0.65rem 0.85rem;
@@ -1313,10 +1320,13 @@ input, select, textarea, button {
   color: var(--svem-dark);
   background-color: #ffffff;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 .svem-form-input:focus,
+.svem-form-text-input:focus,
 .svem-form-select:focus,
+.svem-form-dropdown:focus,
 .svem-form-textarea:focus {
   border-color: var(--svem-primary);
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);

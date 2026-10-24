@@ -280,14 +280,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="svem-contactpage-form">
-                  <div className="svem-form-field">
-                    <label htmlFor="contactFullName" className="svem-field-label">
-                      Full Name / Company Name <span className="svem-req-star">*</span>
+                  <div className="svem-form-group">
+                    <label htmlFor="contactFullName" className="svem-form-label">
+                      Full Name / Company Name <span className="svem-req">*</span>
                     </label>
                     <input
                       id="contactFullName"
                       type="text"
-                      className="svem-form-text-input"
+                      className="svem-form-input"
                       placeholder="e.g. Ramesh Kumar / R.K. Builders"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -295,15 +295,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     />
                   </div>
 
-                  <div className="svem-form-row-2">
-                    <div className="svem-form-field">
-                      <label htmlFor="contactPhone" className="svem-field-label">
-                        Phone Number <span className="svem-req-star">*</span>
+                  <div className="svem-form-grid-2">
+                    <div className="svem-form-group">
+                      <label htmlFor="contactPhone" className="svem-form-label">
+                        Phone Number <span className="svem-req">*</span>
                       </label>
                       <input
                         id="contactPhone"
                         type="tel"
-                        className="svem-form-text-input"
+                        className="svem-form-input"
                         placeholder="e.g. +91 9944745410"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
@@ -311,14 +311,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       />
                     </div>
 
-                    <div className="svem-form-field">
-                      <label htmlFor="contactEmail" className="svem-field-label">
+                    <div className="svem-form-group">
+                      <label htmlFor="contactEmail" className="svem-form-label">
                         Email Address (Optional)
                       </label>
                       <input
                         id="contactEmail"
                         type="email"
-                        className="svem-form-text-input"
+                        className="svem-form-input"
                         placeholder="your@email.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -326,14 +326,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     </div>
                   </div>
 
-                  <div className="svem-form-row-2">
-                    <div className="svem-form-field">
-                      <label htmlFor="contactService" className="svem-field-label">
+                  <div className="svem-form-grid-2">
+                    <div className="svem-form-group">
+                      <label htmlFor="contactService" className="svem-form-label">
                         Service / Equipment Needed
                       </label>
                       <select
                         id="contactService"
-                        className="svem-form-dropdown"
+                        className="svem-form-select"
                         value={selectedService}
                         onChange={(e) => setSelectedService(e.target.value)}
                       >
@@ -349,14 +349,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       </select>
                     </div>
 
-                    <div className="svem-form-field">
-                      <label htmlFor="contactLocation" className="svem-field-label">
+                    <div className="svem-form-group">
+                      <label htmlFor="contactLocation" className="svem-form-label">
                         Worksite Location
                       </label>
                       <input
                         id="contactLocation"
                         type="text"
-                        className="svem-form-text-input"
+                        className="svem-form-input"
                         placeholder="City, Taluk or Landmark"
                         value={projectLocation}
                         onChange={(e) => setProjectLocation(e.target.value)}
@@ -364,8 +364,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     </div>
                   </div>
 
-                  <div className="svem-form-field">
-                    <label htmlFor="contactMessage" className="svem-field-label">
+                  <div className="svem-form-group">
+                    <label htmlFor="contactMessage" className="svem-form-label">
                       Project Details / Special Requirements
                     </label>
                     <textarea
