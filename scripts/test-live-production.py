@@ -59,7 +59,19 @@ try:
         assert_check('Karnataka' in r_s.text, 'Live JS bundle contains Karnataka service coverage')
         assert_check('Kerala' in r_s.text, 'Live JS bundle contains Kerala service coverage')
         assert_check('Andhra Pradesh' in r_s.text, 'Live JS bundle contains Andhra Pradesh service coverage')
-        assert_check('50ft-long-reach-service.jpg' in r_s.text, 'Live JS bundle references updated 50ft long reach service image')
+
+        # Check dynamic route chunks
+        dynamic_chunks = re.findall(r'["\']([a-zA-Z0-9_\-\.\/]*ServicesPage-[a-zA-Z0-9_\-]+\.js)["\']', r_s.text)
+        if dynamic_chunks:
+            chunk_rel = dynamic_chunks[0].lstrip('./')
+            if not chunk_rel.startswith('assets/'):
+                chunk_rel = 'assets/' + chunk_rel
+            chunk_url = f'{BASE_URL}/{chunk_rel}'
+            r_chunk = session.get(chunk_url, timeout=10)
+            assert_check(r_chunk.status_code == 200, f'Dynamic ServicesPage chunk accessible: {chunk_rel}')
+            assert_check('50ft-long-reach-service.jpg' in r_chunk.text, 'ServicesPage chunk references updated 50ft long reach service image')
+        else:
+            assert_check('50ft-long-reach-service.jpg' in r_s.text, 'Live JS bundle references updated 50ft long reach service image')
 
     for c in styles:
         full_c = c if c.startswith('http') else 'https://aravind0511.github.io' + c
