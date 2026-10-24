@@ -15,6 +15,79 @@
   box-sizing: border-box;
 }
 
+/* Presets Bar */
+.svem-cal-presets-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed #e2e8f0;
+  flex-wrap: wrap;
+}
+
+.svem-cal-presets-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.svem-cal-presets-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.svem-preset-chip {
+  padding: 0.2rem 0.55rem;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.svem-preset-chip:hover {
+  background-color: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.svem-preset-chip-active {
+  background-color: #f59e0b !important;
+  border-color: #d97706 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Interactive Hint Box */
+.svem-cal-hint-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.78125rem;
+  margin-top: 0.75rem;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  line-height: 1.4;
+}
+
+.svem-cal-hint-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #3b82f6;
+}
+
 /* Enhanced Date Range Status Pill */
 .svem-cal-status-pill {
   display: flex;

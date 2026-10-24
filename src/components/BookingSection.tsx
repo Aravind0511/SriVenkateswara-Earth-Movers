@@ -31,9 +31,9 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
   const [rentalType, setRentalType] = useState<RentalType>('Daily');
   const [projectLocation, setProjectLocation] = useState('');
   
-  // Date State - Defaulting to matching reference image dates: Oct 12 to Oct 14, 2026!
+  // Date State - Defaulting to available dates: Oct 12 to Oct 13, 2026 (2 days)
   const [startDate, setStartDate] = useState('2026-10-12');
-  const [endDate, setEndDate] = useState('2026-10-14');
+  const [endDate, setEndDate] = useState('2026-10-13');
   
   const [additionalRequirements, setAdditionalRequirements] = useState('');
 

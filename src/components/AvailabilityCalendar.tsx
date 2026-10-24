@@ -6,12 +6,14 @@ import {
   Calendar as CalendarIcon,
   CheckCircle2,
   AlertCircle,
+  Clock,
 } from 'lucide-react';
 import type { Booking } from '../types';
 import {
   generateMonthGrid,
   findConflictingBooking,
   formatDateDisplay,
+  addDaysISO,
 } from '../utils/dateUtils';
 import './AvailabilityCalendar.css';
 
@@ -39,6 +41,7 @@ export const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
   // Default to October 2026 to match reference UI (0-indexed: 9 = October)
   const [currentYear, setCurrentYear] = useState<number>(2026);
   const [currentMonth, setCurrentMonth] = useState<number>(9);
+  const [activeHint, setActiveHint] = useState<string | null>(null);
 
   const monthNames = [
     'January',
@@ -87,6 +90,7 @@ export const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
   };
 
   const handleClear = () => {
+    setActiveHint(null);
     if (onClearDates) {
       onClearDates();
     } else {
@@ -125,63 +129,109 @@ export const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
     );
   }, [equipmentId, startDate, endDate, bookings]);
 
+  // Intelligent day click handler
   const handleDayClick = (
     dateStr: string,
     isBooked: boolean,
     isPast: boolean
   ) => {
     if (isPast) {
+      const msg = 'Cannot select dates in the past. Please select an upcoming date.';
+      setActiveHint(msg);
       if (onUnavailableDateSelected) {
-        onUnavailableDateSelected(
-          dateStr,
-          'Cannot select dates in the past. Please select an upcoming date.'
-        );
+        onUnavailableDateSelected(dateStr, msg);
       }
       return;
     }
 
-    // If date is already booked:
+    // CRITICAL FIX: Clicking a booked date does NOT select it!
+    // Protects the user's booking from being corrupted with an unavailable date.
     if (isBooked) {
-      onSelectDateRange(dateStr, dateStr);
+      const msg = `⚠️ ${formatDateDisplay(dateStr)} is already booked for ${equipmentName}. Please pick an available date (green dot).`;
+      setActiveHint(msg);
       if (onUnavailableDateSelected) {
-        onUnavailableDateSelected(
-          dateStr,
-          `This date is already booked for ${equipmentName}. Please select another date.`
-        );
+        onUnavailableDateSelected(dateStr, msg);
       }
       return;
     }
 
     // User clicked an available date:
-    // If no start date or both start and end dates are already set to different dates, start fresh
+    // If no start date, or user previously finished a range (startDate !== endDate), start fresh
     if (!startDate || (startDate && endDate && startDate !== endDate)) {
       onSelectDateRange(dateStr, dateStr);
+      setActiveHint(`Start date set to ${formatDateDisplay(dateStr)}. Tap an end date to extend, or proceed with 1-day rental.`);
     } else if (startDate && (!endDate || startDate === endDate)) {
       // User is picking the end date
       if (dateStr < startDate) {
         // If clicked date is before start date, make this the new start date
         onSelectDateRange(dateStr, dateStr);
+        setActiveHint(`Start date set to ${formatDateDisplay(dateStr)}.`);
+      } else if (dateStr === startDate) {
+        // Clicked same date again -> keeps 1-day rental
+        onSelectDateRange(dateStr, dateStr);
+        setActiveHint(`1-day rental on ${formatDateDisplay(dateStr)}.`);
       } else {
-        // Check if any date in the range is booked
+        // Check if any date in the selected range is booked
         const rangeConflict = findConflictingBooking(
           equipmentId,
           startDate,
           dateStr,
           bookings
         );
+
         if (rangeConflict) {
-          onSelectDateRange(startDate, dateStr);
-          if (onUnavailableDateSelected) {
-            onUnavailableDateSelected(
-              dateStr,
-              `This date range includes booked dates (${formatDateDisplay(rangeConflict.startDate)}) for ${equipmentName}. Please select an available range.`
-            );
+          // Range hits a booked date: protect user by clamping to the day before the conflict if possible
+          const conflictStart = rangeConflict.startDate;
+          const dayBefore = addDaysISO(conflictStart, -1);
+
+          if (dayBefore >= startDate) {
+            onSelectDateRange(startDate, dayBefore);
+            const msg = `⚠️ Range includes booked date (${formatDateDisplay(conflictStart)}). Set to available days: ${formatDateDisplay(startDate)} to ${formatDateDisplay(dayBefore)}.`;
+            setActiveHint(msg);
+            if (onUnavailableDateSelected) {
+              onUnavailableDateSelected(dateStr, msg);
+            }
+          } else {
+            const msg = `⚠️ Selected range includes booked dates (${formatDateDisplay(conflictStart)}) for ${equipmentName}. Please select an available block.`;
+            setActiveHint(msg);
+            if (onUnavailableDateSelected) {
+              onUnavailableDateSelected(dateStr, msg);
+            }
           }
           return;
         }
+
+        // Clean range with no conflicts
         onSelectDateRange(startDate, dateStr);
+        setActiveHint(null);
       }
     }
+  };
+
+  // Quick preset duration buttons (1 Day, 2 Days, 3 Days, 1 Week)
+  const applyPresetDuration = (days: number) => {
+    const baseStart = startDate || '2026-10-12';
+    const targetEnd = addDaysISO(baseStart, days - 1);
+
+    // Verify if target range has conflict
+    const rangeConflict = findConflictingBooking(
+      equipmentId,
+      baseStart,
+      targetEnd,
+      bookings
+    );
+
+    if (rangeConflict) {
+      const msg = `⚠️ ${days}-day preset overlaps with booked dates for ${equipmentName}. Try another duration or start date.`;
+      setActiveHint(msg);
+      if (onUnavailableDateSelected) {
+        onUnavailableDateSelected(baseStart, msg);
+      }
+      return;
+    }
+
+    onSelectDateRange(baseStart, targetEnd);
+    setActiveHint(null);
   };
 
   const isDifferentFromActiveMonth =
@@ -189,6 +239,43 @@ export const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
 
   return (
     <div className="svem-calendar-widget" aria-label="Interactive Equipment Availability Calendar">
+      {/* Quick Duration Presets for Instant Selection */}
+      <div className="svem-cal-presets-bar">
+        <span className="svem-cal-presets-label">
+          <Clock size={13} /> Quick Presets:
+        </span>
+        <div className="svem-cal-presets-chips">
+          <button
+            type="button"
+            className={`svem-preset-chip ${totalDays === 1 ? 'svem-preset-chip-active' : ''}`}
+            onClick={() => applyPresetDuration(1)}
+          >
+            1 Day
+          </button>
+          <button
+            type="button"
+            className={`svem-preset-chip ${totalDays === 2 ? 'svem-preset-chip-active' : ''}`}
+            onClick={() => applyPresetDuration(2)}
+          >
+            2 Days
+          </button>
+          <button
+            type="button"
+            className={`svem-preset-chip ${totalDays === 3 ? 'svem-preset-chip-active' : ''}`}
+            onClick={() => applyPresetDuration(3)}
+          >
+            3 Days
+          </button>
+          <button
+            type="button"
+            className={`svem-preset-chip ${totalDays === 7 ? 'svem-preset-chip-active' : ''}`}
+            onClick={() => applyPresetDuration(7)}
+          >
+            1 Week
+          </button>
+        </div>
+      </div>
+
       {/* Enhanced Date Range Status Pill */}
       <div className="svem-cal-status-pill">
         <div className="svem-cal-status-content">
@@ -203,7 +290,7 @@ export const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
                   days)
                 </>
               ) : (
-                ' (1 day selected)'
+                ' (1-day rental)'
               )}
             </span>
           ) : (
@@ -315,8 +402,16 @@ export const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
         })}
       </div>
 
+      {/* Interactive Helper / Toast Hint */}
+      {activeHint && (
+        <div className="svem-cal-hint-box" role="status">
+          <AlertCircle size={14} className="svem-cal-hint-icon" />
+          <span>{activeHint}</span>
+        </div>
+      )}
+
       {/* Live Availability Feedback Banner */}
-      {startDate && (
+      {startDate && !activeHint && (
         <div
           className={`svem-cal-avail-alert ${
             conflict ? 'svem-cal-avail-conflict' : 'svem-cal-avail-success'
@@ -334,7 +429,8 @@ export const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
             <>
               <CheckCircle2 size={15} className="svem-cal-alert-icon" />
               <span>
-                <strong>Available:</strong> Machine is ready for selected dates!
+                <strong>Available:</strong> Ready for booking ({formatDateDisplay(startDate)}
+                {endDate && endDate !== startDate ? ` to ${formatDateDisplay(endDate)}` : ''})!
               </span>
             </>
           )}
@@ -349,7 +445,7 @@ export const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({
         </div>
         <div className="svem-legend-item">
           <span className="svem-legend-box svem-legend-box-booked" />
-          <span>Not Available</span>
+          <span>Booked</span>
         </div>
         <div className="svem-legend-item">
           <span className="svem-legend-box svem-legend-box-selected" />

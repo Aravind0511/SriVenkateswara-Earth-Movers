@@ -1,6 +1,18 @@
 import type { Booking, CalendarDay } from '../types';
 
 /**
+ * Add days to YYYY-MM-DD date string and return YYYY-MM-DD
+ */
+export function addDaysISO(dateStr: string, days: number): string {
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+  d.setDate(d.getDate() + days);
+  return formatDateISO(d);
+}
+
+/**
  * Format Date to YYYY-MM-DD string
  */
 export function formatDateISO(date: Date): string {

@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import {
   CheckCircle2,
-  XCircle,
   Phone,
   MessageSquare,
   Truck,
@@ -17,7 +16,7 @@ import {
 } from 'lucide-react';
 import type { EquipmentItem, Booking, RentalType, AppPage } from '../types';
 import { AvailabilityCalendar } from './AvailabilityCalendar';
-import { findConflictingBooking, formatDateDisplay } from '../utils/dateUtils';
+import { findConflictingBooking, formatDateDisplay, addDaysISO } from '../utils/dateUtils';
 import {
   BUSINESS_INFO,
   getCallUrl,
@@ -54,9 +53,9 @@ export const BookingPage: React.FC<BookingPageProps> = ({
   const [projectNote, setProjectNote] = useState('');
   const [rentalType, setRentalType] = useState<RentalType>('Daily');
 
-  // Dates: Default to Oct 12, 2026 to Oct 14, 2026
+  // Dates: Default to Oct 12, 2026 to Oct 13, 2026 (2 days - completely available across fleet)
   const [startDate, setStartDate] = useState('2026-10-12');
-  const [endDate, setEndDate] = useState('2026-10-14');
+  const [endDate, setEndDate] = useState('2026-10-13');
 
   // Alert and validation state
   const [formError, setFormError] = useState<string | null>(null);
@@ -124,6 +123,33 @@ export const BookingPage: React.FC<BookingPageProps> = ({
     setEndDate(end);
     setFormError(null);
     setManualWarning(null);
+
+    // Purposeful synchronization with rental shift pills
+    if (start && end) {
+      const s = new Date(start);
+      const e = new Date(end);
+      const diff = Math.ceil(Math.abs(e.getTime() - s.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+      if (diff >= 7) {
+        setRentalType('Weekly');
+      } else if (diff === 1 && rentalType !== 'Hourly') {
+        setRentalType('Daily');
+      }
+    }
+  };
+
+  const handleRentalTypeChange = (type: RentalType) => {
+    setRentalType(type);
+    if (!startDate) return;
+
+    if (type === 'Daily' || type === 'Hourly') {
+      setEndDate(startDate);
+    } else if (type === 'Weekly') {
+      const weekEnd = addDaysISO(startDate, 6);
+      const conflictCheck = findConflictingBooking(activeEquipment.id, startDate, weekEnd, bookings);
+      if (!conflictCheck) {
+        setEndDate(weekEnd);
+      }
+    }
   };
 
   const handleClearDates = () => {
@@ -396,34 +422,6 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                     />
                   </div>
                 </div>
-
-                {/* Live Availability Status */}
-                <div className="svem-live-availability-status">
-                  {isAvailable ? (
-                    <div className="svem-avail-banner svem-avail-banner-yes">
-                      <CheckCircle2 size={18} className="svem-avail-icon" />
-                      <div>
-                        <strong>Selected Dates Available</strong>
-                        <p>
-                          {formatDateDisplay(startDate)} &rarr;{' '}
-                          {formatDateDisplay(endDate || startDate)} ({totalDays}{' '}
-                          day{totalDays > 1 ? 's' : ''})
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="svem-avail-banner svem-avail-banner-no">
-                      <XCircle size={18} className="svem-avail-icon" />
-                      <div>
-                        <strong>Dates Not Available</strong>
-                        <p>
-                          {manualWarning ||
-                            `This machine is booked on the selected dates. Please choose alternate dates or call us.`}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
 
@@ -513,7 +511,7 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                             className={`svem-rental-type-pill ${
                               rentalType === type ? 'svem-type-pill-active' : ''
                             }`}
-                            onClick={() => setRentalType(type)}
+                            onClick={() => handleRentalTypeChange(type)}
                           >
                             {type}
                           </button>
@@ -553,7 +551,16 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                     }`}
                     disabled={!isAvailable}
                   >
-                    <span>Submit Booking Request</span>
+                    <span>
+                      Submit Booking Request{' '}
+                      {startDate
+                        ? `(${formatDateDisplay(startDate)}${
+                            endDate && endDate !== startDate
+                              ? ` → ${formatDateDisplay(endDate)} • ${totalDays} Days`
+                              : ' • 1 Day'
+                          })`
+                        : ''}
+                    </span>
                     <ArrowRight size={18} />
                   </button>
                 </form>
