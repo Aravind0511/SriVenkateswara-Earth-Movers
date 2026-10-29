@@ -87,6 +87,7 @@ live_assets = [
     ('/equipment/hitachi-50ft-long-reach-v2.jpg', 10000),
     ('/equipment/hitachi-long-reach-50ft.jpg', 10000),
     ('/equipment/all-vehicles-fleet.jpg', 10000),
+    ('/equipment/all-vehicles-fleet-v2.jpg', 10000),
     ('/equipment/hitachi-140.jpg', 10000),
     ('/equipment/hitachi-215.jpg', 10000),
     ('/equipment/hitachi-220.jpg', 10000),

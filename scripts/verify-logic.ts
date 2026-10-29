@@ -118,6 +118,7 @@ assert(getWhatsAppUrl().includes('919944745410'), 'WhatsApp URL points to owner 
 // 8. Verify No Monetary Amounts in Equipment Rates & Local Equipment Assets Exist
 const equipmentImages = [
   'all-vehicles-fleet.jpg',
+  'all-vehicles-fleet-v2.jpg',
   'hitachi-140.jpg',
   'hitachi-215.jpg',
   'hitachi-220.jpg',
